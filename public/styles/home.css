@@ -30,6 +30,7 @@ main {
     width: 444pt;
     height: 250pt;
     align-self: center;
+    border: none;
 
     &.placeholder {
       display: grid;
