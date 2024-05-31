@@ -4,7 +4,7 @@
   */
 function swap_in_video(video_id, el) {
   const video_iframe = document.createElement('iframe');
-  video_iframe.src = `https://www.youtube-nocookie.com/embed/${video_id}`;
+  video_iframe.src = `https://www.youtube-nocookie.com/embed/${video_id}?autoplay=1`;
   video_iframe.title = 'YouTube video player';
   video_iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
   video_iframe.allowFullscreen = true;
