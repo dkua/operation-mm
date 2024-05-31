@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operation MM</title>
+  <link href="/styles/reset.css" rel="stylesheet">
+  <link href="/styles/home.css" rel="stylesheet">
+  <script src="/scripts/swap_in_video.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <div class="msg-container">
+      {% for msg in messages %}
+      <div class="msg">
+        <h1>{{msg.sender_name}}</h1>
+        {% if msg.video_id %}
+        <div class="video placeholder" data-video_id="{{msg.video_id}}">
+          <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg">
+          <play-icon>
+            <circle></circle>
+            <triangle></triangle>
+          </play-icon>
+        </div>
+        {% endif %}
+        <p>{{msg.message}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+</body>
+
+</html>
