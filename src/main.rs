@@ -70,8 +70,32 @@ async fn home(State(template_engine): State<Arc<AutoReloader>>) -> Html<String> 
     let lorem_sentences = "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis"
         .split('.')
         .collect::<Vec<_>>();
-    let video_ids = iter::repeat("oCOGTtxq24k").take(750);
+    let video_ids = {
+        use serde_json::Value;
+        let videos_json_file = std::fs::File::open("bae-videos.json").unwrap();
+        let videos_json =
+            serde_json::from_reader(std::io::BufReader::new(videos_json_file)).unwrap();
+        let Value::Array(videos_data) = videos_json else {
+            panic!("Videos JSON does not start with an array")
+        };
+        videos_data
+            .iter()
+            .filter_map(|video| {
+                let Value::String(video_id) = &video["id"] else {
+                    return None;
+                };
+                if matches!(video["playable_in_embed"], Value::Bool(true))
+                    && matches!(video["availability"].as_str(), Some("public"))
+                {
+                    Some(video_id.clone())
+                } else {
+                    None
+                }
+            })
+            .collect::<Vec<_>>()
+    };
     let messages = video_ids
+        .iter()
         .map(|id| {
             let mut message =
                 lorem_sentences[0..rng.gen_range(1..=lorem_sentences.len())].join(".");
