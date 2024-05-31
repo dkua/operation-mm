@@ -1,6 +1,7 @@
 use std::iter;
 use std::sync::Arc;
 
+use anyhow::anyhow;
 use axum::extract::State;
 use axum::response::Html;
 use axum::routing::get;
@@ -12,6 +13,10 @@ use serde::Serialize;
 use tower_http::services::ServeDir;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
+
+mod app_error;
+
+use app_error::AppError;
 
 #[derive(Clone, Serialize)]
 struct Message {
@@ -40,7 +45,7 @@ const NAME_LIST: [&str; 15] = [
 ];
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), std::io::Error> {
     tracing_subscriber::registry()
         .with(tracing_subscriber::fmt::layer().with_ansi(true))
         .init();
@@ -60,23 +65,23 @@ async fn main() {
         .route("/", get(home))
         .with_state(Arc::new(template_engine))
         .fallback_service(file_service);
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
     tracing::info!("Starting server");
-    axum::serve(listener, app).await.unwrap();
+
+    axum::serve(listener, app).await
 }
 
-async fn home(State(template_engine): State<Arc<AutoReloader>>) -> Html<String> {
+async fn home(State(template_engine): State<Arc<AutoReloader>>) -> Result<Html<String>, AppError> {
     let mut rng = rand_pcg::Pcg64Mcg::seed_from_u64(80085);
     let lorem_sentences = "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis"
         .split('.')
         .collect::<Vec<_>>();
     let video_ids = {
         use serde_json::Value;
-        let videos_json_file = std::fs::File::open("bae-videos.json").unwrap();
-        let videos_json =
-            serde_json::from_reader(std::io::BufReader::new(videos_json_file)).unwrap();
+        let videos_json_file = std::fs::File::open("bae-videos.json")?;
+        let videos_json = serde_json::from_reader(std::io::BufReader::new(videos_json_file))?;
         let Value::Array(videos_data) = videos_json else {
-            panic!("Videos JSON does not start with an array")
+            return Err(anyhow!("Videos JSON does not start with an array").into());
         };
         videos_data
             .iter()
@@ -112,7 +117,7 @@ async fn home(State(template_engine): State<Arc<AutoReloader>>) -> Html<String> 
             })
         })
         .collect::<Value>();
-    let env = template_engine.acquire_env().unwrap();
+    let env = template_engine.acquire_env()?;
     let ctx = context! {messages};
-    return Html(env.get_template("home.html").unwrap().render(ctx).unwrap());
+    return Ok(Html(env.get_template("home.html")?.render(ctx)?));
 }
