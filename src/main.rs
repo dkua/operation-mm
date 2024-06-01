@@ -1,4 +1,5 @@
 use std::iter;
+use std::net::SocketAddr;
 use std::sync::Arc;
 
 use anyhow::anyhow;
@@ -26,7 +27,7 @@ struct Message {
 }
 
 const TEMPLATE_PATH: &str = "templates";
-const NAME_LIST: [&str; 15] = [
+const NAME_LIST: [&str; 21] = [
     "AshScar",
     "saltedbread",
     "reki",
@@ -41,6 +42,12 @@ const NAME_LIST: [&str; 15] = [
     "Vayne Darkness",
     "taco tom",
     "Kagecherou",
+    "alkusanagi",
+    "WallyWW",
+    "WolkenKatz",
+    "Avros",
+    "PuffyOwlGod",
+    "DiaGuy",
     "Trildar",
 ];
 
@@ -65,8 +72,13 @@ async fn main() -> Result<(), std::io::Error> {
         .route("/", get(home))
         .with_state(Arc::new(template_engine))
         .fallback_service(file_service);
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
-    tracing::info!("Starting server");
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
+    let listener = tokio::net::TcpListener::bind(&addr).await?;
+    tracing::info!(
+        "Starting server v{} listening on http://{}",
+        env!("CARGO_PKG_VERSION"),
+        &addr
+    );
 
     axum::serve(listener, app).await
 }
