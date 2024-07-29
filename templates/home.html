@@ -12,22 +12,26 @@
 
 <body>
   <main>
-    <div class="msg-container">
-      {% for msg in messages %}
-      <div class="msg">
-        <h1>{{msg.sender_name}}</h1>
-        {% if msg.video_id %}
-        <div class="video placeholder" data-video_id="{{msg.video_id}}">
-          <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
-          <play-icon>
-            <circle></circle>
-            <triangle></triangle>
-          </play-icon>
+    <div class="messages">
+      <div class="msg-container">
+        {% for msg in messages %}
+        <div class="msg">
+          <h1>{{msg.sender_name}}</h1>
+          {% if msg.video_id %}
+          <div class="video placeholder" data-video_id="{{msg.video_id}}">
+            <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
+            <play-icon>
+              <circle></circle>
+              <triangle></triangle>
+            </play-icon>
+          </div>
+          {% endif %}
+          <p>{{msg.message}}</p>
         </div>
-        {% endif %}
-        <p>{{msg.message}}</p>
+        {% endfor %}
       </div>
-      {% endfor %}
+      <button id="prev-msg">&lt;</button>
+      <button id="next-msg">&gt;</button>
     </div>
   </main>
 </body>
