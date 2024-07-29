@@ -3,14 +3,15 @@ use std::net::SocketAddr;
 use std::sync::Arc;
 
 use anyhow::anyhow;
-use axum::extract::State;
+use axum::extract::{FromRef, State};
 use axum::response::Html;
 use axum::routing::get;
 use axum::Router;
 use minijinja::{context, Value};
 use minijinja_autoreload::AutoReloader;
 use rand::{Rng, SeedableRng};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
+use time::OffsetDateTime;
 use tower_http::services::ServeDir;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
@@ -24,6 +25,35 @@ struct Message {
     sender_name: String,
     video_id: Option<String>,
     message: String,
+}
+
+#[derive(Deserialize)]
+struct VideoInfo {
+    id: String,
+    title: String,
+    #[serde(with = "time::serde::timestamp")]
+    release_timestamp: OffsetDateTime,
+    was_live: bool,
+    playable_in_embed: bool,
+    availability: String,
+}
+
+#[derive(Clone)]
+struct AppState {
+    template_engine: Arc<AutoReloader>,
+    videos_data: &'static [VideoInfo],
+}
+
+impl FromRef<AppState> for Arc<AutoReloader> {
+    fn from_ref(input: &AppState) -> Self {
+        input.template_engine.clone()
+    }
+}
+
+impl FromRef<AppState> for &'static [VideoInfo] {
+    fn from_ref(input: &AppState) -> Self {
+        input.videos_data
+    }
 }
 
 const TEMPLATE_PATH: &str = "templates";
@@ -67,10 +97,19 @@ async fn main() -> Result<(), std::io::Error> {
         }
         return Ok(env);
     });
+    let mut videos_data = {
+        let videos_json_file = std::fs::File::open("bae-videos.json")?;
+        serde_json::from_reader::<_, Vec<VideoInfo>>(std::io::BufReader::new(videos_json_file))?
+    };
+    videos_data.sort_by_key(|v| v.release_timestamp);
+    let videos_data: &'static [VideoInfo] = videos_data.leak();
     let file_service = ServeDir::new("public").precompressed_br();
     let app = Router::new()
         .route("/", get(home))
-        .with_state(Arc::new(template_engine))
+        .with_state(AppState {
+            template_engine: Arc::new(template_engine),
+            videos_data,
+        })
         .fallback_service(file_service);
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await?;
@@ -83,35 +122,24 @@ async fn main() -> Result<(), std::io::Error> {
     axum::serve(listener, app).await
 }
 
-async fn home(State(template_engine): State<Arc<AutoReloader>>) -> Result<Html<String>, AppError> {
+async fn home(
+    State(template_engine): State<Arc<AutoReloader>>,
+    State(videos_data): State<&[VideoInfo]>,
+) -> Result<Html<String>, AppError> {
     let mut rng = rand_pcg::Pcg64Mcg::seed_from_u64(80085);
     let lorem_sentences = "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis"
         .split('.')
         .collect::<Vec<_>>();
-    let video_ids = {
-        use serde_json::Value;
-        let videos_json_file = std::fs::File::open("bae-videos.json")?;
-        let videos_json = serde_json::from_reader(std::io::BufReader::new(videos_json_file))?;
-        let Value::Array(videos_data) = videos_json else {
-            return Err(anyhow!("Videos JSON does not start with an array").into());
-        };
-        videos_data
-            .iter()
-            .filter_map(|video| {
-                let Value::String(video_id) = &video["id"] else {
-                    return None;
-                };
-                if matches!(video["playable_in_embed"], Value::Bool(true))
-                    && matches!(video["availability"].as_str(), Some("public"))
-                {
-                    Some(video_id.clone())
-                } else {
-                    None
-                }
-            })
-            .collect::<Vec<_>>()
-    };
-    let mut video_ids_iter = video_ids.iter().peekable();
+    let mut video_ids_iter = videos_data
+        .iter()
+        .filter_map(|video| {
+            if video.playable_in_embed && video.availability == "public" {
+                Some(&video.id)
+            } else {
+                None
+            }
+        })
+        .peekable();
     let messages = iter::from_fn(|| {
         video_ids_iter.peek()?;
 
