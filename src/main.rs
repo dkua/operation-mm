@@ -111,24 +111,24 @@ async fn home(State(template_engine): State<Arc<AutoReloader>>) -> Result<Html<S
             })
             .collect::<Vec<_>>()
     };
-    let messages = video_ids
-        .iter()
-        .map(|id| {
-            let mut message =
-                lorem_sentences[0..rng.gen_range(1..=lorem_sentences.len())].join(".");
-            message.push('.');
-            let video_id = if rng.gen_bool(0.8) {
-                Some(id.to_owned())
-            } else {
-                None
-            };
-            Value::from_serialize(Message {
-                sender_name: NAME_LIST[rng.gen_range(0..NAME_LIST.len())].to_owned(),
-                video_id,
-                message,
-            })
-        })
-        .collect::<Value>();
+    let mut video_ids_iter = video_ids.iter().peekable();
+    let messages = iter::from_fn(|| {
+        video_ids_iter.peek()?;
+
+        let mut message = lorem_sentences[0..rng.gen_range(1..=lorem_sentences.len())].join(".");
+        message.push('.');
+        let video_id = if rng.gen_bool(0.8) {
+            Some(video_ids_iter.next().unwrap().to_owned())
+        } else {
+            None
+        };
+        return Some(Value::from_serialize(Message {
+            sender_name: NAME_LIST[rng.gen_range(0..NAME_LIST.len())].to_owned(),
+            video_id,
+            message,
+        }));
+    })
+    .collect::<Value>();
     let env = template_engine.acquire_env()?;
     let ctx = context! {messages};
     return Ok(Html(env.get_template("home.html")?.render(ctx)?));
