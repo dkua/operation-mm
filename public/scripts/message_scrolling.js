@@ -1,6 +1,9 @@
 const msg_container = document.getElementById("msg-container");
 const messages = msg_container.children;
-let snapped_message_index = get_snapped_message_index();
+/** @type {Element | null} */
+let visible_message;
+/** @type {Element | null} */
+let snapped_message;
 let update_timeout;
 
 // Work around Safari not having scrollend event
@@ -10,7 +13,7 @@ if ("onscrollend" in msg_container) {
   // and then start scrolling again (at least on Chrome), thus firing a scrollend event when we
   // want to keep the index on whatever the previous target was.
   msg_container.addEventListener("scrollend", _ => {
-    update_timeout = setTimeout(() => snapped_message_index = get_snapped_message_index(), 50);
+    update_timeout = setTimeout(() => snapped_message = visible_message, 50);
   });
   msg_container.addEventListener("scroll", _ => {
     if (update_timeout != null) {
@@ -24,7 +27,7 @@ if ("onscrollend" in msg_container) {
       clearTimeout(update_timeout);
       update_timeout = null;
     }
-    update_timeout = setTimeout(() => snapped_message_index = get_snapped_message_index(), 50);
+    update_timeout = setTimeout(() => snapped_message = visible_message, 50);
   });
 }
 // Set up scrolling with left/right arrow keys
@@ -37,6 +40,22 @@ document.body.addEventListener("keydown", e => {
     scroll_messages_by(1);
   }
 });
+// Set up intersection observer on messages
+const observer_messages = new IntersectionObserver((entries, _) => {
+  let intersection_highest = 0;
+  for (const e of entries) {
+    if (e.isIntersecting && e.intersectionRatio >= 0.5 && e.intersectionRatio > intersection_highest) {
+      intersection_highest = e.intersectionRatio;
+      visible_message = e.target;
+    }
+  }
+  if (snapped_message == null) {
+    snapped_message = visible_message;
+  }
+}, { root: msg_container, threshold: [0.5, 1.0] });
+for (const el of messages) {
+  observer_messages.observe(el);
+}
 
 /**
   * Perform a binary search to find the index of the message closest to center in view
@@ -78,6 +97,23 @@ function get_snapped_message_index() {
  * @param num {number}
  */
 function scroll_messages_by(num) {
-  snapped_message_index = Math.min(messages.length - 1, Math.max(0, snapped_message_index + num));
-  messages.item(snapped_message_index).scrollIntoView({ behavior: "smooth", inline: "center" });
+  if (snapped_message == null) {
+    return;
+  }
+  if (num > 0) {
+    for (let i = 0; i < num; i++) {
+      if (snapped_message.nextElementSibling == null) {
+        break;
+      }
+      snapped_message = snapped_message.nextElementSibling;
+    }
+  } else {
+    for (let i = 0; i < -num; i++) {
+      if (snapped_message.previousElementSibling == null) {
+        break;
+      }
+      snapped_message = snapped_message.previousElementSibling;
+    }
+  }
+  snapped_message.scrollIntoView({ behavior: "smooth", inline: "center" });
 }
