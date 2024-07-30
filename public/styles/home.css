@@ -1,25 +1,33 @@
 main {
   min-height: 100vh;
-  background: url("/images/hills-bg.svg") no-repeat center bottom -170pt / contain, linear-gradient(#4172b7, #bed9ec 100vh);
+  background: url("/public/images/hills-bg.svg") no-repeat center bottom -170pt / contain, linear-gradient(#4172b7, #bed9ec 100vh);
 }
 
 .messages {
   display: grid;
   grid-template: auto / 100pt 1fr 100pt;
   grid-template-areas: "left . right";
+  height: 100vh;
 
   .msg-container {
     grid-area: 1 / left / 1 / right;
   }
 
   >button {
-    display: inline-block;
-    font-size: 4em;
+    display: flex;
+    font-size: 4rem;
     font-weight: 800;
-    color: white;
-    border: none;
-    margin: 2rem 0;
-    background: linear-gradient(#00000000, #00000080 40%, #00000080 60%, #00000000 100%);
+    width: 5rem;
+    height: 5rem;
+    color: #9898ff;
+    border: 4pt solid #cdcfff;
+    border-radius: 100%;
+    background: #fafbff;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
 
   #prev-msg {
@@ -34,7 +42,7 @@ main {
 .msg-container {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 2rem 0;
@@ -53,7 +61,7 @@ main {
   padding: 2rem;
   width: var(--message-width);
   scroll-snap-align: center;
-  border-image: url("/images/cloud-border-2.png") 100 fill / 50px round;
+  border-image: url("/public/images/cloud-border-2.png") 100 fill / 50px round;
 
   .video {
     width: 356pt;

@@ -3,17 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Operation MM</title>
-  <link href="/styles/reset.css" rel="stylesheet">
-  <link href="/styles/home.css" rel="stylesheet">
-  <script src="/scripts/swap_in_video.js" defer></script>
+  <link href="/public/styles/reset.css" rel="stylesheet">
+  <link href="/public/styles/home.css" rel="stylesheet">
+  <script src="/public/scripts/swap_in_video.js" defer></script>
+  <script src="/public/scripts/message_scrolling.js" defer></script>
 </head>
 
 <body>
   <main>
     <div class="messages">
-      <div class="msg-container">
+      <div id="msg-container" class="msg-container">
         {% for msg in messages %}
         <div class="msg">
           <h1>{{msg.sender_name}}</h1>
@@ -30,8 +30,8 @@
         </div>
         {% endfor %}
       </div>
-      <button id="prev-msg">&lt;</button>
-      <button id="next-msg">&gt;</button>
+      <button id="prev-msg" onclick="scroll_messages_by(-1)">&lt;</button>
+      <button id="next-msg" onclick="scroll_messages_by(1)">&gt;</button>
     </div>
   </main>
 </body>

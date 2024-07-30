@@ -110,7 +110,7 @@ async fn main() -> Result<(), std::io::Error> {
             template_engine: Arc::new(template_engine),
             videos_data,
         })
-        .fallback_service(file_service);
+        .nest_service("/public", file_service);
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await?;
     tracing::info!(
