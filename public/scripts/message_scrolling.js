@@ -1,9 +1,8 @@
 const msg_container = document.getElementById("msg-container");
-const messages = msg_container.children;
+/** @type {Element[]} */
+let visible_messages = [];
 /** @type {Element | null} */
-let visible_message;
-/** @type {Element | null} */
-let snapped_message;
+let current_message;
 let update_timeout;
 
 // Work around Safari not having scrollend event
@@ -13,7 +12,7 @@ if ("onscrollend" in msg_container) {
   // and then start scrolling again (at least on Chrome), thus firing a scrollend event when we
   // want to keep the index on whatever the previous target was.
   msg_container.addEventListener("scrollend", _ => {
-    update_timeout = setTimeout(() => snapped_message = visible_message, 50);
+    update_timeout = setTimeout(() => current_message = get_current_message(), 50);
   });
   msg_container.addEventListener("scroll", _ => {
     if (update_timeout != null) {
@@ -27,7 +26,7 @@ if ("onscrollend" in msg_container) {
       clearTimeout(update_timeout);
       update_timeout = null;
     }
-    update_timeout = setTimeout(() => snapped_message = visible_message, 50);
+    update_timeout = setTimeout(() => current_message = get_current_message(), 50);
   });
 }
 // Set up scrolling with left/right arrow keys
@@ -40,80 +39,62 @@ document.body.addEventListener("keydown", e => {
     scroll_messages_by(1);
   }
 });
-// Set up intersection observer on messages
+// Set up intersection observer on messages to track which ones are within the visible area
 const observer_messages = new IntersectionObserver((entries, _) => {
-  let intersection_highest = 0;
   for (const e of entries) {
-    if (e.isIntersecting && e.intersectionRatio >= 0.5 && e.intersectionRatio > intersection_highest) {
-      intersection_highest = e.intersectionRatio;
-      visible_message = e.target;
+    if (e.isIntersecting) {
+      visible_messages.push(e.target);
+    } else {
+      const index_remove_message = visible_messages.indexOf(e.target);
+      if (index_remove_message >= 0) {
+        visible_messages.splice(index_remove_message, 1);
+      }
     }
   }
-  if (snapped_message == null) {
-    snapped_message = visible_message;
+  if (current_message == null) {
+    current_message = get_current_message();
   }
-}, { root: msg_container, threshold: [0.5, 1.0] });
-for (const el of messages) {
+}, { root: msg_container, threshold: 0 });
+for (const el of msg_container.children) {
   observer_messages.observe(el);
 }
 
-/**
-  * Perform a binary search to find the index of the message closest to center in view
-  * @returns {number}
-  */
-function get_snapped_message_index() {
-  const view_center = document.documentElement.clientWidth / 2;
-  const width_message = messages.item(0).clientWidth;
-  let index_left = 0;
-  let index_right = messages.length;
-  while (index_left < index_right) {
-    const index_guess = Math.floor((index_left + index_right) / 2);
-    const mid_offset_guess = messages.item(index_guess).getBoundingClientRect().left + width_message / 2;
-    if (mid_offset_guess < view_center) {
-      index_left = index_guess + 1;
-    } else {
-      index_right = index_guess;
+function get_current_message() {
+  const center_view = document.documentElement.clientWidth / 2;
+  let dist_center_closest = Number.POSITIVE_INFINITY;
+  let candidate_message = null;
+  for (const el of visible_messages) {
+    const center_message = el.getBoundingClientRect().left + el.clientWidth / 2;
+    const dist_center = Math.abs(center_message - center_view);
+    if (dist_center < dist_center_closest) {
+      candidate_message = el;
+      dist_center_closest = dist_center;
     }
   }
-
-  if (index_left >= messages.length) {
-    return messages.length - 1;
-  } else if (index_left === 0) {
-    return index_left;
-  } else {
-    // The closest to center is index_left if the message was offset towards the right
-    // Else it would be index_left - 1
-    const mid_offset_left = messages.item(index_left).getBoundingClientRect().left + width_message / 2;
-    const mid_offset_other_candidate = messages.item(index_left - 1).getBoundingClientRect().left + width_message / 2;
-    if (Math.abs(mid_offset_left - view_center) < Math.abs(mid_offset_other_candidate - view_center)) {
-      return index_left;
-    } else {
-      return index_left - 1;
-    }
-  }
+  return candidate_message;
 }
 
 /**
  * @param num {number}
  */
 function scroll_messages_by(num) {
-  if (snapped_message == null) {
+  if (current_message == null) {
     return;
   }
   if (num > 0) {
     for (let i = 0; i < num; i++) {
-      if (snapped_message.nextElementSibling == null) {
+      if (current_message.nextElementSibling == null) {
         break;
       }
-      snapped_message = snapped_message.nextElementSibling;
+      current_message = current_message.nextElementSibling;
     }
   } else {
     for (let i = 0; i < -num; i++) {
-      if (snapped_message.previousElementSibling == null) {
+      if (current_message.previousElementSibling == null) {
         break;
       }
-      snapped_message = snapped_message.previousElementSibling;
+      current_message = current_message.previousElementSibling;
     }
   }
-  snapped_message.scrollIntoView({ behavior: "smooth", inline: "center" });
+  current_message.scrollIntoView({ behavior: "smooth", inline: "center" });
 }
