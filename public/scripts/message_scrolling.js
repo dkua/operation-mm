@@ -3,10 +3,31 @@ const messages = msg_container.children;
 let snapped_message_index = get_snapped_message_index();
 let update_timeout;
 
-msg_container.addEventListener("scrollend", _ => {
-  update_timeout = setTimeout(() => snapped_message_index = get_snapped_message_index(), 50);
-});
-msg_container.addEventListener("scroll", _ => clearTimeout(update_timeout));
+// Work around Safari not having scrollend event
+if ("onscrollend" in msg_container) {
+  // We don't want to update the index immediately on scrollend because with smooth scrolling,
+  // consecutive clicks of the buttons or arrow keys will actually stop the current scrolling
+  // and then start scrolling again (at least on Chrome), thus firing a scrollend event when we
+  // want to keep the index on whatever the previous target was.
+  msg_container.addEventListener("scrollend", _ => {
+    update_timeout = setTimeout(() => snapped_message_index = get_snapped_message_index(), 50);
+  });
+  msg_container.addEventListener("scroll", _ => {
+    if (update_timeout != null) {
+      clearTimeout(update_timeout);
+      update_timeout = null;
+    }
+  });
+} else {
+  msg_container.addEventListener("scroll", _ => {
+    if (update_timeout != null) {
+      clearTimeout(update_timeout);
+      update_timeout = null;
+    }
+    update_timeout = setTimeout(() => snapped_message_index = get_snapped_message_index(), 50);
+  });
+}
+// Set up scrolling with left/right arrow keys
 document.body.addEventListener("keydown", e => {
   if (e.key === "ArrowLeft") {
     e.preventDefault();
