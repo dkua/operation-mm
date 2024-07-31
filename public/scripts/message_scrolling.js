@@ -12,7 +12,10 @@ if ("onscrollend" in msg_container) {
   // and then start scrolling again (at least on Chrome), thus firing a scrollend event when we
   // want to keep the index on whatever the previous target was.
   msg_container.addEventListener("scrollend", _ => {
-    update_timeout = setTimeout(() => current_message = get_current_message(), 50);
+    update_timeout = setTimeout(() => {
+      current_message = get_current_message();
+      update_timeout = null;
+    }, 50);
   });
   msg_container.addEventListener("scroll", _ => {
     if (update_timeout != null) {
@@ -26,7 +29,10 @@ if ("onscrollend" in msg_container) {
       clearTimeout(update_timeout);
       update_timeout = null;
     }
-    update_timeout = setTimeout(() => current_message = get_current_message(), 50);
+    update_timeout = setTimeout(() => {
+      current_message = get_current_message();
+      update_timeout = null;
+    }, 50);
   });
 }
 // Set up scrolling with left/right arrow keys
