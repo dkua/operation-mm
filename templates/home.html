@@ -1,39 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "shared/base.html" %}
+{% block head %}
+<link href="/public/styles/reset.css" rel="stylesheet">
+<link href="/public/styles/home.css" rel="stylesheet">
+<script src="/public/scripts/swap_in_video.js" defer></script>
+<script src="/public/scripts/message_scrolling.js" defer></script>
+{% endblock head %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>Operation MM</title>
-  <link href="/public/styles/reset.css" rel="stylesheet">
-  <link href="/public/styles/home.css" rel="stylesheet">
-  <script src="/public/scripts/swap_in_video.js" defer></script>
-  <script src="/public/scripts/message_scrolling.js" defer></script>
-</head>
-
-<body>
-  <main>
-    <div class="messages">
-      <div id="msg-container" class="msg-container">
-        {% for msg in messages %}
-        <div class="msg">
-          <h1>{{msg.sender_name}}</h1>
-          {% if msg.video_id %}
-          <div class="video placeholder" data-video_id="{{msg.video_id}}">
-            <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
-            <play-icon>
-              <circle></circle>
-              <triangle></triangle>
-            </play-icon>
-          </div>
-          {% endif %}
-          <p>{{msg.message}}</p>
+{% block content %}
+<main>
+  <div class="messages">
+    <div id="msg-container" class="msg-container">
+      {% for msg in messages %}
+      <div class="msg">
+        <h1>{{msg.sender_name}}</h1>
+        {% if msg.video_id %}
+        <div class="video placeholder" data-video_id="{{msg.video_id}}">
+          <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
+          <play-icon>
+            <circle></circle>
+            <triangle></triangle>
+          </play-icon>
         </div>
-        {% endfor %}
+        {% endif %}
+        <p>{{msg.message}}</p>
       </div>
-      <button id="prev-msg" onclick="scroll_messages_by(-1)">&lt;</button>
-      <button id="next-msg" onclick="scroll_messages_by(1)">&gt;</button>
+      {% endfor %}
     </div>
-  </main>
-</body>
-
-</html>
+    <button id="prev-msg" onclick="scroll_messages_by(-1)">&lt;</button>
+    <button id="next-msg" onclick="scroll_messages_by(1)">&gt;</button>
+  </div>
+</main>
+{% endblock content %}
