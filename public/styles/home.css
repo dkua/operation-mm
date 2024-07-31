@@ -1,13 +1,18 @@
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
 main {
-  min-height: 100vh;
-  background: url("/public/images/hills-bg.svg") no-repeat center bottom -170pt / contain, linear-gradient(#4172b7, #bed9ec 100vh);
+  background: url("/public/images/hills-bg.svg") no-repeat center bottom -170pt / contain, linear-gradient(#4172b7, #bed9ec 100%);
 }
 
 .messages {
   display: grid;
-  grid-template: auto / 100pt 1fr 100pt;
+  grid-template-columns: 100pt 1fr 100pt;
   grid-template-areas: "left . right";
-  height: 100vh;
+  height: 100%;
 
   .msg-container {
     grid-area: 1 / left / 1 / right;

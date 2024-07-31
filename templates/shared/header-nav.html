@@ -1,0 +1,13 @@
+{% macro link(path_link, display_text) %}
+<a {% if matched_path==path_link -%} class="active" {% endif -%} href="{{path_link}}">{{display_text}}</a>
+{% endmacro -%}
+<header>
+  <nav>
+    <ul>
+      <li>{{link("/", "Home")}}</li>
+      <li>{{link("/messages", "Messages")}}</li>
+      <li>{{link("/timeline", "Timeline")}}</li>
+      <li>{{link("/credits", "Credits")}}</li>
+    </ul>
+  </nav>
+</header>

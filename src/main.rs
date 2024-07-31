@@ -3,7 +3,7 @@ use std::net::SocketAddr;
 use std::sync::Arc;
 
 use anyhow::anyhow;
-use axum::extract::{FromRef, State};
+use axum::extract::{FromRef, MatchedPath, State};
 use axum::response::Html;
 use axum::routing::get;
 use axum::Router;
@@ -125,6 +125,7 @@ async fn main() -> Result<(), std::io::Error> {
 async fn home(
     State(template_engine): State<Arc<AutoReloader>>,
     State(videos_data): State<&[VideoInfo]>,
+    matched_path: MatchedPath,
 ) -> Result<Html<String>, AppError> {
     let mut rng = rand_pcg::Pcg64Mcg::seed_from_u64(80085);
     let lorem_sentences = "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis"
@@ -158,6 +159,6 @@ async fn home(
     })
     .collect::<Value>();
     let env = template_engine.acquire_env()?;
-    let ctx = context! {messages};
+    let ctx = context! {messages, matched_path => matched_path.as_str()};
     return Ok(Html(env.get_template("home.html")?.render(ctx)?));
 }

@@ -1,19 +1,21 @@
 {% extends "shared/base.html" %}
-{% block head %}
+{% block head -%}
 <link href="/public/styles/reset.css" rel="stylesheet">
 <link href="/public/styles/home.css" rel="stylesheet">
+<link href="/public/styles/header-nav.css" rel="stylesheet">
 <script src="/public/scripts/swap_in_video.js" defer></script>
 <script src="/public/scripts/message_scrolling.js" defer></script>
-{% endblock head %}
+{%- endblock head %}
 
-{% block content %}
+{% block content -%}
+{% include "shared/header-nav.html" %}
 <main>
   <div class="messages">
     <div id="msg-container" class="msg-container">
-      {% for msg in messages %}
+      {% for msg in messages -%}
       <div class="msg">
         <h1>{{msg.sender_name}}</h1>
-        {% if msg.video_id %}
+        {% if msg.video_id -%}
         <div class="video placeholder" data-video_id="{{msg.video_id}}">
           <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
           <play-icon>
@@ -21,13 +23,13 @@
             <triangle></triangle>
           </play-icon>
         </div>
-        {% endif %}
+        {% endif -%}
         <p>{{msg.message}}</p>
       </div>
-      {% endfor %}
+      {%- endfor %}
     </div>
     <button id="prev-msg" onclick="scroll_messages_by(-1)">&lt;</button>
     <button id="next-msg" onclick="scroll_messages_by(1)">&gt;</button>
   </div>
 </main>
-{% endblock content %}
+{%- endblock content %}
