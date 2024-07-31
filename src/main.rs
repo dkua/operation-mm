@@ -105,7 +105,7 @@ async fn main() -> Result<(), std::io::Error> {
     let videos_data: &'static [VideoInfo] = videos_data.leak();
     let file_service = ServeDir::new("public").precompressed_br();
     let app = Router::new()
-        .route("/", get(home))
+        .route("/messages", get(messages))
         .with_state(AppState {
             template_engine: Arc::new(template_engine),
             videos_data,
@@ -122,7 +122,7 @@ async fn main() -> Result<(), std::io::Error> {
     axum::serve(listener, app).await
 }
 
-async fn home(
+async fn messages(
     State(template_engine): State<Arc<AutoReloader>>,
     State(videos_data): State<&[VideoInfo]>,
     matched_path: MatchedPath,
@@ -160,5 +160,5 @@ async fn home(
     .collect::<Value>();
     let env = template_engine.acquire_env()?;
     let ctx = context! {messages, matched_path => matched_path.as_str()};
-    return Ok(Html(env.get_template("home.html")?.render(ctx)?));
+    return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
 }
