@@ -9,7 +9,7 @@
   gap: 1rem;
   height: calc(100vh - 4rem);
   padding: 2rem 4rem 1rem;
-  background: url("/public/images/hills-bg.svg") no-repeat center bottom -170pt / contain, linear-gradient(#4172b7, #bed9ec 100%);
+  background: url("/public/images/hills-bg.svg") no-repeat center bottom / contain, linear-gradient(#4172b7, #bed9ec 100%);
 
   iframe {
     border: none;
