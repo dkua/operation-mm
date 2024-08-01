@@ -47,22 +47,18 @@ main {
 .msg-container {
   display: flex;
   flex-wrap: nowrap;
+  gap: 10rem;
   align-items: flex-start;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 2rem 0;
+  padding: 2rem calc(50% - var(--message-width) / 2);
   --message-width: max(50vw, 500pt);
-
-  > :first-child {
-    margin-left: calc(50% - var(--message-width) / 2);
-  }
 }
 
 .msg {
   display: inline-flex;
   flex-direction: column;
   flex: none;
-  margin: 0 5rem;
   padding: 2rem;
   width: var(--message-width);
   scroll-snap-align: center;
