@@ -52,7 +52,11 @@ main {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 2rem calc(50% - var(--message-width) / 2);
-  --message-width: max(50vw, 500pt);
+  --message-width: max(50vw, 600pt);
+
+  @media(orientation: portrait) {
+    gap: 6rem;
+  }
 }
 
 .msg {
