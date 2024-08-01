@@ -3,25 +3,57 @@
   src: url("/public/fonts/Baefont_normal-Regular_V1.ttf");
 }
 
-.landing-video {
+body {
   display: grid;
-  grid-template-rows: 1fr 3rem;
+  grid-template-rows: 100vh auto;
+}
+
+.above-fold {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  height: 100%;
+}
+
+.landing-contents {
+  display: flex;
+  flex-flow: column;
   gap: 1rem;
-  height: calc(100vh - 4rem);
-  padding: 2rem 4rem 1rem;
+  height: 100%;
+  padding: 1rem 4rem 3rem;
   background: url("/public/images/hills-bg.svg") no-repeat center bottom / contain, linear-gradient(#4172b7, #bed9ec 100%);
 
-  iframe {
-    border: none;
-    display: block;
-    margin: auto;
-    aspect-ratio: 16 / 9;
-    max-width: 100%;
-    height: 100%;
+  .video {
+    flex: 1;
+    container-type: size;
+
+    /* Reduce height to prevent "Scroll for more" text getting pushed off-screen on mobile */
+    @media(orientation: portrait) {
+      flex: none;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    iframe {
+      border: none;
+      display: block;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      height: 100%;
+
+      /* Switch from height-limited to width-limited sizing */
+      @container(aspect-ratio < 16 / 9) {
+        & {
+          flex: none;
+          height: initial;
+          width: 100%;
+        }
+      }
+    }
   }
 
   .scroll-down {
     display: flex;
+    height: 4rem;
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
