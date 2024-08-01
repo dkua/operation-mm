@@ -27,8 +27,8 @@
       </div>
       {%- endfor %}
     </div>
-    <button id="prev-msg" onclick="scroll_messages_by(-1)">&lt;</button>
-    <button id="next-msg" onclick="scroll_messages_by(1)">&gt;</button>
+    <button id="prev-msg" onclick="scroll_messages_by(-1)" aria-label="Previous message">&lt;</button>
+    <button id="next-msg" onclick="scroll_messages_by(1)" aria-label="Next message">&gt;</button>
   </div>
 </main>
 {%- endblock content %}
