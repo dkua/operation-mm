@@ -8,6 +8,8 @@ main {
   display: grid;
   grid-template-rows: min-content 1fr;
   padding: 1rem 2rem;
+  font-family: "Haros Baelz", "Comic Sans", sans-serif;
+  text-align: center;
 }
 
 .img-container {
