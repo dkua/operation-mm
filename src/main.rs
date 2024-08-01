@@ -4,6 +4,7 @@ use std::sync::Arc;
 
 use anyhow::anyhow;
 use axum::extract::{FromRef, MatchedPath, State};
+use axum::http::StatusCode;
 use axum::response::Html;
 use axum::routing::get;
 use axum::Router;
@@ -107,11 +108,12 @@ async fn main() -> Result<(), std::io::Error> {
     let app = Router::new()
         .route("/", get(home))
         .route("/messages", get(messages))
+        .nest_service("/public", file_service)
+        .fallback(not_found)
         .with_state(AppState {
             template_engine: Arc::new(template_engine),
             videos_data,
-        })
-        .nest_service("/public", file_service);
+        });
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     let listener = tokio::net::TcpListener::bind(&addr).await?;
     tracing::info!(
@@ -129,6 +131,7 @@ async fn home(
 ) -> Result<Html<String>, AppError> {
     let env = template_engine.acquire_env()?;
     let ctx = context! {matched_path => matched_path.as_str()};
+
     Ok(Html(env.get_template("home.html")?.render(ctx)?))
 }
 
@@ -171,4 +174,16 @@ async fn messages(
     let env = template_engine.acquire_env()?;
     let ctx = context! {messages, matched_path => matched_path.as_str()};
     return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
+}
+
+async fn not_found(
+    State(template_engine): State<Arc<AutoReloader>>,
+) -> Result<(StatusCode, Html<String>), AppError> {
+    let env = template_engine.acquire_env()?;
+    let ctx = context! {};
+
+    Ok((
+        StatusCode::NOT_FOUND,
+        Html(env.get_template("404.html")?.render(ctx)?),
+    ))
 }

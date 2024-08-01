@@ -1,0 +1,15 @@
+{% extends "shared/base.html" %}
+{% block head -%}
+<link href="/public/styles/404.css" rel="stylesheet">
+<link href="/public/styles/header-nav.css" rel="stylesheet">
+{%- endblock head %}}
+
+{% block content -%}
+{% include "shared/header-nav.html" %}
+<main>
+  <h1>404 File Not Found</h1>
+  <div class="img-container">
+    <img src="/public/images/error.png" width="1920" height="1080">
+  </div>
+</main>
+{%- endblock content %}

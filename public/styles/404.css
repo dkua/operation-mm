@@ -1,0 +1,21 @@
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+
+main {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  padding: 1rem 2rem;
+}
+
+.img-container {
+  contain: size;
+  height: 100%;
+}
+
+img {
+  object-fit: contain;
+  height: 100%;
+}
