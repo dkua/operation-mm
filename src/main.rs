@@ -118,7 +118,7 @@ async fn main() -> Result<(), anyhow::Error> {
         });
 
     match args.get(1) {
-        Some(a) if a == "--build" => build_static(&mut app, "./build").await,
+        Some(a) if a == "--build" => build_static(&mut app, "./dist").await,
         _ => {
             let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
             let listener = tokio::net::TcpListener::bind(&addr).await?;
