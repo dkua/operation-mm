@@ -108,6 +108,7 @@ async fn main() -> Result<(), std::io::Error> {
     let app = Router::new()
         .route("/", get(home))
         .route("/messages", get(messages))
+        .route("/credits", get(credits))
         .nest_service("/public", file_service)
         .fallback(not_found)
         .with_state(AppState {
