@@ -135,6 +135,9 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "axum",
+ "fs_extra",
+ "http",
+ "http-body-util",
  "minijinja",
  "minijinja-autoreload",
  "rand",
@@ -144,6 +147,7 @@ dependencies = [
  "time",
  "tokio",
  "tower-http",
+ "tower-service",
  "tracing",
  "tracing-subscriber",
 ]
@@ -220,6 +224,12 @@ checksum = "e13624c2627564efccf4934284bdd98cbaa14e79b0b5a141218e507b3a823456"
 dependencies = [
  "percent-encoding",
 ]
+
+[[package]]
+name = "fs_extra"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "42703706b716c37f96a77aea830392ad231f44c9e9a67872fa5548707e11b11c"
 
 [[package]]
 name = "fsevent-sys"
@@ -346,12 +356,12 @@ dependencies = [
 
 [[package]]
 name = "http-body-util"
-version = "0.1.1"
+version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0475f8b2ac86659c21b64320d5d653f9efe42acd2a4e560073ec61a155a34f1d"
+checksum = "793429d76616a256bcb62c2a2ec2bed781c8307e797e2598c50010f2bee2544f"
 dependencies = [
  "bytes",
- "futures-core",
+ "futures-util",
  "http",
  "http-body",
  "pin-project-lite",
@@ -520,9 +530,9 @@ dependencies = [
 
 [[package]]
 name = "minijinja"
-version = "2.0.1"
+version = "2.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7165d0e94806d52ad5295e4b54a95176d831814840bc067298ca647e1c956338"
+checksum = "f4bf71af278c578cbcc91d0b1ff092910208bc86f7b3750364642bd424e3dcd3"
 dependencies = [
  "memo-map",
  "self_cell",
@@ -531,9 +541,9 @@ dependencies = [
 
 [[package]]
 name = "minijinja-autoreload"
-version = "2.0.1"
+version = "2.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "187a0cdf259a1b0226058e369e2156c56e492982a8cc32f252c44bf84873d8ae"
+checksum = "30f4ec2f298410b4e9e3ee764545750571f6fc29d8952c2e5a139ace70c3ab9c"
 dependencies = [
  "minijinja",
  "notify",

@@ -2,7 +2,7 @@ use std::iter;
 use std::net::SocketAddr;
 use std::sync::Arc;
 
-use anyhow::anyhow;
+use anyhow::{anyhow, Context};
 use axum::extract::{FromRef, MatchedPath, State};
 use axum::http::StatusCode;
 use axum::response::Html;
@@ -83,7 +83,8 @@ const NAME_LIST: [&str; 21] = [
 ];
 
 #[tokio::main]
-async fn main() -> Result<(), std::io::Error> {
+async fn main() -> Result<(), anyhow::Error> {
+    let args = std::env::args().collect::<Vec<_>>();
     tracing_subscriber::registry()
         .with(tracing_subscriber::fmt::layer().with_ansi(true))
         .init();
@@ -105,7 +106,7 @@ async fn main() -> Result<(), std::io::Error> {
     videos_data.sort_by_key(|v| v.release_timestamp);
     let videos_data: &'static [VideoInfo] = videos_data.leak();
     let file_service = ServeDir::new("public").precompressed_br();
-    let app = Router::new()
+    let mut app = Router::new()
         .route("/", get(home))
         .route("/messages", get(messages))
         .route("/credits", get(credits))
@@ -115,15 +116,21 @@ async fn main() -> Result<(), std::io::Error> {
             template_engine: Arc::new(template_engine),
             videos_data,
         });
-    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
-    let listener = tokio::net::TcpListener::bind(&addr).await?;
-    tracing::info!(
-        "Starting server v{} listening on http://{}",
-        env!("CARGO_PKG_VERSION"),
-        &addr
-    );
 
-    axum::serve(listener, app).await
+    match args.get(1) {
+        Some(a) if a == "--build" => build_static(&mut app, "./build").await,
+        _ => {
+            let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
+            let listener = tokio::net::TcpListener::bind(&addr).await?;
+            tracing::info!(
+                "Starting server v{} listening on http://{}",
+                env!("CARGO_PKG_VERSION"),
+                &addr
+            );
+
+            axum::serve(listener, app).await.map_err(|e| anyhow!(e))
+        }
+    }
 }
 
 async fn home(
@@ -134,6 +141,16 @@ async fn home(
     let ctx = context! {matched_path => matched_path.as_str()};
 
     Ok(Html(env.get_template("home.html")?.render(ctx)?))
+}
+
+async fn credits(
+    State(template_engine): State<Arc<AutoReloader>>,
+    matched_path: MatchedPath,
+) -> Result<Html<String>, AppError> {
+    let env = template_engine.acquire_env()?;
+    let ctx = context! {matched_path => matched_path.as_str()};
+
+    Ok(Html(env.get_template("credits.html")?.render(ctx)?))
 }
 
 async fn messages(
@@ -187,4 +204,94 @@ async fn not_found(
         StatusCode::NOT_FOUND,
         Html(env.get_template("404.html")?.render(ctx)?),
     ))
+}
+
+async fn build_static(
+    router: &mut axum::routing::Router,
+    output_dir: &str,
+) -> Result<(), anyhow::Error> {
+    use std::fs;
+    use std::path::Path;
+    use tower_service::Service;
+    let output_dir_path = Path::new(output_dir);
+    if output_dir_path
+        .try_exists()
+        .context("Could not verify if output dir exists")?
+    {
+        loop {
+            let mut input = String::new();
+            println!(
+                "Output directory \"{}\" exists. Overwrite directory? Y/N",
+                output_dir
+            );
+            std::io::stdin()
+                .read_line(&mut input)
+                .context("Could not read input for overwrite confirmation")?;
+            match input.as_str().trim_end() {
+                "Y" | "y" => {
+                    fs::remove_dir_all(output_dir).context("Could not clean output directory")?;
+                    break;
+                }
+                "N" | "n" => break,
+                _ => {}
+            }
+        }
+    }
+    fs::create_dir_all(output_dir).context("Could not create output directory")?;
+
+    let copy_options = fs_extra::dir::CopyOptions::new();
+    fs_extra::dir::copy("./public", output_dir, &copy_options)
+        .context("Could not copy static assets directory")?;
+
+    let page_paths = ["/", "/messages", "/credits", "/404"];
+    for path in page_paths {
+        let request = http::Request::get(path)
+            .body(http_body_util::Empty::new())
+            .with_context(|| format!("Could not create request for {}", path))?;
+        let response = router
+            .call(request)
+            .await
+            .with_context(|| format!("Could not get response for {}", path))?;
+        let content_type = response
+            .headers()
+            .get(http::header::CONTENT_TYPE)
+            .ok_or_else(|| anyhow!("No Content-Type for response {}", path))
+            .and_then(|v| {
+                v.to_str()
+                    .with_context(|| format!("Content-Type for {} is not valid text", path))
+            })?;
+        if !content_type.contains("text/html") {
+            return Err(anyhow!(
+                "Unexpected Content-Type {:?} for response {}",
+                content_type,
+                path
+            ));
+        }
+        let response_bytes = axum::body::to_bytes(response.into_body(), usize::MAX)
+            .await
+            .with_context(|| format!("Could not read body for response {}", path))?;
+        let output_filepath = if path == "/" {
+            "index.html".to_owned()
+        } else {
+            // Want to create relative paths for the output, so remove the leading slash
+            path[1..].to_owned() + ".html"
+        };
+        let output_fullpath = output_dir_path.join(output_filepath);
+        if let Some(output_parent_dir) = output_fullpath.parent() {
+            if !output_parent_dir.try_exists().with_context(|| {
+                format!(
+                    "Could not verify if directory for {:?} exists",
+                    output_fullpath
+                )
+            })? {
+                fs::create_dir_all(output_parent_dir).with_context(|| {
+                    format!("Could not create directory for {:?}", output_fullpath)
+                })?;
+            }
+        }
+        fs::write(&output_fullpath, response_bytes)
+            .with_context(|| format!("Could not write output file {:?}", output_fullpath))?;
+    }
+
+    Ok(())
 }
