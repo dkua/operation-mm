@@ -102,5 +102,6 @@ function scroll_messages_by(num) {
       current_message = current_message.previousElementSibling;
     }
   }
-  current_message.scrollIntoView({ behavior: "smooth", inline: "center" });
+  const reduced_motion = window.matchMedia("(prefers-reduced-motion)").matches;
+  current_message.scrollIntoView({ behavior: reduced_motion ? "instant" : "smooth", inline: "center" });
 }
