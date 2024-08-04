@@ -267,8 +267,11 @@ async fn build_static(
                 path
             ));
         }
-        let response_bytes = axum::body::to_bytes(response.into_body(), usize::MAX)
+        let response_bytes = response
+            .into_body()
+            .collect()
             .await
+            .map(|x| x.to_bytes())
             .with_context(|| format!("Could not read body for response {}", path))?;
         let output_filepath = if path == "/" {
             "index.html".to_owned()
