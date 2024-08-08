@@ -3,10 +3,8 @@
   src: url("/public/fonts/Baefont_normal-Regular_V1.ttf");
 }
 
-@property --header-height {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 4rem;
+body {
+  --header-height: 4rem;
 }
 
 header {
