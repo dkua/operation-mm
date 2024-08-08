@@ -355,7 +355,7 @@ async fn build_static(
     fs_extra::dir::copy("./public", output_dir, &copy_options)
         .context("Could not copy static assets directory")?;
 
-    let page_paths = ["/", "/messages", "/credits", "/404"];
+    let page_paths = ["/", "/messages", "/timeline", "/credits", "/404"];
     for path in page_paths {
         let request = http::Request::get(path)
             .body(http_body_util::Empty::new())
