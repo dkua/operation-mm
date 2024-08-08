@@ -2,7 +2,7 @@
 <a {% if matched_path==path_link -%} class="active" {% endif -%} href="{{path_link}}">{{display_text}}</a>
 {% endmacro -%}
 <header>
-  <nav>
+  <nav aria-label="Site navigation">
     <menu>
       <li>{{link("/", "Home")}}</li>
       <li>{{link("/messages", "Messages")}}</li>
