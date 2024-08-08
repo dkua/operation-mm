@@ -34,10 +34,8 @@ function update_highlighted_timeline_link() {
       // It's possible to land in a gap between groups, and we want to keep the last highlight in that case
       for (const el of document.querySelectorAll(".timeline-nav .group-in-view")) {
         el.classList.remove("group-in-view");
-        el.classList.add("animate-out");
       }
       const new_highlight_el = document.getElementById(`timeline-link-${el.id}`);
-      new_highlight_el.classList.remove("animate-out");
       new_highlight_el.classList.add("group-in-view");
     }
   }
