@@ -8,6 +8,7 @@ use axum::http::StatusCode;
 use axum::response::Html;
 use axum::routing::get;
 use axum::Router;
+use itertools::Itertools;
 use minijinja::{context, Value};
 use minijinja_autoreload::AutoReloader;
 use rand::{Rng, SeedableRng};
@@ -26,6 +27,34 @@ struct Message {
     sender_name: String,
     video_id: Option<String>,
     message: String,
+}
+
+#[derive(Serialize)]
+struct TimelineVideo<'a> {
+    title: &'a str,
+    video_id: &'a str,
+    timestamp_display: String,
+    timestamp_rfc3339: String,
+    blurb: String,
+}
+
+#[derive(Serialize)]
+struct TimelineGroup<'a> {
+    group_id: String,
+    group_name: String,
+    videos: Vec<TimelineVideo<'a>>,
+}
+
+#[derive(Serialize)]
+struct TimelineLink {
+    display_string: String,
+    link_id: String,
+}
+
+#[derive(Serialize)]
+struct TimelineLinksGroup {
+    year: i32,
+    links: Vec<TimelineLink>,
 }
 
 #[derive(Deserialize)]
@@ -109,6 +138,7 @@ async fn main() -> Result<(), anyhow::Error> {
     let mut app = Router::new()
         .route("/", get(home))
         .route("/messages", get(messages))
+        .route("/timeline", get(timeline))
         .route("/credits", get(credits))
         .nest_service("/public", file_service)
         .fallback(not_found)
@@ -194,6 +224,86 @@ async fn messages(
     return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
 }
 
+async fn timeline(
+    State(videos_data): State<&[VideoInfo]>,
+    State(template_engine): State<Arc<AutoReloader>>,
+    matched_path: MatchedPath,
+) -> Result<Html<String>, AppError> {
+    use time::macros::{format_description, time};
+
+    let mut rng = rand_pcg::Pcg64Mcg::seed_from_u64(80085);
+    let lorem_sentences = "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis"
+        .split('.')
+        .collect::<Vec<_>>();
+    let grouped_videos = videos_data
+        .iter()
+        .filter(|video| video.playable_in_embed && video.availability == "public")
+        .chunk_by(|video| {
+            video
+                .release_timestamp
+                .replace_day(1)
+                .unwrap()
+                .replace_time(time!(00:00))
+        })
+        .into_iter()
+        .map(|(key, chunk)| {
+            Value::from_serialize(TimelineGroup {
+                group_id: key.format(format_description!("g-[year]-[month]")).unwrap(),
+                group_name: key
+                    .format(format_description!("[month repr:long] [year]"))
+                    .unwrap(),
+                videos: chunk
+                    .map(|video| {
+                        let mut message =
+                            lorem_sentences[0..rng.gen_range(1..=lorem_sentences.len())].join(".");
+                        message.push('.');
+                        TimelineVideo {
+                            title: &video.title,
+                            video_id: &video.id,
+                            timestamp_display: video
+                                .release_timestamp
+                                .format(format_description!("[year]-[month]-[day]"))
+                                .unwrap(),
+                            timestamp_rfc3339: video
+                                .release_timestamp
+                                .format(&time::format_description::well_known::Rfc3339)
+                                .unwrap(),
+                            blurb: message,
+                        }
+                    })
+                    .collect(),
+            })
+        })
+        .collect::<Value>();
+    let group_links = videos_data
+        .iter()
+        .filter(|video| video.playable_in_embed && video.availability == "public")
+        .map(|video| video.release_timestamp)
+        .chunk_by(|timestamp| timestamp.year())
+        .into_iter()
+        .map(|(year, chunk)| {
+            Value::from_serialize(TimelineLinksGroup {
+                year,
+                links: chunk
+                    .dedup_by(|a, b| a.month() == b.month())
+                    .map(|timestamp| TimelineLink {
+                        link_id: timestamp
+                            .format(format_description!("g-[year]-[month]"))
+                            .unwrap(),
+                        display_string: timestamp
+                            .format(format_description!("[month repr:short]"))
+                            .unwrap(),
+                    })
+                    .collect(),
+            })
+        })
+        .collect::<Value>();
+
+    let env = template_engine.acquire_env()?;
+    let ctx = context! {matched_path => matched_path.as_str(), grouped_videos, group_links};
+    Ok(Html(env.get_template("timeline.html")?.render(ctx)?))
+}
+
 async fn not_found(
     State(template_engine): State<Arc<AutoReloader>>,
 ) -> Result<(StatusCode, Html<String>), AppError> {
@@ -210,9 +320,11 @@ async fn build_static(
     router: &mut axum::routing::Router,
     output_dir: &str,
 ) -> Result<(), anyhow::Error> {
+    use http_body_util::BodyExt;
     use std::fs;
     use std::path::Path;
     use tower_service::Service;
+
     let output_dir_path = Path::new(output_dir);
     if output_dir_path
         .try_exists()
