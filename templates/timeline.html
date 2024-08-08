@@ -13,7 +13,8 @@
     <h2 class="date-landmark">{{group.group_name}}</h2>
     {% for video in group.videos %}
     <div class="timeline-entry">
-      <img src="https://i3.ytimg.com/vi/{{video.video_id}}/maxresdefault.jpg" loading="lazy">
+      <a href="https://www.youtube.com/watch?v={{video.video_id}}" target="_blank"><img class="video-thumbnail"
+          src="https://i3.ytimg.com/vi/{{video.video_id}}/maxresdefault.jpg" loading="lazy"></a>
       <div class="entry-description">
         <h2>{{video.title}}</h2>
         <h3><time datetime="{{video.timestamp_rfc3339}}">{{video.timestamp_display}}</time></h3>

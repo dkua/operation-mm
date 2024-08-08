@@ -29,7 +29,7 @@ main {
   gap: 2rem;
   margin-bottom: 2rem;
 
-  >img {
+  .video-thumbnail {
     width: 356pt;
     height: 200pt;
     object-fit: contain;
