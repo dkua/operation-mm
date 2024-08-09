@@ -44,7 +44,8 @@ main {
   }
 }
 
-@media(max-width: 900px) {
+@media (max-width: 900px),
+(orientation: portrait) {
   main {
     padding: 2rem 1rem;
   }
