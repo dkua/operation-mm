@@ -110,6 +110,7 @@ main {
       display: grid;
       place-items: center;
       position: relative;
+      scroll-margin-inline: 1rem;
 
       >a {
         grid-area: 1 / 1;

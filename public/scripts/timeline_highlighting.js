@@ -37,6 +37,10 @@ function update_highlighted_timeline_link() {
       }
       const new_highlight_el = document.getElementById(`timeline-link-${el.id}`);
       new_highlight_el.classList.add("group-in-view");
+      const reduced_motion = window.matchMedia("(prefers-reduced-motion)").matches;
+      if (!reduced_motion) {
+        new_highlight_el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     }
   }
 }
