@@ -3,6 +3,29 @@ const element_timeline = document.getElementById("timeline");
 let visible_timeline_groups = [];
 let focus_nav_link_timeout;
 
+// Work around Safari not having scrollend event
+if ("onscrollend" in document) {
+  document.addEventListener("scrollend", _ => {
+    const reduced_motion = window.matchMedia("(prefers-reduced-motion)").matches;
+    if (!reduced_motion) {
+      document.querySelector(".timeline-nav .group-in-view").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  });
+} else {
+  document.addEventListener("scroll", _ => {
+    const reduced_motion = window.matchMedia("(prefers-reduced-motion)").matches;
+    if (!reduced_motion) {
+      if (focus_nav_link_timeout != null) {
+        clearTimeout(focus_nav_link_timeout);
+        focus_nav_link_timeout = null;
+      }
+      focus_nav_link_timeout = setTimeout(() => {
+        document.querySelector(".timeline-nav .group-in-view").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        focus_nav_link_timeout = null;
+      }, 50)
+    }
+  });
+}
 document.addEventListener("scroll", _ => {
   update_highlighted_timeline_link();
 });
@@ -38,16 +61,6 @@ function update_highlighted_timeline_link() {
       }
       const new_highlight_el = document.getElementById(`timeline-link-${el.id}`);
       new_highlight_el.classList.add("group-in-view");
-      const reduced_motion = window.matchMedia("(prefers-reduced-motion)").matches;
-      if (!reduced_motion) {
-        if (focus_nav_link_timeout != null) {
-          clearTimeout(focus_nav_link_timeout);
-        }
-        focus_nav_link_timeout = setTimeout(() => {
-          new_highlight_el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          focus_nav_link_timeout = null;
-        }, 50);
-      }
     }
   }
 }
