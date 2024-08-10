@@ -1,6 +1,7 @@
 const element_timeline = document.getElementById("timeline");
 /** @type {Element[]} */
 let visible_timeline_groups = [];
+let focus_nav_link_timeout;
 
 document.addEventListener("scroll", _ => {
   update_highlighted_timeline_link();
@@ -39,7 +40,13 @@ function update_highlighted_timeline_link() {
       new_highlight_el.classList.add("group-in-view");
       const reduced_motion = window.matchMedia("(prefers-reduced-motion)").matches;
       if (!reduced_motion) {
-        new_highlight_el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        if (focus_nav_link_timeout != null) {
+          clearTimeout(focus_nav_link_timeout);
+        }
+        focus_nav_link_timeout = setTimeout(() => {
+          new_highlight_el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          focus_nav_link_timeout = null;
+        }, 50);
       }
     }
   }
