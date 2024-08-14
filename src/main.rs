@@ -1,6 +1,6 @@
-use std::iter;
 use std::net::SocketAddr;
 use std::sync::Arc;
+use std::{fs, iter};
 
 use anyhow::{anyhow, Context};
 use axum::extract::{FromRef, MatchedPath, State};
@@ -120,14 +120,47 @@ async fn main() -> Result<(), anyhow::Error> {
 
     let template_engine = AutoReloader::new(|notifier| {
         let mut env = minijinja::Environment::new();
-        env.set_loader(minijinja::path_loader(TEMPLATE_PATH));
         #[cfg(deploy_env = "dev")]
         {
+            env.set_loader(minijinja::path_loader(TEMPLATE_PATH));
             notifier.set_fast_reload(true);
             notifier.watch_path(TEMPLATE_PATH, true);
         }
+        // Load all templates
+        #[cfg(deploy_env = "prod")]
+        {
+            let path_prefix = TEMPLATE_PATH.to_string() + "/";
+            for file_path in fs_extra::dir::get_dir_content(TEMPLATE_PATH)
+                .expect("Could not load templates directory")
+                .files
+            {
+                let file_path = file_path.replace('\\', "/");
+                let contents =
+                    fs::read_to_string(&file_path).expect("Could not read template file");
+                let name = file_path
+                    .strip_prefix(&path_prefix)
+                    .ok_or_else(|| {
+                        anyhow!(
+                            "File path \"{}\" is missing expected prefix \"{}\"",
+                            file_path,
+                            TEMPLATE_PATH
+                        )
+                    })
+                    .unwrap();
+                env.add_template_owned(name.to_string(), contents)
+                    .with_context(|| format!("Template \"{}\" is invalid", file_path))
+                    .unwrap();
+            }
+        }
         return Ok(env);
     });
+    // Trigger initial environment creation to load templates
+    #[cfg(deploy_env = "prod")]
+    {
+        template_engine
+            .acquire_env()
+            .context("Could not preload templates")?;
+    }
     let mut videos_data = {
         let videos_json_file = std::fs::File::open("bae-videos.json")?;
         serde_json::from_reader::<_, Vec<VideoInfo>>(std::io::BufReader::new(videos_json_file))?
