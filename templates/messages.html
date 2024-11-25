@@ -1,35 +1,49 @@
 {% extends "shared/base.html" %}
 {% block head -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300..400&display=swap" rel="stylesheet">
 <link href="/public/styles/messages.css" rel="stylesheet">
 <link href="/public/styles/header-nav.css" rel="stylesheet">
-<script src="/public/scripts/swap_in_video.js" defer></script>
-<script src="/public/scripts/message_scrolling.js" defer></script>
+<script src="/public/scripts/masonry.min.js" defer></script>
+<script src="/public/scripts/message_masonry.js" defer></script>
+<script src="/public/scripts/message_embed_dialog.js" defer></script>
 {%- endblock head %}
 
 {% block content -%}
 {% set page_current = "/messages" -%}
 {% include "shared/header-nav.html" %}
 <main>
-  <div class="messages">
-    <div id="msg-container" class="msg-container">
-      {% for msg in messages -%}
-      <div class="msg">
-        <h1>{{msg.sender_name}}</h1>
-        {% if msg.video_id -%}
-        <div class="video placeholder" data-video_id="{{msg.video_id}}">
-          <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
-          <play-icon>
-            <circle></circle>
-            <triangle></triangle>
-          </play-icon>
-        </div>
-        {% endif -%}
-        <p>{{msg.message}}</p>
+  <div id="msg-container" class="msg-container">
+    {% for msg in messages -%}
+    <div class="msg">
+      {% if msg.video_id -%}
+      <div class="video placeholder" data-video_id="{{msg.video_id}}">
+        <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
+        <play-icon>
+          <circle></circle>
+          <triangle></triangle>
+        </play-icon>
       </div>
-      {%- endfor %}
+      {% endif -%}
+      <p>{{msg.message}}</p>
+      <div class="sender-name">{{msg.sender_name}}</div>
     </div>
-    <button id="prev-msg" onclick="scroll_messages_by(-1)" aria-label="Previous message">&lt;</button>
-    <button id="next-msg" onclick="scroll_messages_by(1)" aria-label="Next message">&gt;</button>
+    {%- endfor %}
   </div>
 </main>
+<dialog id="video-dialog">
+  <div class="close-box">
+    <button class="dialog-close-button">&times;</button>
+    <div class="loader-stack">
+      <span class="loader"></span>
+      <iframe class="video"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+  </div>
+</dialog>
 {%- endblock content %}
