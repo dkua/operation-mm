@@ -87,7 +87,7 @@ impl FromRef<AppState> for &'static [VideoInfo] {
 }
 
 const TEMPLATE_PATH: &str = "templates";
-const NAME_LIST: [&str; 21] = [
+const NAME_LIST: [&str; 23] = [
     "AshScar",
     "saltedbread",
     "reki",
@@ -108,6 +108,8 @@ const NAME_LIST: [&str; 21] = [
     "Avros",
     "PuffyOwlGod",
     "DiaGuy",
+    "buffybear",
+    "mikururun",
     "Trildar",
 ];
 
@@ -238,9 +240,9 @@ async fn messages(
     let messages = iter::from_fn(|| {
         video_ids_iter.peek()?;
 
-        let mut message = lorem_sentences[0..rng.gen_range(1..=lorem_sentences.len())].join(".");
+        let mut message = lorem_sentences[0..rng.gen_range(1..=5)].join(".");
         message.push('.');
-        let video_id = if rng.gen_bool(0.8) {
+        let video_id = if rng.gen_bool(0.2) {
             Some(video_ids_iter.next().unwrap().to_owned())
         } else {
             None
@@ -251,6 +253,7 @@ async fn messages(
             message,
         }));
     })
+    .take(2000)
     .collect::<Value>();
     let env = template_engine.acquire_env()?;
     let ctx = context! {messages};
