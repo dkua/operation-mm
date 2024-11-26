@@ -1,3 +1,14 @@
+# Prerequisites
+
+- Rust toolchain, version 1.77.2 or later. As of writing, I'm personally using 1.78.0.
+
+## For Cloudflare Pages deployment
+
+You only need these if you want to deploy to Cloudflare Pages.
+
+- NPM
+- Cloudflare Wrangler
+
 # Development
 
 Simply running the Rust code, e.g. `cargo run`, will start up a local server on port 3000 using axum. The HTML templates are found in `/templates` and are rendered using minijinja. Static files such as CSS, JavaScript, and images are found in `/public` and also get served from matching `/public/*` paths from the server.
