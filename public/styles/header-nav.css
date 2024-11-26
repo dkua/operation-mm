@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Haros Baelz";
-  src: url("/public/fonts/Baefont_normal-Regular_V1.ttf");
+  src: url("../fonts/Baefont_normal-Regular_V1.ttf");
 }
 
 body {
