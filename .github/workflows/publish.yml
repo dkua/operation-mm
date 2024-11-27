@@ -1,0 +1,48 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Rust code
+        run: cargo build --verbose
+
+      - name: Generate static site
+        id: generation
+        run: |
+          cargo run  -- --build
+          # Print the contents of the newly generated dist/ directory
+          echo "The following files have been generated:"
+          tree ./dist
+
+      - name: Upload GitHub Pages artifact
+        id: upload
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: ./dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages site
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
