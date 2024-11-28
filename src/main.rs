@@ -201,7 +201,7 @@ async fn home(
     matched_path: MatchedPath,
 ) -> Result<Html<String>, AppError> {
     let env = template_engine.acquire_env()?;
-    let ctx = context! {matched_path => matched_path.as_str()};
+    let ctx = context! {};
 
     Ok(Html(env.get_template("home.html")?.render(ctx)?))
 }
@@ -211,7 +211,7 @@ async fn credits(
     matched_path: MatchedPath,
 ) -> Result<Html<String>, AppError> {
     let env = template_engine.acquire_env()?;
-    let ctx = context! {matched_path => matched_path.as_str()};
+    let ctx = context! {};
 
     Ok(Html(env.get_template("credits.html")?.render(ctx)?))
 }
@@ -253,7 +253,7 @@ async fn messages(
     })
     .collect::<Value>();
     let env = template_engine.acquire_env()?;
-    let ctx = context! {messages, matched_path => matched_path.as_str()};
+    let ctx = context! {messages};
     return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
 }
 
@@ -333,7 +333,7 @@ async fn timeline(
         .collect::<Value>();
 
     let env = template_engine.acquire_env()?;
-    let ctx = context! {matched_path => matched_path.as_str(), grouped_videos, group_links};
+    let ctx = context! {grouped_videos, group_links};
     Ok(Html(env.get_template("timeline.html")?.render(ctx)?))
 }
 

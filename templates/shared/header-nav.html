@@ -1,13 +1,14 @@
-{% macro link(path_link, display_text) %}
-<a {% if matched_path==path_link -%} class="active" {% endif -%} href="{{path_link}}">{{display_text}}</a>
+{% macro link(path_link, page_path, display_text) %}
+<a {% if page_current is startingwith page_path -%} class="active" {% endif -%}
+  href="{{path_link}}">{{display_text}}</a>
 {% endmacro -%}
 <header>
   <nav aria-label="Site navigation">
     <menu>
-      <li>{{link("/", "Home")}}</li>
-      <li>{{link("/messages", "Messages")}}</li>
-      <li>{{link("/timeline", "Timeline")}}</li>
-      <li>{{link("/credits", "Credits")}}</li>
+      <li>{{link("/", "/home", "Home")}}</li>
+      <li>{{link("/messages", "/messages", "Messages")}}</li>
+      <li>{{link("/timeline", "/timeline", "Timeline")}}</li>
+      <li>{{link("/credits", "/credits", "Credits")}}</li>
     </menu>
   </nav>
 </header>

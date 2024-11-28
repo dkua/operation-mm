@@ -6,6 +6,7 @@
 {%- endblock head %}
 
 {% block content -%}
+{% set page_current = "/timeline" -%}
 {% include "shared/header-nav.html" %}
 <main id="timeline">
   {% for group in grouped_videos %}
