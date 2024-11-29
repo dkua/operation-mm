@@ -15,45 +15,18 @@ body {
 }
 
 .landing-contents {
-  display: flex;
-  flex-flow: column;
+  display: grid;
+  grid-template-rows: 1fr 2rem;
   gap: 1rem;
   height: 100%;
-  padding: 1rem 4rem 3rem;
-  background: url("/public/images/hills-bg.svg") no-repeat center bottom / contain, linear-gradient(#4172b7, #bed9ec 100%);
-
-  .video {
-    flex: 1;
-    container-type: size;
-
-    /* Reduce height to prevent "Scroll for more" text getting pushed off-screen on mobile */
-    @media(orientation: portrait) {
-      flex: none;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-
-    iframe {
-      border: none;
-      display: block;
-      margin: 0 auto;
-      aspect-ratio: 16 / 9;
-      height: 100%;
-
-      /* Switch from height-limited to width-limited sizing */
-      @container(aspect-ratio < 16 / 9) {
-        & {
-          flex: none;
-          height: initial;
-          width: 100%;
-        }
-      }
-    }
-  }
+  padding: 1rem 4rem 2rem;
+  background: center / cover url("../images/BAE1M.jpg");
 
   .scroll-down {
+    grid-area: 2 / 1;
+    position: sticky;
+    bottom: 1rem;
     display: flex;
-    height: 4rem;
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
