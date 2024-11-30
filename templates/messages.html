@@ -15,23 +15,36 @@
 {% include "shared/header-nav.html" %}
 <main>
   <div id="msg-container" class="msg-container">
-    {% for msg in messages -%}
-    <div class="msg">
-      {% if msg.video_id -%}
-      <div class="video placeholder" data-video_id="{{msg.video_id}}">
-        <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
-        <play-icon>
-          <circle></circle>
-          <triangle></triangle>
-        </play-icon>
-      </div>
-      {% endif -%}
-      <p>{{msg.message}}</p>
-      <div class="sender-name">{{msg.sender_name}}</div>
+    <div id="msg-load-spinner" style="visibility: hidden;">
+      <span class="loader"></span>
     </div>
-    {%- endfor %}
   </div>
 </main>
+<script>
+  setTimeout(() => {
+    const spinner = document.getElementById("msg-load-spinner");
+    if (spinner) {
+      spinner.style.visibility = "visible";
+    }
+  }, 500);
+</script>
+<template id="messages-template">
+  {% for msg in messages -%}
+  <div class="msg">
+    {% if msg.video_id -%}
+    <div class="video placeholder" data-video_id="{{msg.video_id}}">
+      <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
+      <play-icon>
+        <circle></circle>
+        <triangle></triangle>
+      </play-icon>
+    </div>
+    {% endif -%}
+    <p>{{msg.message}}</p>
+    <div class="sender-name">{{msg.sender_name}}</div>
+  </div>
+  {%- endfor %}
+</template>
 <dialog id="video-dialog">
   <div class="close-box">
     <button class="dialog-close-button">&times;</button>
