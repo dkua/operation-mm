@@ -1,6 +1,8 @@
 {
     /** @type {HTMLDialogElement} */
     const dialog = document.getElementById("video-dialog");
+    const dialog_loader = dialog.querySelector(".loader");
+    let timeout_show_loader;
 
     /**
      * @param {string} video_id
@@ -9,6 +11,7 @@
         const video_iframe = dialog.querySelector("iframe");
         video_iframe.src = `https://www.youtube-nocookie.com/embed/${video_id}?autoplay=1`;
         dialog.showModal();
+        timeout_show_loader = setTimeout(() => dialog_loader.style.visibility = "visible", 500);
     }
 
     /**
@@ -30,6 +33,8 @@
     dialog.addEventListener("close", () => {
         const video_iframe = dialog.querySelector("iframe");
         video_iframe.src = "";
+        clearTimeout(timeout_show_loader);
+        dialog_loader.style.visibility = "hidden";
     });
     dialog.querySelector(".dialog-close-button").addEventListener("click", () => dialog.close());
 
