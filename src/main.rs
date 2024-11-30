@@ -172,9 +172,13 @@ async fn main() -> Result<(), anyhow::Error> {
     let file_service = ServeDir::new("public").precompressed_br();
     let mut app = Router::new()
         .route("/", get(home))
+        .route("/index.html", get(home))
         .route("/messages", get(messages))
+        .route("/messages.html", get(messages))
         .route("/timeline", get(timeline))
+        .route("/timeline.html", get(timeline))
         .route("/credits", get(credits))
+        .route("/credits.html", get(credits))
         .nest_service("/public", file_service)
         .fallback(not_found)
         .with_state(AppState {

@@ -1,3 +1,4 @@
 /target
 /dist
 .lazy.lua
+.DS_Store
