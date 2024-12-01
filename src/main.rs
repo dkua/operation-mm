@@ -1,6 +1,6 @@
 use std::net::SocketAddr;
 use std::sync::Arc;
-use std::{fs, iter};
+use std::{env, fs, iter};
 
 use anyhow::{anyhow, Context};
 use axum::extract::{FromRef, MatchedPath, State};
@@ -203,8 +203,8 @@ async fn home(
     matched_path: MatchedPath,
 ) -> Result<Html<String>, AppError> {
     let env = template_engine.acquire_env()?;
-    let ctx = context! {};
-
+    let base_url = env::var("DEPLOY_BASE_URL").ok();
+    let ctx = context! { base_url };
     Ok(Html(env.get_template("home.html")?.render(ctx)?))
 }
 
@@ -213,8 +213,8 @@ async fn credits(
     matched_path: MatchedPath,
 ) -> Result<Html<String>, AppError> {
     let env = template_engine.acquire_env()?;
-    let ctx = context! {};
-
+    let base_url = env::var("DEPLOY_BASE_URL").ok();
+    let ctx = context! { base_url };
     Ok(Html(env.get_template("credits.html")?.render(ctx)?))
 }
 
@@ -256,7 +256,8 @@ async fn messages(
     .take(2000)
     .collect::<Value>();
     let env = template_engine.acquire_env()?;
-    let ctx = context! {messages};
+    let base_url = env::var("DEPLOY_BASE_URL").ok();
+    let ctx = context! { messages => messages, base_url => base_url };
     return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
 }
 
@@ -336,7 +337,8 @@ async fn timeline(
         .collect::<Value>();
 
     let env = template_engine.acquire_env()?;
-    let ctx = context! {grouped_videos, group_links};
+    let base_url = env::var("DEPLOY_BASE_URL").ok();
+    let ctx = context! { grouped_videos, group_links, base_url };
     Ok(Html(env.get_template("timeline.html")?.render(ctx)?))
 }
 
@@ -344,7 +346,8 @@ async fn not_found(
     State(template_engine): State<Arc<AutoReloader>>,
 ) -> Result<(StatusCode, Html<String>), AppError> {
     let env = template_engine.acquire_env()?;
-    let ctx = context! {};
+    let base_url = env::var("DEPLOY_BASE_URL").ok();
+    let ctx = context! { base_url };
 
     Ok((
         StatusCode::NOT_FOUND,

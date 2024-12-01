@@ -1,11 +1,18 @@
+{% macro fmturl(path) -%}
+{% if base_url is defined and base_url -%}
+  {{ [ base_url, path ] | map("trim", "/") | join("/") | safe -}}
+{% else -%}
+  {{ path | safe -}}
+{% endif -%}
+{% endmacro -%}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Operation MM{% endblock title %}</title>
-  <link href="public/images/squeaks-favicon.png" rel="icon">
-  <link href="public/styles/reset.css" rel="stylesheet">
+  <link href="{{ fmturl("public/images/squeaks-favicon.png") }}" rel="icon">
+  <link href="{{ fmturl("public/styles/reset.css") }}" rel="stylesheet">
   {% block head %}{% endblock head %}
 </head>
 
