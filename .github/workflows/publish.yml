@@ -17,8 +17,14 @@ jobs:
       - name: Build Rust code
         run: cargo build --verbose
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5.0.0
+
       - name: Generate static site
         id: generation
+        env:
+          DEPLOY_BASE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           cargo run  -- --build
           # Print the contents of the newly generated dist/ directory
