@@ -1,11 +1,21 @@
+@font-face {
+  font-family: "Edo SZ";
+  src: url("../fonts/edosz.ttf");
+}
+
+@font-face {
+  font-family: "Tamanegi Kaisho Geki";
+  src: url("../fonts/玉ねぎ楷書激無料版v7改.ttf");
+}
+
 body {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: min-content 1fr;
 }
 
 main {
-  background: url("../images/hills-bg.svg") no-repeat center bottom / contain, linear-gradient(#4172b7, #bed9ec 100%);
+  background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)), no-repeat fixed center calc(50% + var(--header-height)) / cover url("../images/BAE1M.jpg");
   contain: inline-size;
 }
 
@@ -22,19 +32,103 @@ main {
 }
 
 .msg {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 20px auto;
   margin-bottom: 20px;
-  padding: 2rem;
   width: var(--message-width);
-  border-image: url("../images/cloud-border-2.png") 100 fill / 50px round;
+  font-family: "Noto Sans JP", sans-serif;
 
   .sender-name {
-    text-align: right;
+    position: relative;
+    top: 5px;
+    margin-right: 2rem;
+    grid-area: 1 / 1 / auto / span 2;
     font-family: "Noto Sans JP", sans-serif;
-    font-weight: 300;
     font-size: 10pt;
+    transform: rotate(357.81deg);
+
+    >span {
+      position: relative;
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background-color: #fa0ebf;
+      border: 5px solid #00144b;
+      box-shadow: 2px 1px black;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        border-width: 1px 2px;
+        border-style: solid;
+        border-color: #000ebf #fa144b #fa144b #000ebf;
+      }
+    }
+  }
+
+  .sender-title {
+    position: relative;
+    left: -8px;
+    top: 10px;
+    margin-right: 2rem;
+    grid-area: 2 / 2;
+    font-family: "Edo SZ", "Tamanegi Kaisho Geki", "Noto Sans JP", sans-serif;
+    font-size: 10pt;
+
+    >span {
+      position: relative;
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background-color: #11ddee;
+      border: 4px solid #00144b;
+      box-shadow: 3px 1px black;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        border-width: 1px 2px;
+        border-style: solid;
+        border-color: #11dd4b #0014ee #0014ee #11dd4b;
+      }
+    }
+  }
+
+  .msg-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    grid-area: 3 / 2;
+    padding: 1rem;
+    border: 5px solid rgb(0 0 0 / 0);
+    z-index: 0;
+  }
+
+  msg-content-bg {
+    position: relative;
+    grid-area: 2 / 2 / span 2;
+    background-color: white;
+    border: 5px solid #00144b;
+    box-shadow: 2px 1px black;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #ff144b #00ffff #00ffff #ff144b;
+    }
   }
 
   .video {
