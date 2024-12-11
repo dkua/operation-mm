@@ -25,6 +25,7 @@ use app_error::AppError;
 #[derive(Clone, Serialize)]
 struct Message {
     sender_name: String,
+    sender_title: Option<String>,
     video_id: Option<String>,
     message: String,
 }
@@ -111,6 +112,27 @@ const NAME_LIST: [&str; 23] = [
     "buffybear",
     "mikururun",
     "Trildar",
+];
+const TITLE_LIST: [&str; 19] = [
+    "堂島の龍",
+    "嶋野の狂犬",
+    "The Lone Wanderer",
+    "The Courier",
+    "Tarnished",
+    "The First Elden Lord",
+    "Motivated",
+    "Hope",
+    "Chaos, the End of Ends",
+    "Warden of Time",
+    "Speaker of Space",
+    "Keeper of Nature",
+    "Guardian of Civilization",
+    "Duke of the Sewers, GWS Pill Supplier, He Whose Username Appears to Rats to Contain an S in the Middle but Does Not",
+    "The Lord of Beaches, upon which the crumbled mountains of Order meet the fathomless seas of Chaos, he who watches at the border of the finite and infinite",
+    "The Everlasting Flame and the Eater of Worlds",
+    "The Alpha and Omega, the Beginning and the End",
+    "The Remnant of Embers",
+    "Rogue Rat Hoshiyomi, Member of the Sewer Rats Family, a Rat Pack Subsidiary",
 ];
 
 #[tokio::main]
@@ -251,8 +273,14 @@ async fn messages(
         } else {
             None
         };
+        let sender_title = if rng.gen_bool(0.5) {
+            Some(TITLE_LIST[rng.gen_range(0..TITLE_LIST.len())].to_owned())
+        } else {
+            None
+        };
         return Some(Value::from_serialize(Message {
             sender_name: NAME_LIST[rng.gen_range(0..NAME_LIST.len())].to_owned(),
+            sender_title,
             video_id,
             message,
         }));
