@@ -15,8 +15,17 @@ body {
 }
 
 main {
-  background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)), no-repeat fixed center calc(50% + var(--header-height)) / cover url("../images/BAE1M.jpg");
   contain: inline-size;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: var(--header-height);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)), no-repeat center / cover url("../images/BAE1M.jpg");
+  }
 }
 
 .msg-container {
