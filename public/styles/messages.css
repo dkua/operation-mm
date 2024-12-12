@@ -62,14 +62,13 @@ img.emoji {
     margin-right: 2rem;
     grid-area: 1 / 1 / auto / span 2;
     font-family: "Noto Sans JP", sans-serif;
-    font-size: 10pt;
-    transform: rotate(357.81deg);
+    transform: rotate(356.5deg);
 
     >span {
       position: relative;
       display: inline-block;
       padding: 0.4rem 0.8rem;
-      background-color: #fa0ebf;
+      background-color: #fb46ce;
       border: 5px solid #00144b;
       box-shadow: 2px 1px black;
 
@@ -94,7 +93,7 @@ img.emoji {
     margin-right: 2rem;
     grid-area: 2 / 2;
     font-family: "Edo SZ", "Tamanegi Kaisho Geki", "Noto Sans JP", sans-serif;
-    font-size: 10pt;
+    font-size: 0.83em;
 
     >span {
       position: relative;
@@ -145,6 +144,30 @@ img.emoji {
       border-width: 1px;
       border-style: solid;
       border-color: #ff144b #00ffff #00ffff #ff144b;
+    }
+  }
+
+  msg-decals {
+    grid-area: 3 / 2;
+    opacity: 0.2;
+
+    &.decal-1 {
+      background: no-repeat top 20px left 10px / 50px url("../images/message-decal-cross.png"), no-repeat bottom right / 100px url("../images/message-decal-circle.png");
+      margin: 0 -20px -20px 0;
+    }
+
+    &.decal-2 {
+      background: no-repeat top right / 100px url("../images/message-decal-circle.png");
+      margin: -20px -10px 0 0;
+    }
+
+    &.decal-3 {
+      background: no-repeat bottom 18px right 15px / 50px url("../images/message-decal-cross.png");
+    }
+
+    &.decal-4 {
+      background: no-repeat top 15px right 20px / 50px url("../images/message-decal-cross.png"), no-repeat bottom left / 100px url("../images/message-decal-circle.png");
+      margin: 0 0 -20px -25px;
     }
   }
 

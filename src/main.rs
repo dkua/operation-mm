@@ -1,3 +1,4 @@
+use std::hash::{DefaultHasher, Hash, Hasher};
 use std::net::SocketAddr;
 use std::sync::Arc;
 use std::{fs, iter};
@@ -28,6 +29,7 @@ struct Message {
     sender_title: Option<String>,
     video_id: Option<String>,
     message: String,
+    decal_variant: u64,
 }
 
 #[derive(Serialize)]
@@ -278,11 +280,15 @@ async fn messages(
         } else {
             None
         };
+        let sender_name = NAME_LIST[rng.gen_range(0..NAME_LIST.len())].to_owned();
+        let mut hasher = DefaultHasher::new();
+        sender_name.hash(&mut hasher);
         return Some(Value::from_serialize(Message {
-            sender_name: NAME_LIST[rng.gen_range(0..NAME_LIST.len())].to_owned(),
+            sender_name,
             sender_title,
             video_id,
             message,
+            decal_variant: hasher.finish() % 5,
         }));
     })
     .take(2000)
