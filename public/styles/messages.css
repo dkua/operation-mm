@@ -28,6 +28,14 @@ main {
   }
 }
 
+img.emoji {
+  display: inline;
+  height: 1.2em;
+  width: 1.2em;
+  margin: 0 .075em;
+  vertical-align: -20%;
+}
+
 .msg-container {
   --message-width: 350px;
   padding: 20px;
