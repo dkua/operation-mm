@@ -5,14 +5,44 @@ body {
 }
 
 main {
-  background: url("../images/hills-bg.svg") no-repeat center bottom / contain, linear-gradient(#4172b7, #bed9ec 100%);
+  background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)), no-repeat center / cover url("../images/BAE1M.jpg");
   padding: 1rem 2rem;
 }
 
 .credits {
+  position: relative;
   margin-inline: auto;
   padding: 2rem;
-  border-image: url("../images/cloud-border-2.png") 100 fill / 50px round;
+  background-color: white;
+  border: 5px solid #00144b;
+  box-shadow: 2px 1px black;
   font-size: 1.5em;
+  font-family: sans-serif;
   width: max(80vw, 600pt);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ff144b #00ffff #00ffff #ff144b;
+  }
+
+  >* {
+    position: relative;
+  }
+}
+
+.egg {
+  font-size: 0.5rem;
+}
+
+.baescii {
+  padding: 1rem;
+  padding-bottom: 0;
+  font-size: 0.8em;
 }
