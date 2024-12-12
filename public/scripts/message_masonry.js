@@ -5,6 +5,7 @@
     // Normally template content is cloned before placing in the DOM, but in this case
     // the contents are only needed once
     msg_container.replaceChildren(messages.content);
+    twemoji.parse(msg_container);
     const message_masonry = new Masonry(msg_container, {
         itemSelector: ".msg",
         gutter: 20,
