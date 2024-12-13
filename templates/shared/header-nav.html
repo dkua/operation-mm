@@ -2,6 +2,11 @@
 <a {% if page_current is startingwith page_path -%} class="active" {% endif -%}
   href="{{path_link}}">{{display_text}}</a>
 {% endmacro -%}
+{% set nav_head %}
+<link rel="preload" href="public/fonts/Baefont_normal-Regular_V1.ttf" as="font" type="font/ttf" crossorigin>
+<link href="public/styles/header-nav.css" rel="stylesheet">
+{% endset %}
+{% set nav_content %}
 <header>
   <nav aria-label="Site navigation">
     <menu>
@@ -12,3 +17,4 @@
     </menu>
   </nav>
 </header>
+{% endset %}

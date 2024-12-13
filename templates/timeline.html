@@ -1,13 +1,14 @@
 {% extends "shared/base.html" %}
+{% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
-<link href="public/styles/header-nav.css" rel="stylesheet">
+{{nav_head}}
 <link href="public/styles/timeline.css" rel="stylesheet">
 <script src="public/scripts/timeline_highlighting.js" defer></script>
 {%- endblock head %}
 
 {% block content -%}
 {% set page_current = "/timeline" -%}
-{% include "shared/header-nav.html" %}
+{{nav_content}}
 <main id="timeline">
   {% for group in grouped_videos %}
   <div class="timeline-group" id="{{group.group_id}}">
