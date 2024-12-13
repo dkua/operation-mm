@@ -66,7 +66,7 @@ img.emoji {
     font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
     transform: rotate(356.5deg);
 
-    >span {
+    >div {
       position: relative;
       display: inline-block;
       padding: 0.4rem 0.8rem;
@@ -85,6 +85,10 @@ img.emoji {
         border-style: solid;
         border-color: #000ebf #fa144b #fa144b #000ebf;
       }
+
+      >span {
+        position: relative;
+      }
     }
   }
 
@@ -97,7 +101,7 @@ img.emoji {
     font-family: "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
     font-size: 0.83em;
 
-    >span {
+    >div {
       position: relative;
       display: inline-block;
       padding: 0.4rem 0.8rem;
@@ -115,6 +119,10 @@ img.emoji {
         border-width: 1px 2px;
         border-style: solid;
         border-color: #11dd4b #0014ee #0014ee #11dd4b;
+      }
+
+      >span {
+        position: relative;
       }
     }
   }

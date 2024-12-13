@@ -40,8 +40,18 @@
   <div class="msg">
     <msg-content-bg></msg-content-bg>
     <msg-decals class="decal-{{msg.decal_variant}}"></msg-decals>
-    <div class="sender-name"><span>{{msg.sender_name}}</span></div>
-    {% if msg.sender_title %}<div class="sender-title"><span>{{msg.sender_title}}</span></div>{% endif %}
+    <div class="sender-name">
+      <div>
+        <span>{{msg.sender_name}}</span>
+      </div>
+    </div>
+    {% if msg.sender_title %}
+    <div class="sender-title">
+      <div>
+        <span>{{msg.sender_title}}</span>
+      </div>
+    </div>
+    {% endif %}
     <div class="msg-content">
       {% if msg.video_id -%}
       <div class="video placeholder" data-video_id="{{msg.video_id}}">
