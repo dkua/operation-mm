@@ -1,11 +1,13 @@
 @font-face {
   font-family: "Edo SZ";
   src: url("../fonts/edosz.ttf");
+  font-display: block;
 }
 
 @font-face {
   font-family: "Tamanegi Kaisho Geki";
   src: url("../fonts/玉ねぎ楷書激無料版v7改.ttf");
+  font-display: block;
 }
 
 body {
@@ -54,14 +56,14 @@ img.emoji {
   grid-template-columns: 20px auto;
   margin-bottom: 20px;
   width: var(--message-width);
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
 
   .sender-name {
     position: relative;
     top: 5px;
     margin-right: 2rem;
     grid-area: 1 / 1 / auto / span 2;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
     transform: rotate(356.5deg);
 
     >span {
@@ -92,7 +94,7 @@ img.emoji {
     top: 10px;
     margin-right: 2rem;
     grid-area: 2 / 2;
-    font-family: "Edo SZ", "Tamanegi Kaisho Geki", "Noto Sans JP", sans-serif;
+    font-family: "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
     font-size: 0.83em;
 
     >span {
