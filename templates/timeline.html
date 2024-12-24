@@ -1,42 +1,35 @@
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@800&display=swap" rel="stylesheet">
 {{nav_head}}
 <link href="public/styles/timeline.css" rel="stylesheet">
-<script src="public/scripts/timeline_highlighting.js" defer></script>
 {%- endblock head %}
 
 {% block content -%}
 {% set page_current = "/timeline" -%}
-{{nav_content}}
-<main id="timeline">
-  {% for group in grouped_videos %}
-  <div class="timeline-group" id="{{group.group_id}}">
-    <h2 class="date-landmark">{{group.group_name}}</h2>
-    {% for video in group.videos %}
-    <div class="timeline-entry">
-      <a href="https://www.youtube.com/watch?v={{video.video_id}}" target="_blank"><img class="video-thumbnail"
-          src="https://i3.ytimg.com/vi/{{video.video_id}}/maxresdefault.jpg" loading="lazy"></a>
-      <div class="entry-description">
-        <h2>{{video.title}}</h2>
-        <h3><time datetime="{{video.timestamp_rfc3339}}">{{video.timestamp_display}}</time></h3>
-        <p>{{video.blurb}}</p>
-      </div>
+{{ nav_content }}
+<main>
+  <section class="timeline">
+    <div class="timeline__header">
     </div>
+    {% for group in grouped_videos %}
+    {% for video in group.videos %}
+    <div class="timeline__separator"></div>
+    <section class="timeline__info">
+      <div class="timeline__date">{{ video.timestamp_display }}</div>
+      <div class="timeline__title">{{ video.title }}</div>
+      <p class="timeline__subtitle">{{ video.blurb }}</p>
+    </section>
+    <section class="timeline__media">
+      <img src="https://i3.ytimg.com/vi/{{ video.video_id }}/maxresdefault.jpg" loading="lazy">
+    </section>
     {% endfor %}
-  </div>
-  {% endfor %}
+    {% endfor %}
+    <div class="timeline__footer">
+      <img src="public/images/timeline/footer.png" loading="lazy">
+    </div>
+  </section>
 </main>
-<nav class="timeline-nav" aria-label="Timeline navigation">
-  {% for group in group_links %}
-  <div class="timeline-year">
-    <span id="timeline-nav-label-{{group.year}}">{{group.year}}</span>
-    <menu aria-labelledby="timeline-nav-label-{{group.year}}">
-      {% for link in group.links %}
-      <li id="timeline-link-{{link.link_id}}"><a href="#{{link.link_id}}">{{link.display_string}}</a></li>
-      {% endfor %}
-    </menu>
-  </div>
-  {% endfor %}
-</nav>
 {%- endblock content %}
