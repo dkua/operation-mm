@@ -15,18 +15,27 @@
   <section class="timeline">
     <div class="timeline__header">
     </div>
-    {% for group in grouped_videos %}
-    {% for video in group.videos %}
+    {% for event in events %}
     <div class="timeline__separator"></div>
     <section class="timeline__info">
-      <div class="timeline__date">{{ video.timestamp_display }}</div>
-      <div class="timeline__title">{{ video.title }}</div>
-      <p class="timeline__subtitle">{{ video.blurb }}</p>
+      <div class="timeline__date">{{ event.date }}</div>
+      <div class="timeline__title">{{ event.title }}</div>
+      {% if event.subtitle %}
+      <p class="timeline__subtitle">{{ event.subtitle }}</p>
+      {% endif %}
+      {% if event.collabed_with -%}
+      <ul class="timeline__collablist">
+      {% for name in event.collabed_with -%}
+        <li>{{ name }}</li>
+      {%- endfor %}
+      </ul>
+      {%- endif %}
     </section>
     <section class="timeline__media">
-      <img src="https://i3.ytimg.com/vi/{{ video.video_id }}/maxresdefault.jpg" loading="lazy">
+      <a href="{{ event.media.link }}">
+        <img src="{{ event.media.path }}" loading="lazy">
+      </a>
     </section>
-    {% endfor %}
     {% endfor %}
     <div class="timeline__footer">
       <img src="public/images/timeline/footer.png" loading="lazy">
