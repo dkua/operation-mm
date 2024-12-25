@@ -119,6 +119,18 @@ main {
   font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
 }
 
+.timeline__collablist {
+  display: inline;
+  list-style: none;
+  padding-inline-start: 0px;
+}
+.timeline__collablist li {
+  display: inline;
+}
+.timeline__collablist li + li:before {
+  content: ", ";
+}
+
 @media only screen and (max-width: 42rem),
        only screen and (-webkit-min-device-pixel-ratio: 3)
 {
