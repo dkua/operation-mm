@@ -38,7 +38,9 @@
     });
     dialog.querySelector(".dialog-close-button").addEventListener("click", () => dialog.close());
 
-    for (const el of document.getElementsByClassName('video placeholder')) {
+    /** @type {HTMLTemplateElement} */
+    const messages = document.getElementById("messages-template");
+    for (const el of messages.content.querySelectorAll('.video.placeholder')) {
         el.addEventListener('click', handle_video_click);
     }
 }
