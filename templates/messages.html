@@ -1,5 +1,6 @@
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
+{% from "shared/dialog.html" import dialog_head, dialog_content %}
 {% block head -%}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@800&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 <!-- <link rel="preload" href="public/fonts/玉ねぎ楷書激無料版v7改.ttf" as="font" type="font/ttf" crossorigin> -->
 <script src="public/scripts/twemoji@15.1.0.min.js" defer></script>
 <script src="public/scripts/masonry.min.js" defer></script>
-<script src="public/scripts/message_embed_dialog.js" defer></script>
+{{ dialog_head }}
 <script src="public/scripts/message_masonry.js" defer></script>
 {%- endblock head %}
 
@@ -81,18 +82,5 @@
   </div>
   {%- endfor %}
 </template>
-<dialog id="video-dialog">
-  <div class="close-box">
-    <button class="dialog-close-button">&times;</button>
-    <div class="loader-stack">
-      <span class="loader" style="visibility: hidden;"></span>
-      <iframe class="video"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        referrerpolicy="strict-origin-when-cross-origin"
-      ></iframe>
-    </div>
-  </div>
-</dialog>
+{{ dialog_content }}
 {%- endblock content %}

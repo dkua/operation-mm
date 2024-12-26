@@ -1,0 +1,20 @@
+{% set dialog_head %}
+<link href="public/styles/embed_dialog.css" rel="stylesheet">
+<script src="public/scripts/embed_dialog.js" defer></script>
+{% endset %}
+{% set dialog_content %}
+<dialog id="video-dialog">
+  <div class="close-box">
+    <button class="dialog-close-button">&times;</button>
+    <div class="loader-stack">
+      <span class="loader" style="visibility: hidden;"></span>
+      <iframe class="video"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+  </div>
+</dialog>
+{% endset %}

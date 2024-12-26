@@ -45,9 +45,22 @@
     });
     dialog.querySelector(".dialog-close-button").addEventListener("click", () => dialog.close());
 
-    /** @type {HTMLTemplateElement} */
+    /** 
+     * @type {HTMLTemplateElement} 
+     * 
+     * For the Messages page.
+     * */
     const messages = document.getElementById("messages-template");
-    for (const el of messages.content.querySelectorAll('.video.placeholder')) {
+    if ( messages != null && messages.content != null ) {
+        for (const el of messages.content.querySelectorAll('.video.placeholder')) {
+            el.addEventListener('click', handle_video_click);
+        }
+    };
+
+    /**
+     * For the Timeline page.
+     */
+    for (const el of document.querySelectorAll('.video.placeholder')) {
         el.addEventListener('click', handle_video_click);
     }
 }
