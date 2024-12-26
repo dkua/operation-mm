@@ -27,6 +27,7 @@
       {% endif %}
       {% if event.collabed_with -%}
       <ul class="timeline__collablist">
+        Featuring
       {% for name in event.collabed_with -%}
         <li>{{ name }}</li>
       {%- endfor %}
@@ -35,8 +36,8 @@
     </section>
     <section class="timeline__media">
       {% if event.media.is_youtube and event.media.video_id -%}
-      <div class="video placeholder" data-video_id="{{event.media.video_id}}">
-        <img src="https://i3.ytimg.com/vi/{{event.media.video_id}}/maxresdefault.jpg" loading="lazy">
+      <div class="video placeholder" data-video_id="{{event.media.video_id}}" {%- if event.media.video_start -%}data-video_start="{{event.media.video_start}}"{%- endif -%}>
+        <img src="{{ event.media.path }}" loading="lazy">
         <play-icon>
           <circle></circle>
           <triangle></triangle>

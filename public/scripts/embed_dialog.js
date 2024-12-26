@@ -7,9 +7,11 @@
     /**
      * @param {string} video_id
      */
-    const open_video_dialog = (video_id, clip_id, clipt) => {
+    const open_video_dialog = (video_id, video_start, clip_id, clipt) => {
         let video_iframe = dialog.querySelector("iframe");
-        if (clip_id != null && clipt != null) {
+        if (video_start != null) {
+            video_iframe.src = `https://www.youtube-nocookie.com/embed/${video_id}?autoplay=1&start=${video_start}`;
+        } else if (clip_id != null && clipt != null) {
             video_iframe.src = `https://www.youtube.com/embed/${video_id}?autoplay=1&clip=${clip_id}&clipt=${clipt}`;
         } else {
             video_iframe.src = `https://www.youtube-nocookie.com/embed/${video_id}?autoplay=1`;
@@ -23,9 +25,10 @@
      */
     const handle_video_click = (ev) => {
         const video_id = ev.currentTarget.getAttribute("data-video_id");
+        const video_start = ev.currentTarget.getAttribute("data-video_start");
         const clip_id = ev.currentTarget.getAttribute("data-clip_id");
         const clipt = ev.currentTarget.getAttribute("data-clipt");
-        open_video_dialog(video_id, clip_id, clipt);
+        open_video_dialog(video_id, video_start, clip_id, clipt);
     }
 
     dialog.addEventListener("pointerdown", (e) => {
