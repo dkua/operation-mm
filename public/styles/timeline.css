@@ -122,10 +122,10 @@ main {
   display: inline;
   list-style: none;
   padding-inline-start: 0px;
+  font-size: 0.8em;
 }
 .timeline__collablist li {
   display: inline;
-  font-size: 0.8em;
 }
 .timeline__collablist li + li:before {
   content: ", ";
