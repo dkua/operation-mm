@@ -1,11 +1,13 @@
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
+{% from "shared/dialog.html" import dialog_head, dialog_content %}
 {% block head -%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-{{nav_head}}
+{{ nav_head }}
 <link href="public/styles/timeline.css" rel="stylesheet">
+{{ dialog_head }}
 {%- endblock head %}
 
 {% block content -%}
@@ -32,9 +34,19 @@
       {%- endif %}
     </section>
     <section class="timeline__media">
+      {% if event.media.is_youtube and event.media.video_id -%}
+      <div class="video placeholder" data-video_id="{{event.media.video_id}}">
+        <img src="https://i3.ytimg.com/vi/{{event.media.video_id}}/maxresdefault.jpg" loading="lazy">
+        <play-icon>
+          <circle></circle>
+          <triangle></triangle>
+        </play-icon>
+      </div>
+      {%- else -%}
       <a href="{{ event.media.link }}" target="_blank">
         <img src="{{ event.media.path }}" loading="lazy">
       </a>
+      {%- endif -%}
     </section>
     {% endfor %}
     <div class="timeline__footer">
@@ -42,4 +54,5 @@
     </div>
   </section>
 </main>
+{{ dialog_content }}
 {%- endblock content %}
