@@ -51,13 +51,19 @@
     </div>
     {% endif %}
     <div class="msg-content">
-      {% if msg.video_id -%}
-      <div class="video placeholder" data-video_id="{{msg.video_id}}">
-        <img src="https://i3.ytimg.com/vi/{{msg.video_id}}/maxresdefault.jpg" loading="lazy">
+      {% if msg.media.is_youtube and msg.media.video_id -%}
+      <div class="video placeholder" data-media.video_id="{{msg.media.video_id}}">
+        <img src="https://i3.ytimg.com/vi/{{msg.media.video_id}}/maxresdefault.jpg" loading="lazy">
         <play-icon>
           <circle></circle>
           <triangle></triangle>
         </play-icon>
+      </div>
+      {% elif msg.media.path -%}
+      <div class="picture">
+        <a href="{{ msg.media.path }}" target="_blank">
+          <img src="{{ msg.media.path }}" loading="lazy">
+        </a>
       </div>
       {% endif -%}
       <p>{{msg.message}}</p>
