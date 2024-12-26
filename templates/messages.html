@@ -52,13 +52,23 @@
     {% endif %}
     <div class="msg-content">
       {% if msg.media.is_youtube and msg.media.video_id -%}
-      <div class="video placeholder" data-media.video_id="{{msg.media.video_id}}">
-        <img src="https://i3.ytimg.com/vi/{{msg.media.video_id}}/maxresdefault.jpg" loading="lazy">
-        <play-icon>
-          <circle></circle>
-          <triangle></triangle>
-        </play-icon>
-      </div>
+        {%- if msg.media.clip_id and msg.media.clipt -%}
+        <div class="video placeholder" data-video_id="{{ msg.media.video_id }}" data-clip_id="{{ msg.media.clip_id }}" data-clipt="{{ msg.media.clipt }}">
+          <img src="https://i3.ytimg.com/vi/{{msg.media.video_id}}/maxresdefault.jpg" loading="lazy">
+          <play-icon>
+            <circle></circle>
+            <triangle></triangle>
+          </play-icon>
+        </div>
+        {%- else -%}
+        <div class="video placeholder" data-video_id="{{msg.media.video_id}}">
+          <img src="https://i3.ytimg.com/vi/{{msg.media.video_id}}/maxresdefault.jpg" loading="lazy">
+          <play-icon>
+            <circle></circle>
+            <triangle></triangle>
+          </play-icon>
+        </div>
+        {%- endif -%}
       {% elif msg.media.path -%}
       <div class="picture">
         <a href="{{ msg.media.path }}" target="_blank">
