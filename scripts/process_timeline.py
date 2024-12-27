@@ -7,6 +7,7 @@ from argparse import ArgumentParser
 from hashlib import md5
 from mimetypes import guess_extension
 from pathlib import Path
+from PIL import Image
 
 def process(args, line):
     event = dict()
@@ -47,30 +48,43 @@ def process_media(args, link, image):
     
     if media["is_youtube"]:
         media["path"] = f"https://i.ytimg.com/vi/{media['video_id']}/maxresdefault.jpg"
+        # YouTube's default max resolution for thumbnails is 1280x720
+        media["width"] = 1280
+        media["height"] = 720
         if "t" in params:
             media["video_start"] = params["t"].split("s")[0]
     else:
         media["link"] = link
     
     if image:
-        media["path"] = download_image(args, image)
+        path, width, height = download_image(args, image)
+        media["path"] = path
+        media["width"] = width
+        media["height"] = height
         if not link:
             media["link"] = media["path"]
 
     return media
 
 def download_image(args, image_url):
+    filepath, w, h = None, None, None
     resp = requests.get(image_url)
-    if resp.status_code == 200:
+
+    if resp.status_code == 200 and resp.headers['content-type'].startswith("image/"):
         ext = guess_extension(resp.headers['Content-Type'].partition(';')[0].strip())
         hash_id = md5(image_url.encode("utf-8")).hexdigest()
         filepath = f"{args.image_path}/{hash_id}{ext}"
+
         output = Path(filepath)
         if not output.exists():
             output.parent.mkdir(exist_ok=True, parents=True)
             with output.open("wb") as f:
                 f.write(resp.content)
-        return filepath
+
+        with Image.open(filepath) as img:
+            w, h = img.size
+
+    return filepath, w, h
 
 if __name__ == "__main__":
     parser = ArgumentParser()
