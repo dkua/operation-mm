@@ -12,6 +12,10 @@ def process(args, line):
     event = dict()
     event["date"] = line["Date"]
     event["type"] = line["EventType"]
+    if line["Highlight"] == "TRUE":
+        event["highlight"] = True
+    else:
+        event["highlight"] = False
     event["title"] = line["Event"]
     event["subtitle"] = line["Subtitle"]
 
@@ -50,6 +54,9 @@ def process_media(args, link, image):
     
     if image:
         media["path"] = download_image(args, image)
+        if not link:
+            media["link"] = media["path"]
+
     return media
 
 def download_image(args, image_url):
