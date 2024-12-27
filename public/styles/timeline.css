@@ -10,6 +10,10 @@
   font-display: block;
 }
 
+.aussie {
+  transform: scale(-1);
+}
+
 body {
   min-height: 100vh;
   display: grid;

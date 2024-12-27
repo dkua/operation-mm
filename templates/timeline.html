@@ -33,7 +33,11 @@
       {%- endif -%}
       </event-marker>
     </div>
+    {%- if loop.first -%}
+    <section class="timeline__info aussie">
+    {%- else -%}
     <section class="timeline__info">
+    {%- endif -%}
       <div class="timeline__date">{{ event.date }}</div>
       <div class="timeline__title">{{ event.title }}</div>
       {% if event.subtitle %}
@@ -48,7 +52,11 @@
       </ul>
       {%- endif %}
     </section>
+    {%- if loop.first -%}
+    <section class="timeline__media aussie">
+    {%- else -%}
     <section class="timeline__media">
+    {%- endif -%}
       {% if event.media.is_youtube and event.media.video_id -%}
       <div class="video placeholder" data-video_id="{{event.media.video_id}}" {%- if event.media.video_start -%}data-video_start="{{event.media.video_start}}"{%- endif -%}>
         <img src="{{ event.media.path }}" loading="lazy">
