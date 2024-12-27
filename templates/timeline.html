@@ -20,7 +20,11 @@
     {% for event in events %}
     <div class="timeline__separator">
       <event-marker>
+      {%- if not event.highlight -%}
         <dice></dice>
+      {%- else -%}
+        <star></star>
+      {%- endif -%}
       </event-marker>
     </div>
     <section class="timeline__info">
