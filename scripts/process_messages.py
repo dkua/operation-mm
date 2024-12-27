@@ -10,19 +10,24 @@ from pathlib import Path
 from PIL import Image
 from requests.utils import urlparse
 
-def process(args, line):
-    event = dict()
-    event["sender_name"] = line[2] # C column for the name
-    event["sender_title"] = line[3] # D column for the chuuni title
-    event["message"] = line[4] # E column for the message
-    event["media"] = process_media(
-        args,
-        line[9], # J column for the media links
-    )
+def process(ctx, line):
+    name = line[2] # C column for the name
+    title = line[3] # D column for the chuuni title
+    message = line[4] # E column for the message
+    link = line[9] # J column for the media links
+    ctx.hash_id = md5(f"{name}+{title}".encode("utf-8")).hexdigest() # Generate a unique ID from name & title for use in sorting order and naming any associated files.
+    print(ctx.hash_id)
 
-    return event
+    msg = dict()
+    msg["id"] = ctx.hash_id
+    msg["sender_name"] = name
+    msg["sender_title"] = title
+    msg["message"] = message
+    msg["media"] = process_media(ctx, link)
 
-def process_media(args, link):
+    return msg
+
+def process_media(ctx, link):
     media = dict()
     media["is_youtube"] = True
     media["path"] = None
@@ -49,20 +54,19 @@ def process_media(args, link):
         media["is_youtube"] = False
 
     if link and not media["is_youtube"]:
-        path, width, height = download_image(args, link)
+        path, width, height = download_image(ctx, link)
         media["path"] = path
         media["width"] = width
         media["height"] = height
     
     return media
 
-def download_image(args, image_url):
+def download_image(ctx, image_url):
     resp = requests.get(image_url, stream=True)
     filepath, w, h = None, None, None
     if resp.status_code == 200 and resp.headers['content-type'].startswith("image/"):
         ext = guess_extension(resp.headers['Content-Type'].partition(';')[0].strip())
-        hash_id = md5(image_url.encode("utf-8")).hexdigest()
-        filepath = f"{args.image_path}/{hash_id}{ext}"
+        filepath = f"{ctx.image_path}/{ctx.hash_id}{ext}"
         w, h = None, None
 
         output = Path(filepath)
@@ -90,9 +94,12 @@ if __name__ == "__main__":
             print(i, line)
             msg = process(args, line)
             messages.append(msg)
-
+    
     output = Path(args.json_path)
     output.parent.mkdir(exist_ok=True, parents=True)
     with output.open("w", encoding="utf-8") as f:
-        data = { "messages": messages }
+        # Sort messages by hash_id to shuffle away from submission order before writing
+        data = {
+            "messages": sorted(messages, key=lambda msg: msg["id"])
+        }
         json.dump(data, f, ensure_ascii=False, indent=4)
