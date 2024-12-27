@@ -39,6 +39,26 @@ main {
   font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
 }
 
+.squeaks {
+  display: grid;
+  place-self: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+
+  margin: auto auto 1rem 0.5rem;
+
+  a {
+    font-size: 0.8em;
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  img {
+    width: 4rem;
+  }
+}
+
 .timeline__header {
   grid-column: 1 / -1;
   justify-self: center;
@@ -50,9 +70,8 @@ main {
   grid-column: 1 / -1;
   justify-self: center;
 
-  >img {
-    border: 0.5rem solid white;
-    border-radius: 100%;
+  img {
+    width: 8rem;
   }
 }
 
@@ -83,8 +102,8 @@ main {
       background: no-repeat url("../images/timeline/icon-dice.svg");
     }
     star {
-      transform: translateY(-0.1rem);
-      background: no-repeat url("../images/timeline/icon-star.svg");
+      transform: translateY(0.1rem);
+      background: no-repeat url("../images/timeline/icon-glowing-star.svg");
     }
   }
 }

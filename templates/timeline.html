@@ -17,6 +17,12 @@
   <section class="timeline">
     <div class="timeline__header">
     </div>
+    <div class="squeaks">
+      <a href="#top">
+        <img src="public/images/timeline/squeaks.png">
+        Back to top
+      </a>
+    </div>
     {% for event in events %}
     <div class="timeline__separator">
       <event-marker>
@@ -58,9 +64,7 @@
       {%- endif -%}
     </section>
     {% endfor %}
-    <div class="timeline__footer">
-      <img src="public/images/timeline/footer.png" loading="lazy">
-    </div>
+    <div class="timeline__footer"></div>
   </section>
 </main>
 {{ dialog_content }}
