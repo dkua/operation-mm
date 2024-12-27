@@ -25,18 +25,20 @@
     </div>
     {% for event in events %}
     <div class="timeline__separator">
-      <event-marker>
-      {%- if not event.highlight -%}
-        <dice></dice>
-      {%- else -%}
-        <star></star>
-      {%- endif -%}
-      </event-marker>
+      <a href="#{{ loop.index }}">
+        <event-marker>
+        {%- if not event.highlight -%}
+          <dice></dice>
+        {%- else -%}
+          <star></star>
+        {%- endif -%}
+        </event-marker>
+      </a>
     </div>
     {%- if loop.first -%}
-    <section class="timeline__info aussie">
+    <section class="timeline__info aussie" id="{{ loop.index }}">
     {%- else -%}
-    <section class="timeline__info">
+    <section class="timeline__info" id="{{ loop.index }}">
     {%- endif -%}
       <div class="timeline__date">{{ event.date }}</div>
       <div class="timeline__title">{{ event.title }}</div>
