@@ -18,7 +18,11 @@
     <div class="timeline__header">
     </div>
     {% for event in events %}
-    <div class="timeline__separator"></div>
+    <div class="timeline__separator">
+      <event-marker>
+        <dice></dice>
+      </event-marker>
+    </div>
     <section class="timeline__info">
       <div class="timeline__date">{{ event.date }}</div>
       <div class="timeline__title">{{ event.title }}</div>

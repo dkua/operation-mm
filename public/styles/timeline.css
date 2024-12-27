@@ -31,7 +31,7 @@ main {
 .timeline {
   display: grid;
   grid-auto-flow: dense;
-  column-gap: 1rem;
+  column-gap: 2rem;
   grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 2fr) 0.5rem minmax(20rem, 2fr) minmax(1rem, 1fr);
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -60,22 +60,39 @@ main {
   background: white;
   position: relative;
   grid-column: 3;
-}
-.timeline__separator::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -1%;
-  transform: translateX(-50%);
+  align-content: center;
 
-  background: no-repeat url("../images/timeline/icon-dice.svg");
-  height: 4rem;
-  width: 4rem;
+  event-marker {
+    display: grid;
+    width: 4rem;
+    height: 4rem;
+    transform: translateX(-1.8rem) translateY(-2rem);
+    background-color: white;
+    border: 0.5rem solid white;
+    border-radius: 100%;
+
+    &>* {
+      grid-area: 1/1;
+    }
+
+    cheese {
+      transform: translateY(-0.2rem);
+      background: no-repeat url("../images/timeline/icon-cheese.svg");
+    }
+    dice {
+      background: no-repeat url("../images/timeline/icon-dice.svg");
+    }
+    star {
+      transform: translateY(-0.1rem);
+      background: no-repeat url("../images/timeline/icon-star.svg");
+    }
+  }
 }
 
 .timeline__info {
   grid-column: 4;
   justify-self: start;
+  align-content: center;
   margin: 0rem 1rem 4rem 1rem;
   text-align: left;
 }
@@ -92,7 +109,7 @@ main {
   align-content: center;
   margin: 0rem 1rem 4rem 1rem;
 
-  >img {
+  img {
     border-radius: 10px;
   }
 }
@@ -135,25 +152,27 @@ main {
        only screen and (-webkit-min-device-pixel-ratio: 3)
 {
   .timeline {
-    grid-template-columns: 1rem 0.25rem minmax(20rem, 1fr) !important;
+    grid-template-columns: 2rem 0.5rem minmax(20rem, 1fr) !important;
   }
 
   .timeline__separator {
     grid-column: 2 !important;
     grid-row: span 2;
+    align-content: start !important;
+    transform: translateX(-1.8rem) translateY(2.5rem) !important;
   }
 
   .timeline__info {
     grid-column: 3 !important;
     text-align: left !important;
     justify-self: start !important;
-    margin: 0rem 1rem 1rem 1rem;
+    margin: 0rem 1rem 1rem 0rem;
   }
 
   .timeline__media {
     grid-column: 3 !important;
     text-align: left !important;
     justify-self: start !important;
-    margin: 0rem 1rem 4rem 1rem;
+    margin: 0rem 1rem 4rem 0rem;
   }
 }
