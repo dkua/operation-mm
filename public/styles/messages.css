@@ -60,7 +60,8 @@ img.emoji {
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: 20px auto;
-  margin-bottom: 20px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   width: var(--message-width);
   font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
 
@@ -143,6 +144,14 @@ img.emoji {
     z-index: 0;
   }
 
+  .msg-media {
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: attr(width) / attr(height);
+    }
+  }
+
   msg-content-bg {
     position: relative;
     grid-area: 2 / 2 / span 2;
@@ -185,12 +194,5 @@ img.emoji {
       background: no-repeat top 15px right 20px / 50px url("../images/message-decal-cross.png"), no-repeat bottom left / 100px url("../images/message-decal-circle.png");
       margin: 0 0 -20px -25px;
     }
-  }
-
-  .picture {
-    width: 100%;
-    align-self: center;
-    display: grid;
-    place-items: center;
   }
 }
