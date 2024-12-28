@@ -11,10 +11,10 @@
 }
 
 @font-face {
-  font-family: "Octothorpe";
+  font-family: "Override Characters";
   src: url("../fonts/玉ねぎ楷書激無料版v7改.ttf");
   font-display: block;
-  unicode-range: U+0023;
+  unicode-range: U+0023, U+002A, U+00D7;
 }
 
 .aussie {
@@ -159,7 +159,7 @@ main {
 }
 
 .timeline__title {
-  font-family: "Octothorpe", "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
+  font-family: "Override Characters", "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
   font-size: 1.8em;
 }
 
