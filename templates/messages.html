@@ -54,31 +54,35 @@
     </div>
     {% endif %}
     <div class="msg-content">
-      {% if msg.media.is_youtube and msg.media.video_id -%}
-        {%- if msg.media.clip_id and msg.media.clipt -%}
+    {% if msg.media.is_youtube and msg.media.video_id -%}
+      {%- if msg.media.clip_id and msg.media.clipt -%}
+      <div class="msg-media">
         <div class="video placeholder" data-video_id="{{ msg.media.video_id }}" data-clip_id="{{ msg.media.clip_id }}" data-clipt="{{ msg.media.clipt }}">
-          <img src="https://i3.ytimg.com/vi/{{msg.media.video_id}}/maxresdefault.jpg" loading="lazy">
+          <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
           <play-icon>
             <circle></circle>
             <triangle></triangle>
           </play-icon>
         </div>
-        {%- else -%}
+      </div>
+      {%- else -%}
+      <div class="msg-media">
         <div class="video placeholder" data-video_id="{{msg.media.video_id}}">
-          <img src="https://i3.ytimg.com/vi/{{msg.media.video_id}}/maxresdefault.jpg" loading="lazy">
+          <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
           <play-icon>
             <circle></circle>
             <triangle></triangle>
           </play-icon>
         </div>
-        {%- endif -%}
-      {% elif msg.media.path -%}
-      <div class="picture">
+      </div>
+      {%- endif -%}
+    {% elif msg.media.path -%}
+      <div class="msg-media">
         <a href="{{ msg.media.path }}" target="_blank">
-          <img src="{{ msg.media.path }}" loading="lazy">
+          <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
         </a>
       </div>
-      {% endif -%}
+    {% endif -%}
       <p>{{msg.message}}</p>
     </div>
   </div>
