@@ -7,75 +7,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 {{ nav_head }}
 <link href="public/styles/timeline.css" rel="stylesheet">
+<script src="public/scripts/timeline.js" defer></script>
 {{ dialog_head }}
 {%- endblock head %}
 
 {% block content -%}
 {% set page_current = "/timeline" -%}
+{%- set event_types = events | map(attribute="type") | unique | sort | list -%}
 {{ nav_content }}
+<div class="bg"></div>
+
 <main>
-  <section class="timeline">
-    <div class="timeline__header">
-    </div>
-    <div class="squeaks">
-      <a href="#top">
-        <img src="public/images/timeline/squeaks.png">
-        Back to top
-      </a>
-    </div>
-    {% for event in events %}
-    <div class="timeline__separator">
-      <a href="#{{ loop.index }}">
-        <event-marker>
-        {%- if not event.highlight -%}
-          <dice></dice>
-        {%- else -%}
-          <star></star>
-        {%- endif -%}
-        </event-marker>
-      </a>
-    </div>
-    {%- if loop.first -%}
-    <section class="timeline__info aussie" id="{{ loop.index }}">
-    {%- else -%}
-    <section class="timeline__info" id="{{ loop.index }}">
-    {%- endif -%}
-      <div class="timeline__date">{{ event.date }}</div>
-      <div class="timeline__title">{{ event.title | safe }}</div>
-      {% if event.subtitle %}
-      <p class="timeline__subtitle">{{ event.subtitle | safe }}</p>
-      {% endif %}
-      {% if event.collabed_with -%}
-      <ul class="timeline__collablist">
-        Featuring
-      {% for name in event.collabed_with -%}
-        <li>{{ name }}</li>
-      {%- endfor %}
-      </ul>
-      {%- endif %}
-    </section>
-    {%- if loop.first -%}
-    <section class="timeline__media aussie">
-    {%- else -%}
-    <section class="timeline__media">
-    {%- endif -%}
-      {% if event.media.is_youtube and event.media.video_id -%}
-      <div class="video placeholder" data-video_id="{{event.media.video_id}}" {%- if event.media.video_start -%}data-video_start="{{event.media.video_start}}"{%- endif -%}>
-        <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}">
-        <play-icon>
-          <circle></circle>
-          <triangle></triangle>
-        </play-icon>
-      </div>
-      {%- else -%}
-      <a href="{{ event.media.link }}" target="_blank">
-        <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}">
-      </a>
-      {%- endif -%}
-    </section>
-    {% endfor %}
-    <div class="timeline__footer"></div>
+  <section class="timeline__header">
+    <details id="timeline__filters" name="timeline_filters">
+      <summary>
+        Filter the Timeline
+      </summary>
+      <fieldset id="timeline__typefilter">
+        <legend>
+          <label>
+            Timeline Event Types (<span id="num_visible">{{ events | length }}</span> of {{ events | length }} events visible)
+          </label>
+        </legend>
+        <div id="choices">
+          {%- for type in event_types -%}
+          {%- set type_value = type | lower | split | join('_') -%}
+          {%- set type_name = type_value ~ "-type" -%}
+          <label class="event_type_pill" for="{{ type_name }}">
+            <input type="checkbox" name="type_filter" id="{{ type_name }}" value="{{ type_value }}" checked></input>
+            <span>{{ type }}</span>
+          </label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    </details>
   </section>
+
+  <section id="timeline">
+    {% for event in events %}
+    {% set event_type = event.type | lower | split | join('_') %}
+    <div class="timeline__event" id="{{ loop.index }}" event-type="{{ event_type }}">
+      <div class="timeline__marker">
+        <div>
+          <a href="#{{ loop.index }}">
+            <event-marker>
+            {%- if not event.highlight -%}
+              <dice></dice>
+            {%- else -%}
+              <star></star>
+            {%- endif -%}
+            </event-marker>
+          </a>
+        </div>
+      </div>
+
+      {%- if loop.first -%}
+      <div class="timeline__info aussie">
+      {%- else -%}
+      <div class="timeline__info">
+      {%- endif -%}
+        <div class="timeline__dateline chaos_border">
+          {{ event.date }}
+        </div>
+        <article class="chaos_border">
+          <div class="timeline__title">{{ event.title | safe }}</div>
+          {% if event.subtitle %}
+          <p class="timeline__subtitle">{{ event.subtitle | safe }}</p>
+          {% endif %}
+          {% if event.collabed_with -%}
+          <ul class="timeline__collablist">
+            Featuring
+          {% for name in event.collabed_with -%}
+            <li>{{ name }}</li>
+          {%- endfor %}
+          </ul>
+          {%- endif %}
+        </article>
+        <div class="timeline__event_type chaos_border">{{ event.type }}</div>
+      </div>
+
+      {%- if loop.first -%}
+      <div class="timeline__media aussie">
+      {%- else -%}
+      <div class="timeline__media">
+      {%- endif -%}
+      {%- if event.media.path and event.media.width and event.media.height -%}
+        {% if event.media.is_youtube and event.media.video_id -%}
+        <div class="video placeholder" data-video_id="{{event.media.video_id}}" {%- if event.media.video_start -%}data-video_start="{{event.media.video_start}}"{%- endif -%}>
+          <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}">
+          <play-icon>
+            <circle></circle>
+            <triangle></triangle>
+          </play-icon>
+        </div>
+        {%- else -%}
+        <a href="{{ event.media.link }}" target="_blank">
+          <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}">
+        </a>
+        {%- endif -%}
+      {%- endif -%}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  <div class="squeaks">
+    <a href="#top">
+      <label>Up?</label>
+      <img src="public/images/timeline/squeaks.png">
+    </a>
+  </div>
 </main>
 {{ dialog_content }}
 {%- endblock content %}
