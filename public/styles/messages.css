@@ -1,4 +1,10 @@
 @font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Edo SZ";
   src: url("../fonts/edosz.ttf");
   font-display: block;
@@ -56,14 +62,14 @@ img.emoji {
   grid-template-columns: 20px auto;
   margin-bottom: 20px;
   width: var(--message-width);
-  font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
 
   .sender-name {
     position: relative;
     top: 5px;
     margin-right: 2rem;
     grid-area: 1 / 1 / auto / span 2;
-    font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
+    font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
     transform: rotate(356.5deg);
 
     >div {

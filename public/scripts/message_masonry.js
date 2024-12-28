@@ -5,7 +5,7 @@
     for (const font of document.fonts) {
         // Have to use `includes` because browsers are inconsistent about having quotes in the family
         // TODO: Possibly load other Noto font chunks when we have the finalised messages. Depending on page load performance.
-        if ((font.family.includes("Noto Sans JP") && font.unicodeRange.startsWith("U+0-FF"))
+        if ((!font.family.includes("JP") && !font.family.includes("KR") && font.family.includes("Noto Sans"))
             || font.family.includes("Edo SZ")) {
             font.load();
         }
