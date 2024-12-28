@@ -14,198 +14,479 @@
   font-family: "Override Characters";
   src: url("../fonts/玉ねぎ楷書激無料版v7改.ttf");
   font-display: block;
-  unicode-range: U+0023, U+002A, U+00D7;
-}
-
-.aussie {
-  transform: scale(-1);
+  unicode-range: U+0023, U+002A, U+0040, U+00D7;
 }
 
 body {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: min-content 1fr;
-  background: rgb(255 190 0);
-}
-
-main {
-  contain: inline-size;
-
-  &::before {
-    content: "";
-    position: fixed;
-    top: var(--header-height);
-    height: calc(100vh - var(--header-height));
-  }
-}
-
-.timeline {
-  display: grid;
-  grid-auto-flow: dense;
-  column-gap: 2rem;
-  grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 2fr) 0.5rem minmax(20rem, 2fr) minmax(1rem, 1fr);
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-
+  background-color: rgb(255 190 0);
   font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
 }
 
-.squeaks {
-  display: grid;
-  place-self: center;
+.bg {
+  background:
+    linear-gradient(rgb(205 205 205 / 0.5), rgb(255 255 255 / 0.5)),
+    url("../images/BAE1M.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: fixed;
-  bottom: 0;
+  top: var(--header-height);
+  width: auto;
+  height: auto;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -69;
+}
+
+.squeaks {
+  grid-area: squeaks;
+  justify-self: center;
+  padding-inline: 1rem;
+  position: sticky;
+  bottom: 4rem;
+  text-align: center;
+  transform: rotate(-45deg);
   z-index: 1;
 
-  margin: auto auto 1rem 0.5rem;
-
   a {
-    font-size: 0.8em;
     color: inherit;
     text-decoration: inherit;
   }
 
   img {
-    width: 4rem;
+    width: 5rem;
   }
+
+  label {
+    background-color: white;
+    border: 0.2em solid white;
+    border-radius: 5px;
+    font-size: clamp(0.3rem, 1vmin, 0.7rem);
+    font-weight: 500;
+  }
+}
+.squeaks:hover {
+  transform: scale(1.2);
+}
+@media (hover: none) {
+  .squeaks:hover {
+    transform: rotate(45deg);
+  }
+}
+
+main {
+  display: grid;
+  grid-template-rows: min-content auto min-content min-content;
+  grid-template-areas:
+    "header"
+    "timeline"
+    "footer"
+    "squeaks";
 }
 
 .timeline__header {
-  grid-column: 1 / -1;
-  justify-self: center;
-  font-family: "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
-  font-size: 4rem;
+  grid-area: header;
+
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 6fr) minmax(1rem, 1fr);
+  grid-template-areas: "... filters ...";
 }
 
-.timeline__footer {
-  grid-column: 1 / -1;
-  justify-self: center;
+#timeline__filters {
+  grid-area: filters;
 
-  img {
-    width: 8rem;
+  summary {
+    background-color: rgb(255 190 0);
+    border: 5px solid #00144b;
+    box-shadow: 2px 1px black;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-inline: 1rem;
+    width: fit-content;
+    float: right;
   }
-}
+  summary:hover {
+    background-color: lightgrey;
+  }
+  @media (hover: none) {
+    summary:hover {
+      background-color: rgb(255 190 0);
+    }
+  }
 
-.timeline__separator {
-  background: white;
-  position: relative;
-  grid-column: 3;
-  align-content: center;
-
-  event-marker {
-    display: grid;
-    width: 4rem;
-    height: 4rem;
-    transform: translateX(-1.8rem) translateY(-2rem);
-    background-color: white;
+  #timeline__typefilter {
     border: 0.5rem solid white;
-    border-radius: 100%;
-
-    &>* {
-      grid-area: 1/1;
-    }
-
-    cheese {
-      transform: translateY(-0.2rem);
-      background: no-repeat url("../images/timeline/icon-cheese.svg");
-    }
-    dice {
-      background: no-repeat url("../images/timeline/icon-dice.svg");
-    }
-    star {
-      transform: translateY(0.1rem);
-      background: no-repeat url("../images/timeline/icon-glowing-star.svg");
-    }
-  }
-}
-
-.timeline__info {
-  grid-column: 4;
-  justify-self: start;
-  align-content: center;
-  margin: 0rem 1rem 4rem 1rem;
-  text-align: left;
-}
-.timeline__info:nth-child(2n) {
-  grid-column: 2;
-  justify-self: end;
-  text-align: right;
-}
-
-.timeline__media {
-  grid-column: 2;
-  justify-self: end;
-  text-align: right;
-  align-content: center;
-  margin: 0rem 1rem 4rem 1rem;
-
-  img {
+    border-radius: 1rem;
+    padding: 1rem;
     width: 100%;
-    height: auto;
-    aspect-ratio: attr(width) / attr(height);
-    border-radius: 10px;
+
+    legend {
+      background-color: #11ddee;
+      border: 5px solid #00144b;
+      box-shadow: 2px 1px black;
+      padding-inline: 1rem;
+
+      label {
+        width: 100%;
+        display: inline-block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 2;
+      }
+    }
   }
 }
-.timeline__media:nth-child(2n+1) {
-  grid-column: 4;
-  justify-self: start;
-  text-align: left;
+
+.event_type_pill {
+  display: inline-flex;
+  --pill-font-size: 1.5rem;
+  background-color: #fb46ce;
+  cursor: pointer;
+  border: 5px solid #00144b;
+  box-shadow: 2px 1px black;
+  margin: 0.5rem;
+  font-size: var(--pill-font-size);
+  font-weight: 600;
+  padding-inline: 0.5rem;
+
+  color: black;
+  text-align: center;
+  width: fit-content;
+
+  border: 5px solid #00144b;
+  box-shadow: 2px 1px black;
+
+  input[type="checkbox"] {
+    appearance: none;
+    background-color: inherit;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: var(--pill-font-size);
+    height: var(--pill-font-size);
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    margin-top: 0.3rem;
+    display: grid;
+    place-content: center;
+  }
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1rem 1rem black;
+  }
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  span {
+    display: inline-block;
+    width: fit-content;
+    text-align: left;
+    margin-inline: 0.5rem;
+  }
+}
+.event_type_pill:hover {
+  background-color: lightgrey;
+}
+@media (hover: none) {
+  .event_type_pill:hover {
+    background-color: #fb46ce;
+  }
 }
 
-.timeline__date {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: white;
-}
-
-.timeline__title {
-  font-family: "Override Characters", "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
-  font-size: 1.8em;
-}
-
-.timeline__subtitle {
+#timeline {
+  grid-area: timeline;
   font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
-  font-weight: 300;
 }
 
-.timeline__collablist {
-  display: inline;
-  list-style: none;
-  padding-inline-start: 0px;
-  font-size: 0.8em;
-}
-.timeline__collablist li {
-  display: inline;
-}
-.timeline__collablist li + li:before {
-  content: ", ";
-}
+.timeline__event {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 3fr) 0.5rem minmax(20rem, 3fr) minmax(1rem, 1fr);
+  grid-template-areas: "... left line right ...";
+  column-gap: 2rem;
 
-@media only screen and (max-width: 42rem),
-       only screen and (-webkit-min-device-pixel-ratio: 3)
-{
-  .timeline {
-    grid-template-columns: 2rem 0.5rem minmax(20rem, 1fr) !important;
-  }
-
-  .timeline__separator {
-    grid-column: 2 !important;
-    grid-row: span 2;
-    align-content: start !important;
-    transform: translateX(-1.8rem) translateY(2.5rem) !important;
+  .aussie {
+    transform: scale(-1);
+    text-align: left !important;
   }
 
   .timeline__info {
-    grid-column: 3 !important;
-    text-align: left !important;
-    justify-self: start !important;
-    margin: 0rem 1rem 1rem 0rem;
+    grid-area: left;
+    justify-self: end;
+    text-align: right;
+    display: grid;
+
+    align-content: center;
+    margin: 2rem 1rem 2rem 1rem;
+
+    >article {
+      background-color: white;
+      padding: 2rem;
+    }
   }
 
   .timeline__media {
-    grid-column: 3 !important;
-    text-align: left !important;
-    justify-self: start !important;
-    margin: 0rem 1rem 4rem 0rem;
+    grid-area: right;
+    justify-self: start;
+    text-align: left;
+
+    align-content: center;
+    margin: 2rem 1rem 2rem 1rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: attr(width) / attr(height);
+      border: 5px solid #00144b;
+      box-shadow: 2px 1px black;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ff144b #00ffff #00ffff #ff144b;
+      }
+    }
   }
+
+  .timeline__marker {
+    background: white;
+    position: relative;
+    grid-area: line;
+    align-content: center;
+
+    event-marker {
+      display: grid;
+      width: 4rem;
+      height: 4rem;
+      transform: translateX(-1.8rem);
+      background-color: white;
+      border: 0.5rem solid white;
+      border-radius: 100%;
+
+      &>* {
+        grid-area: 1/1;
+      }
+
+      cheese {
+        transform: translateY(-0.2rem);
+        background: no-repeat url("../images/timeline/icon-cheese.svg");
+      }
+      dice {
+        background: no-repeat url("../images/timeline/icon-dice.svg");
+      }
+      star {
+        transform: translateY(0.1rem);
+        background: no-repeat url("../images/timeline/icon-glowing-star.svg");
+      }
+    }
+  }
+  .timeline__marker:hover {
+    > div {
+      transform: scale(1.2);
+    }
+    event-marker {
+      box-shadow: 2px 1px black;
+    }
+  }
+  @media (hover: none) {
+    .timeline__marker:hover {
+      > div {
+        transform: scale(1);
+      }
+      event-marker {
+        box-shadow: inherit;
+      }
+    }
+  }
+
+  .timeline__dateline {
+    position: relative;
+    justify-self: start;
+    background-color: #11ddee;
+    padding-inline: 1rem;
+    text-align: center;
+    font-size: clamp(0.8rem, 1.5vmin, 1.2rem);
+    font-weight: 700;
+    left: 0;
+    top: 1rem;
+    z-index: 1;
+  }
+
+  .timeline__title {
+    font-family: "Override Characters", "Edo SZ", "Tamanegi Kaisho Geki", "Noto Serif KR", serif;
+    font-size: clamp(2rem, 2.5vmin, 3rem);
+  }
+
+  .timeline__subtitle {
+    font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 2vmin, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline__collablist {
+    list-style: none;
+    padding-inline-start: 0px;
+    font-size: clamp(0.8rem, 1.5vmin, 1rem);
+  }
+  .timeline__collablist li {
+    display: inline;
+  }
+  .timeline__collablist li + li:before {
+    content: ", ";
+  }
+
+  .timeline__event_type {
+    position: relative;
+    justify-self: end;
+    right: 0;
+    bottom: 1rem;
+    background-color: #fb46ce;
+    padding-inline: 1rem;
+    text-align: center;
+    font-size: clamp(0.8rem, 1.5vmin, 1.2rem);
+    font-weight: 600;
+    z-index: 1;
+  }
+}
+.timeline__event:nth-child(2n) {
+  .timeline__info {
+    grid-area: right;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .timeline__media {
+    grid-area: left;
+    justify-self: end;
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: 42rem),
+       only screen and (-webkit-min-device-pixel-ratio: 2),
+{
+  .timeline__header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "... filters ...";
+    column-gap: 1rem;
+  }
+
+  .timeline__event {
+    grid-template-columns: 3rem 0.5rem 1fr auto;
+    grid-template-areas:
+      "... line info ..."
+      "... line media ...";
+    column-gap: 1rem;
+
+    .aussie {
+      text-align: right !important;
+    }
+
+    .timeline__info {
+      width: 100%;
+      word-break: break-word;
+      grid-area: info;
+      justify-self: start;
+      text-align: left;
+      margin: 2rem 0rem 1rem 0rem;
+    }
+
+    .timeline__dateline {
+      min-width: 30vw !important;
+      height: auto;
+    }
+
+    .timeline__event_type {
+      min-width: 30vw !important;
+      height: auto;
+    }
+
+    .timeline__media {
+      grid-area: media;
+      justify-self: start;
+      text-align: left;
+      margin: 1rem 0rem 1rem 0rem;
+    }
+
+    .timeline__marker {
+      grid-area: line;
+      align-content: start;
+      transform: translateX(-1.8rem) translateY(2.4rem);
+    }
+  }
+  .timeline__event:nth-child(2n) {
+    .timeline__info {
+      grid-area: info;
+      justify-self: start;
+      text-align: left;
+    }
+
+    .timeline__media {
+      grid-area: media;
+      justify-self: start;
+      text-align: left;
+    }
+  }
+
+  .squeaks {
+    bottom: 2rem;
+    justify-self: start;
+    transform: rotate(45deg);
+
+    img {
+      transform: scaleX(-1);
+    }
+  }
+}
+
+.chaos_border {
+  border: 5px solid #00144b;
+  box-shadow: 2px 1px black;
+  transform: rotate(358.2deg);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    border-width: 1px 2px;
+    border-style: solid;
+    border-color: #000ebf #fa144b #fa144b #000ebf;
+  }
+}
+.timeline__event:nth-child(6n+2) .chaos_border {
+  transform: rotate(356.9deg);
+}
+.timeline__event:nth-child(6n+3) .chaos_border {
+  transform: rotate(-359.9deg);
+}
+.timeline__event:nth-child(6n+4) .chaos_border {
+  transform: rotate(-358.9deg);
+}
+.timeline__event:nth-child(5n+2) .chaos_border {
+  transform: rotate(-357.9deg);
+}
+.timeline__event:nth-child(5n+3) .chaos_border {
+  transform: rotate(359.9deg);
+}
+.timeline__event:nth-child(5n+4) .chaos_border {
+  transform: rotate(357.9deg);
 }
