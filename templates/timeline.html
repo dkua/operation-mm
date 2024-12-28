@@ -41,9 +41,9 @@
     <section class="timeline__info" id="{{ loop.index }}">
     {%- endif -%}
       <div class="timeline__date">{{ event.date }}</div>
-      <div class="timeline__title">{{ event.title }}</div>
+      <div class="timeline__title">{{ event.title | safe }}</div>
       {% if event.subtitle %}
-      <p class="timeline__subtitle">{{ event.subtitle }}</p>
+      <p class="timeline__subtitle">{{ event.subtitle | safe }}</p>
       {% endif %}
       {% if event.collabed_with -%}
       <ul class="timeline__collablist">
