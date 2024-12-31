@@ -5,7 +5,12 @@ body {
 }
 
 main {
-  background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5)), no-repeat center / cover url("../images/BAE1M.jpg");
+  background:
+    linear-gradient(rgb(205 205 205 / 0.5), rgb(255 255 255 / 0.5)),
+    url("../images/BAE1M.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 1rem 2rem;
 }
 
