@@ -1,18 +1,17 @@
-{% extends "shared/base.html" %}
-{% from "shared/header-nav.html" import nav_head, nav_content %}
-{% from "shared/dialog.html" import dialog_head, dialog_content %}
-{% block head -%}
+{%- set page_current = "/timeline" -%}
+{%- extends "shared/base.html" -%}
+{%- from "shared/header-nav.html" import nav_head, nav_content -%}
+{%- from "shared/dialog.html" import dialog_head, dialog_content -%}
+{%- block head -%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 {{ nav_head }}
 <link href="public/styles/timeline.css" rel="stylesheet">
-<script src="public/scripts/timeline.js" defer></script>
 {{ dialog_head }}
-{%- endblock head %}
+{%- endblock head -%}
 
-{% block content -%}
-{% set page_current = "/timeline" -%}
+{%- block content -%}
 {%- set event_types = events | map(attribute="type") | unique | sort | list -%}
 {{ nav_content }}
 <div class="bg"></div>
@@ -30,14 +29,14 @@
           </label>
         </legend>
         <div id="choices">
-          {%- for type in event_types -%}
-          {%- set type_value = type | lower | split | join('_') -%}
-          {%- set type_name = type_value ~ "-type" -%}
+          {%- for type in event_types %}
+          {%- set type_value = type | lower | split | join('_') %}
+          {%- set type_name = type_value ~ "-type" %}
           <label class="event_type_pill" for="{{ type_name }}">
             <input type="checkbox" name="type_filter" id="{{ type_name }}" value="{{ type_value }}" checked></input>
             <span>{{ type }}</span>
           </label>
-          {%- endfor -%}
+          {%- endfor %}
         </div>
       </fieldset>
     </details>
@@ -61,23 +60,23 @@
         </div>
       </div>
 
-      {%- if loop.first -%}
+      {%- if loop.first %}
       <div class="timeline__info aussie">
-      {%- else -%}
+      {%- else %}
       <div class="timeline__info">
-      {%- endif -%}
+      {%- endif %}
         <div class="timeline__dateline chaos_border">
           {{ event.date }}
         </div>
         <article class="chaos_border">
           <div class="timeline__title">{{ event.title | safe }}</div>
-          {% if event.subtitle %}
+          {%- if event.subtitle %}
           <p class="timeline__subtitle">{{ event.subtitle | safe }}</p>
-          {% endif %}
-          {% if event.collabed_with -%}
+          {%- endif %}
+          {%- if event.collabed_with -%}
           <ul class="timeline__collablist">
             Featuring
-          {% for name in event.collabed_with -%}
+          {%- for name in event.collabed_with %}
             <li>{{ name }}</li>
           {%- endfor %}
           </ul>
@@ -86,13 +85,13 @@
         <div class="timeline__event_type chaos_border">{{ event.type }}</div>
       </div>
 
-      {%- if loop.first -%}
+      {%- if loop.first %}
       <div class="timeline__media aussie">
-      {%- else -%}
+      {%- else %}
       <div class="timeline__media">
-      {%- endif -%}
-      {%- if event.media.path and event.media.width and event.media.height -%}
-        {% if event.media.is_youtube and event.media.video_id -%}
+      {%- endif %}
+      {%- if event.media.path and event.media.width and event.media.height %}
+        {%- if event.media.is_youtube and event.media.video_id %}
         <div class="video placeholder" data-video_id="{{event.media.video_id}}" {%- if event.media.video_start -%}data-video_start="{{event.media.video_start}}"{%- endif -%}>
           <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}">
           <play-icon>
@@ -100,15 +99,15 @@
             <triangle></triangle>
           </play-icon>
         </div>
-        {%- else -%}
+        {%- else %}
         <a href="{{ event.media.link }}" target="_blank">
           <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}">
         </a>
-        {%- endif -%}
-      {%- endif -%}
+        {%- endif %}
+      {%- endif %}
       </div>
     </div>
-    {% endfor %}
+    {%- endfor %}
   </section>
   <div class="squeaks">
     <a href="#top">
@@ -119,3 +118,7 @@
 </main>
 {{ dialog_content }}
 {%- endblock content %}
+
+{%- block body_end %}
+<script src="public/scripts/timeline.js" defer></script>
+{%- endblock body_end %}

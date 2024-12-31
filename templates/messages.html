@@ -1,10 +1,11 @@
+{% set page_current = "/messages" -%}
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
 {% from "shared/dialog.html" import dialog_head, dialog_content %}
 {% block head -%}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@800&display=swap" rel="stylesheet">
-{{nav_head}}
+{{ nav_head }}
 <link href="public/styles/messages.css" rel="stylesheet">
 <link rel="preload" href="public/fonts/NotoSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="public/fonts/edosz.ttf" as="font" type="font/ttf" crossorigin>
@@ -17,8 +18,7 @@
 {%- endblock head %}
 
 {% block content -%}
-{% set page_current = "/messages" -%}
-{{nav_content}}
+{{ nav_content }}
 <main>
   <div id="msg-container" class="msg-container">
     <div id="msg-load-spinner" style="visibility: hidden;">
@@ -42,14 +42,14 @@
     <div class="sender-name">
       <div>
         <span>
-          <a href="#{{ msg.id }}">#</a> {{msg.sender_name}}
+          <a href="#{{ msg.id }}">#</a> {{ msg.sender_name }}
         </span>
       </div>
     </div>
     {% if msg.sender_title %}
     <div class="sender-title">
       <div>
-        <span>{{msg.sender_title}}</span>
+        <span>{{ msg.sender_title }}</span>
       </div>
     </div>
     {% endif %}
@@ -83,7 +83,7 @@
         </a>
       </div>
     {% endif -%}
-      <p>{{msg.message}}</p>
+      <p>{{ msg.message }}</p>
     </div>
   </div>
   {%- endfor %}

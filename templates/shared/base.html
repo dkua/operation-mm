@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Operation MM{% endblock title %}</title>
-  <link href="public/images/squeaks-favicon.png" rel="icon">
-  <link href="public/styles/reset.css" rel="stylesheet">
-  {% block head %}{% endblock head %}
+<meta charset="UTF-8">
+<title>{% block title %}Operation MM{% endblock title %}</title>
+<link href="public/images/squeaks-favicon.png" rel="icon">
+<link href="public/styles/reset.css" rel="stylesheet">
+{%- block head -%}{%- endblock head -%}
 </head>
 
 <body>
-  {% block content %}{% endblock content %}
+{%- block content -%}{%- endblock content -%}
+{%- block body_end %}{%- endblock body_end %}
 </body>
-
 </html>
