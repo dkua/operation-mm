@@ -15,6 +15,7 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-color: rgb(255 190 0);
 }
 
 img,
