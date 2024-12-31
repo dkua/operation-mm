@@ -97,6 +97,8 @@ if __name__ == "__main__":
         reader = csv.reader(csvfile)
         next(reader, None) # Skip header row
         for i, line in enumerate(reader, start=1):
+            if line[10]: # Skip row if Column K (11th) isn't blank
+                continue
             print(i, line)
             msg = process(args, line)
             messages.append(msg)
