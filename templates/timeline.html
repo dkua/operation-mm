@@ -85,7 +85,11 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
           {%- if event.collabed_with -%}
           {% set collab_num = event.collabed_with | length %}
           <ul class="timeline__collablist">
+          {%- if event.hosted_by %}
+            Hosted by
+          {%- else %}
             Featuring
+          {%- endif %}
           {%- for name in event.collabed_with %}
             {%- if loop.last and collab_num > 1 %}
             <li>and {{ name }}</li>

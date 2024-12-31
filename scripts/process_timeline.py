@@ -19,6 +19,10 @@ def process(args, line):
         event["highlight"] = True
     else:
         event["highlight"] = False
+    if line["Hosted by?"] == "TRUE":
+        event["hosted_by"] = True
+    else:
+        event["hosted_by"] = False
     event["title"] = line["Event"]
     event["subtitle"] = line["Subtitle"]
 
