@@ -3,44 +3,142 @@
   src: url("../fonts/Baefont_normal-Regular_V1.ttf");
 }
 
-body {
-  display: grid;
-  grid-template-rows: 100vh auto;
+@font-face {
+  font-family: "Edo SZ";
+  src: url("../fonts/edosz.ttf");
+  font-display: block;
 }
 
-.above-fold {
-  display: grid;
-  grid-template-rows: min-content 1fr;
-  height: 100%;
+.navbar {
+  transition: margin .75s linear;
+
+  &:not(.after-click) {
+    margin-top: -4rem;
+  }
 }
 
-.landing-contents {
-  display: grid;
-  grid-template-rows: 1fr 2rem;
-  gap: 1rem;
-  height: 100%;
-  padding: 1rem 4rem 2rem;
+.content::before {
+  z-index: -1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
   background: center / cover url("../images/BAE1M.jpg");
+}
 
-  .scroll-down {
-    grid-area: 2 / 1;
-    position: sticky;
-    bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-    font-size: 1.5em;
+.content.after-click::before {
+  margin-top: calc(var(--header-height) / 2);
+  transition: margin .75s linear;
+}
+
+.initial-content {
+  .congratulations {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: 'Edo SZ';
+    font-size: 3.5vw;
     color: white;
-    text-shadow: 2px 2px 1px black;
+    text-shadow: 3px 3px 2px black;
+    cursor: default;
+  }
+
+  .prompt {
+    position: fixed;
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Edo SZ';
+    font-size: 1.5em;
+    text-shadow: 3px 3px 2px black;
+    cursor: default;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: .25rem .5rem .25rem .25rem;
+    border: 3px solid rgba(255, 190, 0, 1);
+    box-shadow: 1px 1px black;
+  }
+
+  &.after-click {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .75s, opacity .75s linear;
+
+    &::before {
+      margin-top: calc(var(--header-height) / 2);
+      transition: margin .75s linear;
+    }
   }
 }
 
-.site-description {
-  padding: 4rem;
+@media (max-width: 900px) and (orientation: portrait) {
+  .initial-content {
+    .congratulations {
+      top: 10rem;
+      font-size: 2.5rem;
+    }
 
-  a {
-    font-family: "Haros Baelz";
-    font-size: 1.5em;
+    .prompt {
+      top: 14rem;
+      border: none;
+    }
   }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .initial-content {
+    .prompt {
+      top: 4rem;
+    }
+  }
+}
+
+main {
+  visibility: hidden;
+  opacity: 0;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+
+  &::before {
+    z-index: -1;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5));
+  }
+
+  &.after-click {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .75s linear;
+  }
+}
+
+.block {
+  flex: 1;
+  margin: 0 .5rem;
+  padding: 1rem;
+  border: 5px solid #00144b;
+  box-shadow: 2px 1px black;
+  font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
+
+  h1 {
+    font-family: 'Edo SZ';
+  }
+}
+
+.welcome {
+  background-color: rgba(255, 190, 0, 0.75);
+}
+
+.introduction {
+  background-color: rgba(17, 219, 238, 0.75);
 }
