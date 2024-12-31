@@ -1,5 +1,7 @@
+import base64
 import csv
 import html
+import io
 import json
 import requests
 
@@ -46,19 +48,22 @@ def process_media(args, link, image):
     else:
         media["is_youtube"] = False
     
-    if media["is_youtube"]:
-        media["path"] = f"https://i.ytimg.com/vi/{media['video_id']}/maxresdefault.jpg"
-        # YouTube's default max resolution for thumbnails is 1280x720
-        media["width"] = 1280
-        media["height"] = 720
+    if media["is_youtube"] and media["video_id"]:
+        url = f"https://i.ytimg.com/vi/{media['video_id']}/maxresdefault.jpg"
+        path, placeholder, width, height = process_image(args, url, save=False)
+        media["path"] =  path
+        media["placeholder"] = placeholder
+        media["width"] = width
+        media["height"] = height
         if "t" in params:
             media["video_start"] = params["t"].split("s")[0]
     else:
         media["link"] = link
     
     if image:
-        path, width, height = download_image(args, image)
+        path, placeholder, width, height = process_image(args, image)
         media["path"] = path
+        media["placeholder"] = placeholder
         media["width"] = width
         media["height"] = height
         if not link:
@@ -66,25 +71,33 @@ def process_media(args, link, image):
 
     return media
 
-def download_image(args, image_url):
-    filepath, w, h = None, None, None
-    resp = requests.get(image_url)
+def process_image(args, image_url, save=True):
+    filepath, placeholder, w, h = None, None, None, None
+    resp = requests.get(image_url, stream=True)
 
     if resp.status_code == 200 and resp.headers['content-type'].startswith("image/"):
-        ext = guess_extension(resp.headers['Content-Type'].partition(';')[0].strip())
-        hash_id = md5(image_url.encode("utf-8")).hexdigest()
-        filepath = f"{args.image_path}/{hash_id}{ext}"
-
-        output = Path(filepath)
-        if not output.exists():
-            output.parent.mkdir(exist_ok=True, parents=True)
-            with output.open("wb") as f:
-                f.write(resp.content)
-
-        with Image.open(filepath) as img:
+        with Image.open(resp.raw) as img:
             w, h = img.size
+            print(image_url, w, h, img.format)
+            # Generate Base64 encoded tiny thumbnail no larger than 30x30
+            with io.BytesIO() as buffer:
+                thumbnail = img.copy()
+                thumbnail.thumbnail((30, 30))
+                thumbnail.save(buffer, format='PNG')
+                placeholder = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
-    return filepath, w, h
+            if save:
+                ext = guess_extension(resp.headers['Content-Type'].partition(';')[0].strip())
+                hash_id = md5(image_url.encode("utf-8")).hexdigest()
+                filepath = f"{args.image_path}/{hash_id}{ext}"
+                output = Path(filepath)
+                if not output.exists():
+                    output.parent.mkdir(exist_ok=True, parents=True)
+                img.save(output)
+            else:
+                filepath = image_url
+
+    return filepath, placeholder, w, h
 
 if __name__ == "__main__":
     parser = ArgumentParser()
