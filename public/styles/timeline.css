@@ -348,7 +348,7 @@ main {
     display: inline;
   }
   .timeline__collablist li + li:before {
-    content: ", ";
+    content: " ";
   }
 
   .timeline__event_type {
