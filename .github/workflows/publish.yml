@@ -2,7 +2,7 @@ name: Publish to GitHub Pages
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "home-page", "main", "master" ]
   pull_request:
 
 env:
@@ -36,6 +36,8 @@ jobs:
     needs: build
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
+      actions: read
+      contents: read
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
     # Deploy to the github-pages environment
