@@ -43,6 +43,9 @@
   </section>
 
   <section id="timeline">
+    <div class="baetag">
+      <img src="public/images/baetag.png" width="900" height="618">
+    </div>
     {% for event in events %}
     {% set event_type = event.type | lower | split | join('_') %}
     <div class="timeline__event" id="{{ loop.index }}" event-type="{{ event_type }}">
