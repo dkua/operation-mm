@@ -88,7 +88,10 @@ main {
 
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 6fr) minmax(1rem, 1fr);
-  grid-template-areas: "... filters ...";
+  grid-template-rows: min-content min-content;
+  grid-template-areas:
+    "... filters ..."
+    "... baetag ...";
 }
 
 #timeline__filters {
@@ -199,6 +202,43 @@ main {
   .event_type_pill:hover {
     background-color: #fb46ce;
   }
+}
+
+.baetag {
+  grid-area: baetag;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-areas: "... baetag_img ...";
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 1rem;
+
+  >img {
+    grid-area: baetag_img;
+    width: 100%;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height);
+    justify-self: center;
+    position: relative;
+
+    filter:
+      drop-shadow(0.5rem 0 0 white)
+      drop-shadow(0 0.5rem 0 white)
+      drop-shadow(-0.5rem 0 0 white)
+      drop-shadow(0 -0.5rem 0 white);
+  }
+
+}
+.baetag::before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  top: 50%;
+  width: 0.5rem;
+  background: white;
 }
 
 #timeline {
@@ -441,6 +481,10 @@ main {
       justify-self: start;
       text-align: left;
     }
+  }
+
+  .baetag {
+    display: none;
   }
 
   .squeaks {
