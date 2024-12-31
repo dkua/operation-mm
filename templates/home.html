@@ -1,28 +1,66 @@
-{% set page_current = "/home" -%}
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
-{{ nav_head }}
+{{nav_head}}
 <link href="public/styles/home.css" rel="stylesheet">
+
+<script type="text/javascript">
+  let site_opened = false;
+
+  /*document.addEventListener('DOMContentLoaded', () => {
+    openSite();
+  }, true);*/
+
+  document.addEventListener('click', () => {
+    openSite();
+  }, true);
+
+  function openSite() {
+    if (site_opened) {
+      return;
+    }
+
+    site_opened = true;
+
+    const elements = document.getElementsByClassName('react-after-click');
+    for (let element of elements) {
+      element.classList.add('after-click');
+    }
+  }
+</script>
 {%- endblock head %}
 
 {% block content -%}
 <div class="above-fold">
-  {{ nav_content }}
-  <main>
-    <div class="landing-contents">
-      <div class="scroll-down">Scroll down for more</div>
+  {% set page_current = "/home" -%}
+  <div class="navbar react-after-click">
+    {{nav_content}}
+  </div>
+  <div class="content react-after-click">
+    <div class="initial-content react-after-click">
+      <div class="congratulations">
+        CONGRATULATIONS ON 1 MILLION SUBSCRIBERS BAE!
+      </div>
+      <div class="prompt">
+        Click anywhere to continue
+      </div>
     </div>
-  </main>
-</div>
-<div class="site-description">
-  <p>Prototyping grounds for a fan site for Chaos, the End of ends, steel rose trapped in a cage of ice, vtuber <a
-      href="https://www.youtube.com/@hakosbaelz">Hakos Baelz</a>. If that's you, you should not be looking at this
-    now.
-  </p>
-  <h2>Disclaimers</h2>
-  <ul>
-    <li>You can probably tell, but design is not my strong suit <span style="font-size: 8px;">send help</span></li>
-  </ul>
+    <main class="react-after-click">
+      <div class="block welcome">
+        <h1>WAZZUP</h1>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi felis, faucibus ac interdum nec, scelerisque quis dui. Suspendisse a nisi ut nisl mollis auctor. Nullam justo sem, rhoncus id ante eget, finibus tincidunt est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi vitae tincidunt enim. Nam consectetur id odio vitae gravida. Mauris in ornare risus. Donec purus libero, tempor vel faucibus in, finibus eget justo. Donec facilisis elit ac pharetra pretium. Quisque finibus, nulla at auctor ornare, augue eros ullamcorper mi, sed sollicitudin arcu nulla ut libero. Fusce gravida blandit nunc nec facilisis. Nunc arcu ex, consequat sit amet lacinia et, tincidunt ut purus. In vitae odio magna. Mauris interdum, sapien vitae blandit tempor, neque augue venenatis diam, vitae gravida purus elit sit amet metus.</p>
+        <br/>
+        <p>Vivamus tempus sapien ex, vulputate posuere diam ornare faucibus. Praesent nec finibus lorem. Integer sit amet metus vestibulum, eleifend sapien a, egestas justo. Morbi vel nibh ultrices, vestibulum massa vitae, auctor purus. Mauris sed posuere diam, vel iaculis lectus. Sed sollicitudin aliquet lacinia. Morbi pretium tempor mollis. Praesent turpis diam, sagittis eget sem non, tristique semper dui. Praesent pretium, tellus id venenatis ultricies, enim mauris malesuada augue, condimentum fringilla mi turpis eleifend sem. Fusce varius lectus in justo rutrum, at imperdiet quam blandit. Donec non lacinia urna, vitae faucibus mi. Aliquam erat volutpat. Curabitur scelerisque aliquet diam eu viverra. Proin sit amet erat justo. Etiam non diam pulvinar, finibus tortor dapibus, faucibus justo. Donec consequat sagittis ligula.</p>
+        <br/>
+        <p>Mauris id sem ac orci fringilla ullamcorper porta a felis. Praesent interdum nunc suscipit orci sollicitudin vehicula. Donec ut sapien sit amet urna elementum aliquet nec nec diam. Mauris vitae nunc risus. Nullam vitae nulla quis arcu convallis hendrerit nec id diam. Phasellus velit dolor, tempor id dui non, vulputate malesuada nibh. Nullam neque erat, sodales sit amet odio eu, maximus rutrum ipsum. Aliquam mollis rutrum nisi eget semper. Mauris rutrum condimentum ex, eu pharetra justo venenatis sed. Maecenas vestibulum nisi est, a interdum mauris mattis ut. Aenean in ligula eget diam finibus porta. Suspendisse lobortis, elit in iaculis tempor, nisi risus pharetra orci, eget viverra nibh turpis vitae metus. Nullam gravida vel sapien eget tincidunt. Quisque cursus ac ipsum vel luctus. Vestibulum tempus in ante eget scelerisque.</p>
+      </div>
+      <div class="block introduction">
+        *something something something*
+        <br/>
+        *video*
+      </div>
+    </main>
+  </div>
 </div>
 {%- endblock content %}
