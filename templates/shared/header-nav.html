@@ -1,7 +1,7 @@
-{% macro link(path_link, page_path, display_text) %}
-<a {% if page_current is startingwith page_path -%} class="active" {% endif -%}
-  href="{{path_link}}">{{display_text}}</a>
-{% endmacro -%}
+{% macro link(path_link, page_path, display_text) -%}
+<a {% if page_current is startingwith page_path %} class="active" {%- endif -%}
+  href="{{ path_link }}">{{ display_text }}</a>
+{%- endmacro -%}
 {% set nav_head %}
 <link rel="preload" href="public/fonts/Baefont_normal-Regular_V1.ttf" as="font" type="font/ttf" crossorigin>
 <link href="public/styles/header-nav.css" rel="stylesheet">
@@ -10,10 +10,10 @@
 <header>
   <nav aria-label="Site navigation">
     <menu>
-      <li>{{link("index.html", "/home", "Home")}}</li>
-      <li>{{link("messages.html", "/messages", "Messages")}}</li>
-      <li>{{link("timeline.html", "/timeline", "Timeline")}}</li>
-      <li>{{link("credits.html", "/credits", "Credits")}}</li>
+      <li>{{ link("index.html", "/home", "Home") }}</li>
+      <li>{{ link("messages.html", "/messages", "Messages") }}</li>
+      <li>{{ link("timeline.html", "/timeline", "Timeline") }}</li>
+      <li>{{ link("credits.html", "/credits", "Credits") }}</li>
     </menu>
   </nav>
 </header>

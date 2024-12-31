@@ -1,13 +1,13 @@
+{% set page_current = "/credits" -%}
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
-{{nav_head}}
+{{ nav_head }}
 <link href="public/styles/credits.css" rel="stylesheet">
-{%- endblock head %}}
+{%- endblock head %}
 
 {% block content -%}
-{% set page_current = "/credits" -%}
-{{nav_content}}
+{{ nav_content }}
 <main>
   <div class="credits">
     <ul>
