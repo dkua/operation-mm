@@ -323,14 +323,14 @@ main {
 
       cheese {
         transform: translateY(-0.2rem);
-        background: no-repeat url("../images/timeline/icon-cheese.svg");
+        background: no-repeat url("../images/icon-cheese.svg");
       }
       dice {
-        background: no-repeat url("../images/timeline/icon-dice.svg");
+        background: no-repeat url("../images/icon-dice.svg");
       }
       star {
         transform: translateY(0.1rem);
-        background: no-repeat url("../images/timeline/icon-glowing-star.svg");
+        background: no-repeat url("../images/icon-glowing-star.svg");
       }
     }
   }
