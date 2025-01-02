@@ -7,10 +7,6 @@
 <script type="text/javascript">
   let site_opened = false;
 
-  /*document.addEventListener('DOMContentLoaded', () => {
-    openSite();
-  }, true);*/
-
   document.addEventListener('click', () => {
     openSite();
   }, true);
@@ -26,6 +22,9 @@
     for (let element of elements) {
       element.classList.add('after-click');
     }
+
+    document.body.classList.add('after-click');
+    window.scrollTo(0, 0);
   }
 </script>
 {%- endblock head %}
@@ -56,9 +55,14 @@
         <p>Mauris id sem ac orci fringilla ullamcorper porta a felis. Praesent interdum nunc suscipit orci sollicitudin vehicula. Donec ut sapien sit amet urna elementum aliquet nec nec diam. Mauris vitae nunc risus. Nullam vitae nulla quis arcu convallis hendrerit nec id diam. Phasellus velit dolor, tempor id dui non, vulputate malesuada nibh. Nullam neque erat, sodales sit amet odio eu, maximus rutrum ipsum. Aliquam mollis rutrum nisi eget semper. Mauris rutrum condimentum ex, eu pharetra justo venenatis sed. Maecenas vestibulum nisi est, a interdum mauris mattis ut. Aenean in ligula eget diam finibus porta. Suspendisse lobortis, elit in iaculis tempor, nisi risus pharetra orci, eget viverra nibh turpis vitae metus. Nullam gravida vel sapien eget tincidunt. Quisque cursus ac ipsum vel luctus. Vestibulum tempus in ante eget scelerisque.</p>
       </div>
       <div class="block introduction">
-        *something something something*
-        <br/>
-        *video*
+        <h1>Allow us to introduce ourselves</h1>
+        <h2>(SOUND ON)</h2>
+        STREAM KOKORONASHI
+        <br>
+        <div class="video-container react-after-click">
+          <iframe class="video" src="https://www.youtube.com/embed/5zhbYmwl8Tk" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
       </div>
     </main>
   </div>
