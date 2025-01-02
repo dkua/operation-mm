@@ -31,6 +31,18 @@
             }
         },
         {
+            "id": "0b4a717581a032730b168fd6dfd2b50a",
+            "sender_name": "RKGenki",
+            "sender_title": "Perpetually Genki Artist, Herald of Chaos",
+            "message": "Hey Bae, congrats on reaching 1M subs!!! I've been watching you for almost 3 years now and I can say you more than deserve it, with how hardworking, dedicated and amazing you are!!! You've been an huge source of inspiration and motivation in these years, if not for you I'd have given up on drawing long ago and never would've found this amazing community! I'll keep supporting you no matter what, onwards to many more millions and many more amazing achievements! Love you Bae, forever my kamioshi!!!",
+            "media": {
+                "is_youtube": false,
+                "path": "public/images/messages/0b4a717581a032730b168fd6dfd2b50a.jpg",
+                "width": 4096,
+                "height": 2271
+            }
+        },
+        {
             "id": "0c169315b458151a45a3ccbeadfd87e4",
             "sender_name": "Memo",
             "sender_title": "Sniffer of Chaotic Cheeses",
@@ -803,18 +815,6 @@
             }
         },
         {
-            "id": "8933228634a7861bcbf05c69ee225194",
-            "sender_name": "RKGenki",
-            "sender_title": "",
-            "message": "WIP I DUNNO WHAT TO WRITE YET AAAAAAAAAAAA",
-            "media": {
-                "is_youtube": false,
-                "path": "public/images/messages/8933228634a7861bcbf05c69ee225194.jpg",
-                "width": 4096,
-                "height": 2271
-            }
-        },
-        {
             "id": "8b99a8bbf29b67b3db273caf020fd0bf",
             "sender_name": "R•Lus",
             "sender_title": "Artistc Brat",
@@ -1012,6 +1012,16 @@
                 "video_id": "JBcr_gujGow",
                 "width": 1280,
                 "height": 720
+            }
+        },
+        {
+            "id": "b2b5e844c6920ed4681026c9531b5ce7",
+            "sender_name": "Pine",
+            "sender_title": "六神将, 鮮血のパイン",
+            "message": "All of your hard work over the years has always been a huge inspiration to me. Seeing you push yourself every day to live your dream and give back to your fans gave me the motivation to push myself even harder and try so many new things, like travelling to see you live! I can say with confidence that out of those million subs, you’ve changed the life of this one (and many more!) for the better. I hope I get to keep working hard alongside you for many years to come; here’s to the next million!",
+            "media": {
+                "is_youtube": false,
+                "path": null
             }
         },
         {
