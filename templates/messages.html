@@ -43,6 +43,10 @@
       <div>
         <span>
           <a href="#{{ msg.id }}">#</a> {{ msg.sender_name }}
+
+          {% if msg.sender_name|lower == "mikururun" %}
+            <img src="public/images/bae_pat.png" loading="lazy" class="emoji pat-the-miku" />
+          {% endif %}
         </span>
       </div>
     </div>
