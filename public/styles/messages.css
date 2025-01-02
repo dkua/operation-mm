@@ -42,6 +42,11 @@ img.emoji {
   width: 1.2em;
   margin: 0 .075em;
   vertical-align: -20%;
+
+  &.pat-the-miku {
+    height: 1.4em;
+    width: 1.4em;
+  }
 }
 
 .msg-container {
