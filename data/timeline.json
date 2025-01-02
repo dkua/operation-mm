@@ -4,6 +4,7 @@
             "date": "17/08/2021",
             "type": "First",
             "highlight": true,
+            "hosted_by": false,
             "title": "First Tweet!",
             "subtitle": "",
             "collabed_with": [],
@@ -20,6 +21,7 @@
             "date": "23/08/2021",
             "type": "First",
             "highlight": true,
+            "hosted_by": false,
             "title": "DEBUT STREAM",
             "subtitle": "omg it's debut Bae",
             "collabed_with": [],
@@ -36,6 +38,7 @@
             "date": "23/08/2021",
             "type": "First",
             "highlight": true,
+            "hosted_by": false,
             "title": "First Council Collab",
             "subtitle": "",
             "collabed_with": [
@@ -54,6 +57,7 @@
             "date": "02/09/2021",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Bayonetta 2!",
             "subtitle": "",
             "collabed_with": [],
@@ -70,6 +74,7 @@
             "date": "04/09/2021",
             "type": "First",
             "highlight": true,
+            "hosted_by": false,
             "title": "Superchats Unlocked!",
             "subtitle": "",
             "collabed_with": [],
@@ -86,6 +91,7 @@
             "date": "23/09/2021",
             "type": "First",
             "highlight": true,
+            "hosted_by": false,
             "title": "Memberships Unlocked!",
             "subtitle": "WELCOME TO THE RAT PACK",
             "collabed_with": [],
@@ -102,6 +108,7 @@
             "date": "24/09/2021",
             "type": "First",
             "highlight": false,
+            "hosted_by": false,
             "title": "First Senpai Collab",
             "subtitle": "",
             "collabed_with": [
@@ -120,6 +127,7 @@
             "date": "29/09/2021",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "BaeRys Origin",
             "subtitle": "",
             "collabed_with": [
@@ -143,6 +151,7 @@
             "date": "02/10/2021",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Learned how to pronounce Acacia",
             "subtitle": "A-ka-see-ya",
             "collabed_with": [
@@ -164,6 +173,7 @@
             "date": "07/10/2021",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "First BaeRys Divorce",
             "subtitle": "They'll get back together soon don't worry",
             "collabed_with": [
@@ -182,6 +192,7 @@
             "date": "09/10/2021",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Little Nightmares",
             "subtitle": "",
             "collabed_with": [],
@@ -198,6 +209,7 @@
             "date": "11/10/2021",
             "type": "First",
             "highlight": false,
+            "hosted_by": false,
             "title": "First JP Senpai Collab",
             "subtitle": "",
             "collabed_with": [
@@ -216,6 +228,7 @@
             "date": "20/10/2021",
             "type": "First",
             "highlight": false,
+            "hosted_by": false,
             "title": "First ID Senpai Collab",
             "subtitle": "",
             "collabed_with": [
@@ -236,6 +249,7 @@
             "date": "30/10/2021",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of HAPPY HALLOWEEN by junky ",
             "subtitle": "",
             "collabed_with": [],
@@ -252,6 +266,7 @@
             "date": "31/10/2021",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "HoloEN Halloween 2021",
             "subtitle": "",
             "collabed_with": [
@@ -272,6 +287,7 @@
             "date": "04/11/2021",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Ken(t)'s Debut!",
             "subtitle": "Turns out Ken's original name was Kent? And bro started crawling away when Bae started singing lmaoooo",
             "collabed_with": [
@@ -292,6 +308,7 @@
             "date": "04/11/2021",
             "type": "First",
             "highlight": true,
+            "hosted_by": false,
             "title": "First Twitter Space! #SuikaSpace",
             "subtitle": "And the first ever Twitter Space for Hololive EN! Sasuga VSpacer",
             "collabed_with": [],
@@ -308,10 +325,11 @@
             "date": "06/11/2021",
             "type": "Special",
             "highlight": false,
+            "hosted_by": true,
             "title": "Participated in the Hololive Sports Festival 2021!",
             "subtitle": "First big hololive event that Bae was in!",
             "collabed_with": [
-                "Many"
+                "Miko"
             ],
             "media": {
                 "is_youtube": true,
@@ -326,6 +344,7 @@
             "date": "16/11/2021",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Bae meets her oshi for the first time",
             "subtitle": "So do you pee like a charge rifle or a knuckle cluster?",
             "collabed_with": [
@@ -346,6 +365,7 @@
             "date": "20/11/2021",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Council meets at their own Anime NYC panel!",
             "subtitle": "Also Bae's first appearance at a convention!",
             "collabed_with": [
@@ -364,6 +384,7 @@
             "date": "24/11/2021",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "First time oversleeping and streaming late",
             "subtitle": "1 Bae = 1 Hour",
             "collabed_with": [],
@@ -380,6 +401,7 @@
             "date": "27/11/2021",
             "type": "Special",
             "highlight": true,
+            "hosted_by": false,
             "title": "The Inuyasha Karaoke Stream!",
             "subtitle": "",
             "collabed_with": [],
@@ -396,6 +418,7 @@
             "date": "29/11/2021",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "The first episode of BaeWatch",
             "subtitle": "",
             "collabed_with": [
@@ -414,6 +437,7 @@
             "date": "21/12/2021",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang in a cover of The Twelve Days of Christmas ",
             "subtitle": "",
             "collabed_with": [
@@ -432,6 +456,7 @@
             "date": "01/01/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang in a cover of Ochame Kinou by LamazeP",
             "subtitle": "",
             "collabed_with": [
@@ -450,10 +475,12 @@
             "date": "07/01/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": true,
             "title": "Competed in the Hololive New Year Cup 2022!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Towa",
+                "A-chan"
             ],
             "media": {
                 "is_youtube": true,
@@ -468,6 +495,7 @@
             "date": "16/01/2022",
             "type": "Outfit Reveal",
             "highlight": false,
+            "hosted_by": false,
             "title": "Revealed the kimono outfit! #HoloENKimonoRelay",
             "subtitle": "",
             "collabed_with": [],
@@ -484,6 +512,7 @@
             "date": "20/01/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "CALLI LET ME SMELL YOUR FEET!",
             "subtitle": "\"Calli it's a misunderstanding. Calli. Calli. C-Calli.\"",
             "collabed_with": [
@@ -503,6 +532,7 @@
             "date": "26/01/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Hololive Ministry's debut stream!",
             "subtitle": "Hayko's debut!",
             "collabed_with": [
@@ -525,6 +555,7 @@
             "date": "30/01/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Uploaded a cover of Hontou no Oto by KOKIA",
             "subtitle": "",
             "collabed_with": [],
@@ -541,6 +572,7 @@
             "date": "30/01/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released the first episode of CHAD CAST!",
             "subtitle": "",
             "collabed_with": [
@@ -560,6 +592,7 @@
             "date": "01/02/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "FeBAErary 2022 begins!",
             "subtitle": "",
             "collabed_with": [],
@@ -576,6 +609,7 @@
             "date": "03/02/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Resident Evil: Village",
             "subtitle": "",
             "collabed_with": [
@@ -594,6 +628,7 @@
             "date": "23/02/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang in a cover of Hikaru Nara by Goose House",
             "subtitle": "",
             "collabed_with": [
@@ -612,6 +647,7 @@
             "date": "24/02/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Wife Dubs",
             "subtitle": "",
             "collabed_with": [
@@ -631,6 +667,7 @@
             "date": "28/02/2022",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released the MV for PLAY DICE!",
             "subtitle": "",
             "collabed_with": [],
@@ -647,6 +684,7 @@
             "date": "28/02/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Bae's first not birthday totsumachi stream! #ItsNotBaesBday",
             "subtitle": "",
             "collabed_with": [
@@ -685,7 +723,7 @@
                 "Moona",
                 "Risu",
                 "Lui",
-                "Laplus"
+                "La+"
             ],
             "media": {
                 "is_youtube": true,
@@ -700,6 +738,7 @@
             "date": "26/03/2022",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "Celebrating 500k subscribers!",
             "subtitle": "",
             "collabed_with": [],
@@ -716,6 +755,7 @@
             "date": "15/03/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Mark's Debut!",
             "subtitle": "And also rating some pick up lines I guess.",
             "collabed_with": [
@@ -736,6 +776,7 @@
             "date": "20/03/2022",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "CouncilRyS holds a debate contest and karaoke party at hololive SUPER EXPO 2022!",
             "subtitle": "",
             "collabed_with": [
@@ -754,6 +795,7 @@
             "date": "31/03/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Sucker For Love ",
             "subtitle": "",
             "collabed_with": [],
@@ -770,6 +812,7 @@
             "date": "01/04/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "SwApril Fools",
             "subtitle": "",
             "collabed_with": [
@@ -788,6 +831,7 @@
             "date": "02/04/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Showed up as a guest on ironmouse's Speak of the Devil!",
             "subtitle": "Also Bae's Twitch debut!",
             "collabed_with": [
@@ -806,6 +850,7 @@
             "date": "02/05/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "PICKLE BREAR",
             "subtitle": "New nickname Haros Baelz unlocked!",
             "collabed_with": [],
@@ -823,6 +868,7 @@
             "date": "06/05/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing VA-11 Hall-A!",
             "subtitle": "Bring Dorothy back",
             "collabed_with": [],
@@ -839,6 +885,7 @@
             "date": "12/05/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Oui Oui PP",
             "subtitle": "",
             "collabed_with": [
@@ -861,6 +908,7 @@
             "date": "16/05/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "First PP Ever Drawn ",
             "subtitle": "",
             "collabed_with": [],
@@ -878,6 +926,7 @@
             "date": "18/05/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Made a promise for 1 million subscribers",
             "subtitle": "Making brownies with FriendTaro!",
             "collabed_with": [],
@@ -895,6 +944,7 @@
             "date": "21/05/2022",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Went to Anime Central 2022!",
             "subtitle": "",
             "collabed_with": [
@@ -913,6 +963,7 @@
             "date": "29/06/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "HOLOMYTH Offcollab ft. Bae",
             "subtitle": "",
             "collabed_with": [
@@ -931,6 +982,7 @@
             "date": "01/07/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "HYTE Case Release",
             "subtitle": "",
             "collabed_with": [],
@@ -947,6 +999,7 @@
             "date": "07/07/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Big Hololive EN Offcollab!",
             "subtitle": "",
             "collabed_with": [
@@ -968,6 +1021,7 @@
             "date": "16/07/2022",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Did a 1-on-1 Meet and Greet at SMASH! in Sydney!",
             "subtitle": "",
             "collabed_with": [
@@ -986,6 +1040,7 @@
             "date": "21/07/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "CouncilRyS BEEGsmols Debut",
             "subtitle": "",
             "collabed_with": [
@@ -1004,6 +1059,7 @@
             "date": "31/07/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sana is Eternal!",
             "subtitle": "When our hearts grow bigger than the sun there's no challenge we can't overcome. So send them over and watch our supernova explode",
             "collabed_with": [
@@ -1022,6 +1078,7 @@
             "date": "06/08/2022",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Drew the Hololive Family Tree at Crunchyroll Expo!",
             "subtitle": "Updated version when?",
             "collabed_with": [
@@ -1040,6 +1097,7 @@
             "date": "07/08/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "OG FriendTaro's Voice Debut!",
             "subtitle": "",
             "collabed_with": [],
@@ -1056,6 +1114,7 @@
             "date": "08/08/2022",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "Ring Fit Adventure endurance until 600,699 subs",
             "subtitle": "",
             "collabed_with": [],
@@ -1072,6 +1131,7 @@
             "date": "13/08/2022",
             "type": "Special",
             "highlight": true,
+            "hosted_by": false,
             "title": "The Naruto Karaoke Stream!",
             "subtitle": "",
             "collabed_with": [],
@@ -1088,6 +1148,7 @@
             "date": "15/08/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "The Birth of Hijitaro",
             "subtitle": "Speaking of stretching, can you touch your elbows together?",
             "collabed_with": [],
@@ -1105,6 +1166,7 @@
             "date": "22/08/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "MR SQUEAKS DEBUT",
             "subtitle": "Quite possibly the most important stream on the channel",
             "collabed_with": [
@@ -1123,6 +1185,7 @@
             "date": "23/08/2022",
             "type": "Special",
             "highlight": true,
+            "hosted_by": false,
             "title": "Council One Year Anniversary #councilTHEfirst",
             "subtitle": "",
             "collabed_with": [
@@ -1143,6 +1206,7 @@
             "date": "23/08/2022",
             "type": "Group Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released Rise!",
             "subtitle": "",
             "collabed_with": [
@@ -1161,6 +1225,7 @@
             "date": "27/08/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Bae's One Year Anniversary stream!",
             "subtitle": "",
             "collabed_with": [],
@@ -1177,6 +1242,7 @@
             "date": "27/08/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of A Million Miles Away by BELLE",
             "subtitle": "",
             "collabed_with": [
@@ -1204,6 +1270,7 @@
             "date": "28/08/2022",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Held a panel at SEOUL POPCORN!",
             "subtitle": "",
             "collabed_with": [
@@ -1222,6 +1289,7 @@
             "date": "02/09/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Traumatized an old man",
             "subtitle": "",
             "collabed_with": [
@@ -1241,6 +1309,7 @@
             "date": "11/09/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Participated in Gura's Big Brain Games!",
             "subtitle": "",
             "collabed_with": [
@@ -1264,6 +1333,7 @@
             "date": "17/09/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Uploaded a cover of Animal by DECO*27",
             "subtitle": "",
             "collabed_with": [
@@ -1282,6 +1352,7 @@
             "date": "18/09/2022",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Invited as a special guest at Crunchyroll Expo Australia!",
             "subtitle": "",
             "collabed_with": [
@@ -1300,6 +1371,7 @@
             "date": "23/09/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Bae forgot to stream",
             "subtitle": "",
             "collabed_with": [
@@ -1319,6 +1391,7 @@
             "date": "25/09/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Jacob exposed for trapping his roommate in the toilet without toilet paper for 30 minutes",
             "subtitle": "Hey ~ my lovely roomate Jacob, I know u 're watching Bae's streaming...if u read this SC, plz plz plz....get me toilet paper...I have been stucked in restroom for 30 mins already....ToT Sry for taking up your SC, super kawaii BaeBae :P",
             "collabed_with": [
@@ -1337,6 +1410,7 @@
             "date": "04/10/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Bae & Fauna's Month of Horrors begins!",
             "subtitle": "",
             "collabed_with": [
@@ -1355,6 +1429,7 @@
             "date": "16/10/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of QUEEN by Kanaria",
             "subtitle": "",
             "collabed_with": [
@@ -1373,6 +1448,7 @@
             "date": "23/10/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of STRANGE by ¿?",
             "subtitle": "",
             "collabed_with": [],
@@ -1389,6 +1465,7 @@
             "date": "29/10/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Bayonetta 3 endurance stream",
             "subtitle": "Bae's first 12 hour endurance stream!",
             "collabed_with": [],
@@ -1405,6 +1482,7 @@
             "date": "31/10/2022",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Hololive Escape Room for Holoween!",
             "subtitle": "Spider Bae's debut!",
             "collabed_with": [
@@ -1421,9 +1499,31 @@
             }
         },
         {
+            "date": "06/11/2022",
+            "type": "Special",
+            "highlight": false,
+            "hosted_by": true,
+            "title": "Participated in the Hololive Sports Festival 2022!",
+            "subtitle": "",
+            "collabed_with": [
+                "Miko",
+                "Mio",
+                "Subaru"
+            ],
+            "media": {
+                "is_youtube": true,
+                "video_id": "zzVkTTwShzE",
+                "path": "https://i.ytimg.com/vi/zzVkTTwShzE/maxresdefault.jpg",
+                "placeholder": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAARCAIAAABFBIsgAAAFmElEQVR4nEXU72sb5wHA8ed57rnTSac7/dYpkm1JsWNZst3E3mS7JG23kqYpbWkpYxt7M8bYDygZjL0Y9MVelMFe78XYYLAVutHBSklpWtqmDk7sxHZDWzVWHMc/ZMu2ZP06+U7SnXQ/n74oY98/4PPyC/PXHPC/CIEQAscGoQCYy4GFDKk2jf8ukd92/52iavqvf8b13+vBB3+7/ybH+GIh9J0s/XkJDSzgokgu7vQG8MYSbLRALtWZOXsK89fIty6CgKaI4UAPb197qjIS0+7D+PPqYuvLh7zmSGpXSmfkxvqhi9l10i1z5Cx7tQv4CxPEy5FmixxWUF0GAVa9kJZjwQEEBDMYuBEZUI4Yq/w+tXb/wCycnYkc/EP/snFLeAk0P531n+wHM1SpHhqfGlNiz7rddy7O/PnB6rO+Mcc7eyYAVzbAdhmE3drFc+2k2IfQcRwIIMK/+zFwgeJy4aZcX1W+0hJuXpW228pmlB/80vk7SPOJ6Zg42KeXWtp+TZ9+wvPOv07TWZfUC1u34Pj0/hfr1oPkj8KH3oUIRYH+wGQZBmNMCMEWMB6vfPja7mFMH98yNy/8Cl8ZkruPidcxoGW09LrHYg1bJnHTuHO7PJzYpD3Xv9g8sYWPzWcmHpaz6r2feAou1lhvz3vTyXJl6+7W3gv5uYAg4OUbK5m1z6eFUV3tBLmelzkxepV+u0oIlPpUXaM1I3RkZupx0Z0Y++Gl6dVsznW7lDWjudHxee9SdHKhWpNaA8ttWU63mcqd+1oZ/HPxpmACPBs/TGhKVdkliEZRtfTVfqep7bvmO4nLg0Cs4hPbHU4fCArx+hE3r/GvTjNJeqjW6WGmpUp8Q0VWNCuwTEUeuDi3ExYmE0LYygh6Gb9TmPkB+kw293YIXq88576RN2nM5a9mhrNegCJNt2V7WAEHdYr1A8w6jg3mEtyxArqCRSdmq62O2rc3uhQL0ajVFIrFYkPNpcZ8JzV8fm7sLXBtRlR8ISEbnFdP5bTQiIwMjSa5o1NyJMPQMPjprHos9SQcvDhKt2oqrTQNLkARpyG7PlnpTp6zXx4J4bbUpf1v7dqJzFTr+NjwTeHcqPT2ys0nM7+4mBfBQPZu/0drn3T1K2vVSxQFbGyK+r3iJ4+K3vzrL4jEBpRtYcaOpxyGF11NWzreM4loSNTa4o4zh/wDrd6btKAvC2ykMYn8xNT15b9+8PEijUldMXVu3IMcwWmGcddf/Wjn3vvHuq/dlDeWV0ulPWzpxQ3heO+wI/fofiHpL6UYLLprQ/nw8kaJDyQvxdFLuaBuO9iiqWExc/eDtxuNx4/oV1xUBGso0NXapaV4IpFKRF+bvBLxsH96v7Rm8pxAre5saDo17aN80vrOVtk0OWsSvHtQImfYbvvsbUm4e1fxe6ixaBT+pUAq9fbx9iPS63iD0YW02xfiNrZLlaX3pi5dDUyNxxjloLjnjT3BI7PdrLgYLPXh7n7Zat/rNlXf+e+Lw2K7zza6LIV5v4dJBV0jAdqFIT5oGge7fa2XMPvRpBec9LTl/aOf5+Ej/Dxwi53KY5kh5Zr8m6e9DwuFzb0WH4qkx0YEFOvwMUzvSUdKq6z4A6GFyexQ3Mcw2CbEdoDlAPjcmzvqqcYxIBklz5yHY3xPq1UMx6pVFWXgtozdrVLp8uUXoxyq1xsDw95p46YGe4qk6yaEyMUww6nhiWw2HAkjhCAEhBAAIAAAvvzG4kxGHD7D8khzGSe4v92otpjAXOPOdWPiu2LmAk0hiphWrWhj76FCen2b57lQKBAOR1iWpWlMYcohjmP/f84AAEAAfP2PfwjFpmb9YcrjLhWWqqdaev57/nCUpTHNsAgjYjuqqjmWfir33JwnEPBjjBFCxLEJAIQQQABEEBBAAACEAAghBACAbwBaa9IlU8GKogAAAABJRU5ErkJggg==",
+                "width": 1280,
+                "height": 720
+            }
+        },
+        {
             "date": "11/11/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Little Nightmares II",
             "subtitle": "",
             "collabed_with": [
@@ -1442,6 +1542,7 @@
             "date": "18/11/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Pokémon Scarlet",
             "subtitle": "",
             "collabed_with": [],
@@ -1458,6 +1559,7 @@
             "date": "23/11/2022",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Persona 5 Royal",
             "subtitle": "and the debut of purple Bae",
             "collabed_with": [],
@@ -1474,6 +1576,7 @@
             "date": "26/11/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang a cover of Hanamaru Pippi wa Yoiko Dake by AOP ",
             "subtitle": "",
             "collabed_with": [
@@ -1496,6 +1599,7 @@
             "date": "24/12/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Holy Night",
             "subtitle": "",
             "collabed_with": [
@@ -1514,6 +1618,7 @@
             "date": "26/12/2022",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Blooming in the Mud by HarryP",
             "subtitle": "",
             "collabed_with": [
@@ -1532,6 +1637,7 @@
             "date": "31/12/2022",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "The Infamous 2022 New Years Stream",
             "subtitle": "Bye Bitch! Hope you changed your password too",
             "collabed_with": [
@@ -1552,6 +1658,7 @@
             "date": "19/01/2023",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Finished building the glorious sign in Minecraft 👌",
             "subtitle": "",
             "collabed_with": [],
@@ -1568,6 +1675,7 @@
             "date": "19/01/2023",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Made a promise for 2 million subscribers",
             "subtitle": "\"You heard it here!\"",
             "collabed_with": [],
@@ -1585,6 +1693,7 @@
             "date": "20/01/2023",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released PLAY DICE! (Midnight ver.)",
             "subtitle": "",
             "collabed_with": [],
@@ -1601,6 +1710,7 @@
             "date": "22/01/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Dawn by Shikata Akiko",
             "subtitle": "",
             "collabed_with": [],
@@ -1617,6 +1727,7 @@
             "date": "01/02/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "FeBAErary 2023 begins!",
             "subtitle": "KINOKO VS TAKENOKO",
             "collabed_with": [],
@@ -1633,6 +1744,7 @@
             "date": "02/02/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Ministry Host Club",
             "subtitle": "Holy shit Hayko is my new oshi",
             "collabed_with": [
@@ -1666,6 +1778,7 @@
             "date": "13/02/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "First day at Oozora Police",
             "subtitle": "",
             "collabed_with": [],
@@ -1682,6 +1795,7 @@
             "date": "14/02/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a BaeRyS cover of Daikirai Na Hazu Datta by HoneyWorks",
             "subtitle": "",
             "collabed_with": [
@@ -1700,6 +1814,7 @@
             "date": "14/02/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a BaeRyS cover of Erande Kurete Arigato by HoneyWorks",
             "subtitle": "",
             "collabed_with": [
@@ -1718,6 +1833,7 @@
             "date": "17/02/2023",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released Sweet Appetite as part of holo*27",
             "subtitle": "",
             "collabed_with": [
@@ -1736,6 +1852,7 @@
             "date": "25/02/2023",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Setting a new record for latest to start streaming in EN",
             "subtitle": "163 minutes LET'S GOOOOOOOOO",
             "collabed_with": [],
@@ -1752,6 +1869,7 @@
             "date": "27/02/2023",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Eyetracker unboxed",
             "subtitle": "Finally...",
             "collabed_with": [],
@@ -1768,6 +1886,7 @@
             "date": "28/02/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Celebrated her not birthday 2023 and debuted Strawberry Bae! #StillNotBaeBday",
             "subtitle": "",
             "collabed_with": [
@@ -1786,6 +1905,7 @@
             "date": "16/03/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang in a cover of Rap Dogs by Vivid BAD SQUAD",
             "subtitle": "",
             "collabed_with": [
@@ -1807,6 +1927,7 @@
             "date": "19/03/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Participated in the holoSPY program for hololive SUPER EXPO 2023!",
             "subtitle": "",
             "collabed_with": [
@@ -1826,10 +1947,11 @@
             "date": "19/03/2023",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Performed in hololive 4th fes. Our Bright Parade on Day 2's holo*27 and hololive stage!",
             "subtitle": "Bae's first ever concert appearance!",
             "collabed_with": [
-                "Many"
+                "All of Hololive"
             ],
             "media": {
                 "is_youtube": true,
@@ -1845,6 +1967,7 @@
             "date": "25/03/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Featured in DLC for GROOVE COASTER WAI WAI PARTY!!!!",
             "subtitle": "",
             "collabed_with": [],
@@ -1861,6 +1984,7 @@
             "date": "01/04/2023",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "700K Party! Unarchived Karaoke",
             "subtitle": "Surely the next milestone will be archived right?",
             "collabed_with": [],
@@ -1877,6 +2001,7 @@
             "date": "01/04/2023",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "BAE-GEMITE DOMINATION",
             "subtitle": "",
             "collabed_with": [
@@ -1910,6 +2035,7 @@
             "date": "07/04/2023",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Did a panel and meet and greet at Anime Boston 2023!",
             "subtitle": "",
             "collabed_with": [
@@ -1933,6 +2059,7 @@
             "date": "09/04/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Suki Dakara by Yuika",
             "subtitle": "",
             "collabed_with": [
@@ -1951,6 +2078,7 @@
             "date": "15/04/2023",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Dropped Play Dice! (TeddyLoid Re-Arrangement)",
             "subtitle": "",
             "collabed_with": [],
@@ -1967,6 +2095,7 @@
             "date": "15/04/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of GIMME × GIMME by Hachioji P × Giga",
             "subtitle": "",
             "collabed_with": [
@@ -1985,6 +2114,7 @@
             "date": "16/04/2023",
             "type": "Outfit Reveal",
             "highlight": false,
+            "hosted_by": false,
             "title": "Casual Drip revealed #DripTaro",
             "subtitle": "",
             "collabed_with": [],
@@ -2001,6 +2131,7 @@
             "date": "30/04/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of POP/STARS by K/DA!",
             "subtitle": "",
             "collabed_with": [
@@ -2021,6 +2152,7 @@
             "date": "01/05/2023",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Held a panel at Anime Fest+ in Malaysia!",
             "subtitle": "",
             "collabed_with": [],
@@ -2037,6 +2169,7 @@
             "date": "05/05/2023",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released the MV for PSYCHO!",
             "subtitle": "",
             "collabed_with": [],
@@ -2053,6 +2186,7 @@
             "date": "22/05/2023",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Getting Over It!",
             "subtitle": "",
             "collabed_with": [],
@@ -2069,6 +2203,7 @@
             "date": "23/05/2023",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "Jousting of the Genital Variety",
             "subtitle": "Stand proud. This is your 6th most viewed stream",
             "collabed_with": [],
@@ -2085,6 +2220,7 @@
             "date": "27/05/2023",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Aki's 2023 Birthday Live ー Start your journey ー",
             "subtitle": "",
             "collabed_with": [
@@ -2116,6 +2252,7 @@
             "date": "10/06/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Getting Over It: Endurance for the gold pot!",
             "subtitle": "The Baeruto training arc",
             "collabed_with": [],
@@ -2132,6 +2269,7 @@
             "date": "16/06/2023",
             "type": "Group Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released Connect the World!",
             "subtitle": "",
             "collabed_with": [
@@ -2150,6 +2288,7 @@
             "date": "18/06/2023",
             "type": "First",
             "highlight": false,
+            "hosted_by": false,
             "title": "First Hologura Appearance!",
             "subtitle": "",
             "collabed_with": [],
@@ -2166,6 +2305,7 @@
             "date": "19/06/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Identity by Kanaria!",
             "subtitle": "",
             "collabed_with": [
@@ -2184,6 +2324,7 @@
             "date": "03/07/2023",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Performed in Hololive EN's 1st concert, Connect the World, in LA",
             "subtitle": "",
             "collabed_with": [
@@ -2209,6 +2350,7 @@
             "date": "07/07/2023",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "First EP Pandæmonium released!",
             "subtitle": "",
             "collabed_with": [],
@@ -2225,6 +2367,7 @@
             "date": "08/07/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "THE GETTING OVER IT TRIALS",
             "subtitle": "BAERUTO!!!! MOOMSUKE!!!!!",
             "collabed_with": [
@@ -2243,6 +2386,7 @@
             "date": "20/7/2023",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released the first episode of Brewin' and Groovin' with Bae on Spotify!",
             "subtitle": "",
             "collabed_with": [],
@@ -2259,7 +2403,8 @@
             "date": "13/08/2023",
             "type": "Special",
             "highlight": false,
-            "title": "Competed in the Hololive ID Sports Fes 2023!",
+            "hosted_by": false,
+            "title": "Competed in the HoloID Cup 2023!",
             "subtitle": "",
             "collabed_with": [
                 "Zeta",
@@ -2294,6 +2439,7 @@
             "date": "14/08/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "The origin of the steel rose and the greatest dream story ever told",
             "subtitle": "\"She is a steel rose locked in a case of ice... That's why she is my best friend\"",
             "collabed_with": [],
@@ -2310,6 +2456,7 @@
             "date": "23/08/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Council's 2nd Anniversary Baking Off Collab!",
             "subtitle": "CreepyRyS gives Bae a \"\"\"proper\"\"\" massage",
             "collabed_with": [
@@ -2328,10 +2475,17 @@
             "date": "25/08/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": true,
             "title": "Won 1 million yen in the hololive Summer 2023 Special Party!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "A-chan",
+                "Mio",
+                "Fubuki",
+                "AZKi",
+                "Nene",
+                "Noel",
+                "La+"
             ],
             "media": {
                 "is_youtube": true,
@@ -2347,6 +2501,7 @@
             "date": "26/08/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a dance and vocal cover of Yakusoku no Kizuna/Future Star from Kyoukai no Kanata",
             "subtitle": "",
             "collabed_with": [],
@@ -2363,6 +2518,7 @@
             "date": "26/08/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "The 2nd Anniversary and Re-debut stream! #TWOYEARRAT",
             "subtitle": "",
             "collabed_with": [],
@@ -2379,6 +2535,7 @@
             "date": "26/08/2023",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released Paku Paku Seibai as part of the hololive × HoneyWorks First Album “Holohoneygaoka High School“",
             "subtitle": "",
             "collabed_with": [],
@@ -2395,10 +2552,14 @@
             "date": "27/08/2023",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Performed in hololive Summer 2023 Live SPLASH PARTY! Night (Day 2)",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Hololive JP",
+                "Hololive ID",
+                "Myth",
+                "Promise"
             ],
             "media": {
                 "is_youtube": false,
@@ -2413,6 +2574,7 @@
             "date": "30/08/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Second Day at Oozora Police!",
             "subtitle": "",
             "collabed_with": [
@@ -2431,6 +2593,7 @@
             "date": "28/09/2023",
             "type": "Outfit Reveal",
             "highlight": false,
+            "hosted_by": false,
             "title": "The Tasmanian Devil Hoodie revealed! #CouncilCapes",
             "subtitle": "",
             "collabed_with": [],
@@ -2447,6 +2610,7 @@
             "date": "01/10/2023",
             "type": "Special",
             "highlight": true,
+            "hosted_by": false,
             "title": "3D SHOWCASE",
             "subtitle": "",
             "collabed_with": [
@@ -2467,6 +2631,7 @@
             "date": "02/10/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Uploaded a cover of IDOL by YOASOBI!",
             "subtitle": "",
             "collabed_with": [],
@@ -2483,6 +2648,7 @@
             "date": "06/10/2023",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Lies Of P!",
             "subtitle": "Welcome to soulslikes Bae",
             "collabed_with": [],
@@ -2499,6 +2665,7 @@
             "date": "09/10/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "CouncilRyS 3D Showcase Collab and the birth of Promise!",
             "subtitle": "",
             "collabed_with": [
@@ -2518,6 +2685,7 @@
             "date": "14/10/2023",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "The dawn of a new intro",
             "subtitle": "WAZZUP! I am Chaos, the end of ends, a steel rose trapped in a cage of ice, your best friend, Baelz Hakos from hololive English -Promise-. 我はカオス、終わりの果て「ザ・エンド」、氷の檻に封印されし黒鉄の薔薇、爾の友、ホロENのハコス・ベールズ。 WITNESS ME! ",
             "collabed_with": [],
@@ -2534,6 +2702,7 @@
             "date": "22/10/2023",
             "type": "First",
             "highlight": false,
+            "hosted_by": false,
             "title": "First Promise Collab!",
             "subtitle": "",
             "collabed_with": [
@@ -2552,6 +2721,7 @@
             "date": "30/10/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Crazy Scary Holy Fantasy by MYTH & ROID!",
             "subtitle": "",
             "collabed_with": [
@@ -2570,10 +2740,13 @@
             "date": "04/11/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": true,
             "title": "Participated in the Hololive Sports Festival 2023!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Miko",
+                "Mio",
+                "Subaru"
             ],
             "media": {
                 "is_youtube": true,
@@ -2588,6 +2761,7 @@
             "date": "11/11/2023",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "800K subscribers reached in an unarchived karaoke!",
             "subtitle": "Ok but the next one will be archived. Trust",
             "collabed_with": [],
@@ -2604,6 +2778,7 @@
             "date": "20/11/2023",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released the MV for BITE! KAMU! BITE!",
             "subtitle": "",
             "collabed_with": [
@@ -2622,6 +2797,7 @@
             "date": "25/11/2023",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Performed with CHAD CAST at AFA 2023 in Singapore!",
             "subtitle": "",
             "collabed_with": [
@@ -2641,12 +2817,13 @@
             "date": "02/12/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Performed in the Riot Games ONE 2023 Opening act!",
             "subtitle": "",
             "collabed_with": [
                 "Shion",
                 "Kobo",
-                "Laplus"
+                "La+"
             ],
             "media": {
                 "is_youtube": true,
@@ -2661,6 +2838,7 @@
             "date": "08/12/2023",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Yakuza 0!",
             "subtitle": "",
             "collabed_with": [],
@@ -2677,6 +2855,7 @@
             "date": "22/12/2023",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Hololive English -Promise- Christmas Medley 2023 released!",
             "subtitle": "",
             "collabed_with": [
@@ -2695,6 +2874,7 @@
             "date": "28/12/2023",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released the MV for HIDE & SEEK ～⁠Nakayoku Kenkashina⁠～",
             "subtitle": "",
             "collabed_with": [
@@ -2713,10 +2893,17 @@
             "date": "31/12/2023",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Performed in the Hololive production COUNTDOWN LIVE 2023▷2024 -⁠ Hololive side -",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Hololive JP",
+                "Hololive ID",
+                "Calli",
+                "Kiara",
+                "Ina",
+                "Gura",
+                "Promise"
             ],
             "media": {
                 "is_youtube": true,
@@ -2731,10 +2918,24 @@
             "date": "31/12/2023",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Watched Kobo sing PLAY DICE! in the hololive Shuffle Medley 2024!",
             "subtitle": "\"What the fuck? Sudden dubstep?\"",
             "collabed_with": [
-                "Many"
+                "Mio",
+                "Fubuki",
+                "Kanata",
+                "Nene",
+                "Kobo",
+                "La+",
+                "Ayame",
+                "Marine",
+                "Gura",
+                "Okayu",
+                "Korone",
+                "Sora",
+                "IRyS",
+                "Risu"
             ],
             "media": {
                 "is_youtube": true,
@@ -2750,10 +2951,12 @@
             "date": "07/01/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": true,
             "title": "Competed in the 2024 Hololive New Year Cup!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Towa",
+                "Okayu"
             ],
             "media": {
                 "is_youtube": true,
@@ -2768,6 +2971,7 @@
             "date": "15/01/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Moved to the JP shed!",
             "subtitle": "",
             "collabed_with": [
@@ -2786,6 +2990,7 @@
             "date": "21/01/2024",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a full holoEN cover of Mind Craft by halyosy!",
             "subtitle": "",
             "collabed_with": [
@@ -2804,6 +3009,7 @@
             "date": "23/01/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Palworld!",
             "subtitle": "",
             "collabed_with": [
@@ -2822,6 +3028,7 @@
             "date": "30/01/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Polka's 2024 Birthday Live 【POLROCK2024】",
             "subtitle": "",
             "collabed_with": [
@@ -2844,6 +3051,7 @@
             "date": "02/02/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "FeBAErary 2024 begins!",
             "subtitle": "",
             "collabed_with": [],
@@ -2860,6 +3068,7 @@
             "date": "05/02/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "The beginning of Midnight Monday Radio!",
             "subtitle": "",
             "collabed_with": [],
@@ -2876,6 +3085,7 @@
             "date": "06/02/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Yakuza Kiwami!",
             "subtitle": "",
             "collabed_with": [],
@@ -2892,6 +3102,7 @@
             "date": "14/02/2024",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Suki Chuu no! by HoneyWorks!",
             "subtitle": "",
             "collabed_with": [],
@@ -2908,6 +3119,7 @@
             "date": "19/02/2024",
             "type": "Meme",
             "highlight": true,
+            "hosted_by": false,
             "title": "JDON MY SOUL",
             "subtitle": "G'day mate! Haven't had brekkie yet, so might go on a Maccas run soon? My shout!",
             "collabed_with": [
@@ -2930,6 +3142,7 @@
             "date": "29/02/2024",
             "type": "Live",
             "highlight": true,
+            "hosted_by": false,
             "title": "DREAM CATCHER",
             "subtitle": "IT'S ACTUALLY BAE'S BIRTHDAY!",
             "collabed_with": [
@@ -2958,6 +3171,7 @@
             "date": "29/02/2024",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released the MV for R×R×R!",
             "subtitle": "",
             "collabed_with": [],
@@ -2974,6 +3188,7 @@
             "date": "29/02/2024",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "First album ZODIAC released!",
             "subtitle": "",
             "collabed_with": [],
@@ -2990,10 +3205,14 @@
             "date": "16/03/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "hololive 5th fes. Capture the Moment: Stage 1",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Hololive JP",
+                "Hololive ID",
+                "Myth",
+                "Promise"
             ],
             "media": {
                 "is_youtube": false,
@@ -3008,10 +3227,14 @@
             "date": "17/03/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "hololive 5th fes. Capture the Moment: HoneyWorks Stage",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Hololive JP",
+                "Hololive ID",
+                "Myth",
+                "Promise"
             ],
             "media": {
                 "is_youtube": false,
@@ -3026,6 +3249,7 @@
             "date": "02/04/2024",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "Announced as one of the hololive Meet 2024 Ambassadors!",
             "subtitle": "",
             "collabed_with": [],
@@ -3042,6 +3266,7 @@
             "date": "04/04/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Calli's 2024 Birthday Live 【NO DOWN TIME!!】",
             "subtitle": "",
             "collabed_with": [
@@ -3049,7 +3274,7 @@
                 "Ina",
                 "Towa",
                 "Lui",
-                "Laplus",
+                "La+",
                 "Ollie",
                 "Kobo",
                 "Kronii",
@@ -3071,6 +3296,7 @@
             "date": "10/04/2024",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released the MV for COLOUR!",
             "subtitle": "",
             "collabed_with": [
@@ -3089,11 +3315,13 @@
             "date": "13/04/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "First VCR Rust stream!",
             "subtitle": "",
             "collabed_with": [
-                "Many. Bae's team: Calli",
-                "Aruran",
+                "Lots of Streamers",
+                "WorldWide Requiem: Calli",
+                "Arurandeisu",
                 "Minami Tette",
                 "Marutake",
                 "dtto.",
@@ -3102,16 +3330,17 @@
             "media": {
                 "is_youtube": true,
                 "video_id": "1OYCE5nZoek",
-                "path": "https://i.ytimg.com/vi/1OYCE5nZoek/maxresdefault.jpg",
-                "placeholder": "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",
-                "width": 1280,
-                "height": 720
+                "path": "public/images/timeline/0a1d7cb3f2f7d5b03436755d17deeab4.jpg",
+                "placeholder": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAPCAIAAAB82OjLAAAE2klEQVR4nAXBSW8bVQAA4Pdmn9hjZ5zEjpcsTpqkTdJm6SoCpSC1KqAegAPlBAeOlYCKC/+gHPoPuIA4IA6AqLhAC12o2jTdDG72Jo5rj+3xeDbP4tne4/sgDm8CgAEAgICdNlt9SYZBEEWRkBAAxhEOi9M+C6EqZyLIdg0jsOxBwajf2kSF4mRqfK1U+vnxPczAK1cuzh5J0/EewBBghLsmhREApVVAknBxRVEImqT7eI5hGJphHNdxdE+RKZriY8IgSUKMMUyJrkYKc7NCJJIR+Gv7uYeCQPVu/7AVvkcfv5jEGIKDbVhaJQAigaEB0wBB5Bta17I5nidJwpRbPdOsrG/sbcuuEvVMk2RohqH0tmyGdOjRVBQEABEUxXNsPB7fkxsv280goACkAIIAYQpSPH7tEjA74P6NnB27q8+GPcfY/M8y1X6eB7breU7nQLOL+SgKfNNQKhWxOOGQ0bOd3fn8CBdhv+djCLpexzGR1vbSuTgYOwKSaQoDCvL9aHddVTDmcA7X1L1GPtXHZ5PxRLzr9CyqT5W6rQdPhpKxVKpftXq+afi2m8oOJefzx9azFEscyO1WW9Fq9XRqPnQwIGlqYISAkPYcoo1OlLXlb//09qVwa2uDZJmYEO81TdrrZXICP5A4snQ4OzUeS8aKp481yy9Q156YysUGkx988v7JuUO23SOggKIAldfUm7vOhuuaIYUQo78wiS4sZrLIC8pbmwQnrJW3BZ5jvMCNC7PZQ7FErBkitlZPMnR5t+oj0gZg6996RpdpwkGGmRDTOcqZsetrvzSA1z96Ibl67TrlPX0UVjNRGBiBMzqcnhodCyL3199/HFs5QwwWQtXSu4iP845j7NdawHfbuuOwfX9YCwdNYvTFnbM5acYKznZ2nekZdn0fPXnovv7GtpBgZY2wJdMxuh2pVd7cVqVGt9ZwW5qtaFLDGBDzh2cmJ6dHeEIojo63laikJ2L54m05f2cT24G7aYo/beQRxFmA8cLi+DfXCxfOD0s1fXu3MDBAyAqvvJJiEF368NLk2eN7rVqzrUgkf7+0VavsJ4Q+x/UCH7iapykdTZVL7SFicHE8n3a5aVM8z4VQ+/tWemVlKJP758GDVx9dhgxN7+1U+uNUS4uk3crQuTNkH5vgmIUT8+v3nrtW4PVHo5PZVlW2VC2K2KEMzzGB2rRnx/AXJyoUheoa8V25oFf7Rale45n8cLYgJh6uPpoh6UYYsIFHWIFvglDqKJ5lOU2VaNkFwAc9P8axFKQMRXYCTxRhvdGoHzTJnvzpSftoAY4lo6Np9eP5JsPqjuf3KgfxQJsbz3z25vJLmjMHUu9eXqDq0PfF2JPN0mNpR+BEAVODuj8qiFUb6aoZD8HyqQUhl7IOWnJFy4jR+k51spCFBHA9MDvkfr2kdloLUa2ahohsGirHPRcH3zl3MgUVyqKgVq2mM+BVSzrohn6Ilg4vZpeP9jl4vyolInI89ABJVVSrOJfRw/DQSB4SUaOtj+fShmK22io5NVsfzFz7/re3x4aelp5NzM+9ef6iU78Pr35+Nal1WcaLEIH31GB2WOpFrAdPn3vLcXvtfTnooh7nnjq1khV9VzeQOFyvmXMTfDKR6EdEiuXK61vregsBX7pxd3k6v/TVlwAjwrP+B0rV0IkbzKrpAAAAAElFTkSuQmCC",
+                "width": 1170,
+                "height": 585
             }
         },
         {
             "date": "22/04/2024",
             "type": "Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released the MV for EIEN!",
             "subtitle": "",
             "collabed_with": [],
@@ -3128,6 +3357,7 @@
             "date": "27/04/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Performed at Dreamhack Melbourne 2024!",
             "subtitle": "",
             "collabed_with": [
@@ -3150,6 +3380,7 @@
             "date": "29/04/2024",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang at hololive Meet SUPER KARAOKE PARTY @ TAIPEI 2024!",
             "subtitle": "",
             "collabed_with": [
@@ -3172,6 +3403,7 @@
             "date": "03/05/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Played the brat pack's fan game: Operation PP!",
             "subtitle": "",
             "collabed_with": [],
@@ -3188,6 +3420,7 @@
             "date": "06/05/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Sekiro!",
             "subtitle": "",
             "collabed_with": [],
@@ -3204,6 +3437,7 @@
             "date": "08/05/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Sucker For Love: Date to Die For!",
             "subtitle": "",
             "collabed_with": [],
@@ -3220,6 +3454,7 @@
             "date": "10/05/2024",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "i can explain.",
             "subtitle": "dogeza",
             "collabed_with": [],
@@ -3236,6 +3471,7 @@
             "date": "11/05/2024",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Went to the hololive Meet Fan Meeting @ TAIPEI 2024!",
             "subtitle": "",
             "collabed_with": [],
@@ -3252,6 +3488,7 @@
             "date": "12/05/2024",
             "type": "Outfit Reveal",
             "highlight": false,
+            "hosted_by": false,
             "title": "Steel Rose Outfit Reveal! #WitnessMe",
             "subtitle": "",
             "collabed_with": [],
@@ -3268,6 +3505,7 @@
             "date": "12/05/2024",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Los! Los! Los! by Aoi Yuki",
             "subtitle": "",
             "collabed_with": [],
@@ -3284,6 +3522,7 @@
             "date": "12/05/2024",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "Chuuni Unarchived Karaoke and reaching 900K subscribers! ",
             "subtitle": "Milestone in a karaoke turned into a guerilla unarchived endurance stream LET'S GOOOOOOOOOO",
             "collabed_with": [],
@@ -3300,6 +3539,7 @@
             "date": "15/05/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Sora's 2024 Birthday Live 【と⁠き⁠のそ⁠らお⁠披⁠露⁠目生⁠誕⁠祭】",
             "subtitle": "",
             "collabed_with": [
@@ -3323,6 +3563,7 @@
             "date": "24/05/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Explored Fauna's dungeon in Promise's Half Anniversary stream!",
             "subtitle": "And the new lore video!",
             "collabed_with": [],
@@ -3339,6 +3580,7 @@
             "date": "25/05/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Yakuza Kiwami 2!",
             "subtitle": "",
             "collabed_with": [],
@@ -3355,6 +3597,7 @@
             "date": "06/06/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Watame's 2024 Birthday Live 『 Revival 』",
             "subtitle": "",
             "collabed_with": [
@@ -3381,6 +3624,7 @@
             "date": "17/06/2024",
             "type": "Group Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released Our Promise!",
             "subtitle": "",
             "collabed_with": [
@@ -3399,6 +3643,7 @@
             "date": "02/07/2024",
             "type": "Meme",
             "highlight": false,
+            "hosted_by": false,
             "title": "STRICTLY <s>2 HOURS</s> 30 MINUTES",
             "subtitle": "Title says 30 minutes but there's only 27 minutes and 47 seconds? Where are the other 2 minutes and 13 seconds Bae?",
             "collabed_with": [],
@@ -3415,6 +3660,7 @@
             "date": "21/07/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "HOLOEN CIVIL WAR: COFFEE VS TEA!",
             "subtitle": "Be better. Drink that coffee.",
             "collabed_with": [
@@ -3440,10 +3686,11 @@
             "date": "24/07/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": true,
             "title": "Joined HoloARK!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Pekora"
             ],
             "media": {
                 "is_youtube": true,
@@ -3458,6 +3705,7 @@
             "date": "25/07/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Call of Duty: Modern Warfare!",
             "subtitle": "The greatest aim we've ever seen",
             "collabed_with": [],
@@ -3474,10 +3722,12 @@
             "date": "27/07/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": true,
             "title": "Participated in the AmeSame Spelling Bee",
             "subtitle": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "collabed_with": [
-                "Many"
+                "Ame",
+                "Gura"
             ],
             "media": {
                 "is_youtube": true,
@@ -3492,6 +3742,7 @@
             "date": "04/08/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Koseki Bijou's 3D Debut",
             "subtitle": "",
             "collabed_with": [
@@ -3514,6 +3765,7 @@
             "date": "05/08/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Mumei's 2024 Birthday Live 「 Outside the Box 」",
             "subtitle": "",
             "collabed_with": [
@@ -3539,6 +3791,7 @@
             "date": "08/08/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Towa's 2024 Birthday Live -⁠ COLORFUL -",
             "subtitle": "",
             "collabed_with": [
@@ -3563,6 +3816,7 @@
             "date": "11/08/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "An all nighter with Koseki Bijou! #BAEBISleepover",
             "subtitle": "",
             "collabed_with": [
@@ -3581,6 +3835,7 @@
             "date": "14/08/2024",
             "type": "Group Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Released Breaking Dimensions!",
             "subtitle": "",
             "collabed_with": [
@@ -3599,6 +3854,7 @@
             "date": "23/08/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Soar at Anime NYC!",
             "subtitle": "BRATS BRATS BRATS BRATS",
             "collabed_with": [
@@ -3622,6 +3878,7 @@
             "date": "25/08/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Performed in Hololive EN's 2nd concert, Breaking Dimensions, in NYC!",
             "subtitle": "Her fan meet invite got lost in the mail...",
             "collabed_with": [
@@ -3645,6 +3902,7 @@
             "date": "31/08/2024",
             "type": "Event",
             "highlight": false,
+            "hosted_by": false,
             "title": "Held a panel and meet and greet at San Japan 15 in Austin, Texas!",
             "subtitle": "",
             "collabed_with": [
@@ -3663,6 +3921,7 @@
             "date": "01/09/2024",
             "type": "Special",
             "highlight": true,
+            "hosted_by": false,
             "title": "ENigmatic Recollection",
             "subtitle": "Who is Hakos Baelz? I only know Peasant the Bae",
             "collabed_with": [
@@ -3681,10 +3940,12 @@
             "date": "17/09/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": true,
             "title": "Participated in HoloGTA!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Suisei",
+                "Miko"
             ],
             "media": {
                 "is_youtube": true,
@@ -3699,6 +3960,7 @@
             "date": "03/10/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "The long awaited Full Metal Alchemist Karaoke Stream!",
             "subtitle": "",
             "collabed_with": [],
@@ -3715,6 +3977,7 @@
             "date": "08/10/2024",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Bling Bang Bang Born by Creepy Nuts!",
             "subtitle": "",
             "collabed_with": [
@@ -3733,6 +3996,7 @@
             "date": "09/10/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Promise's First Anniversary Collab!",
             "subtitle": "",
             "collabed_with": [
@@ -3751,6 +4015,7 @@
             "date": "14/10/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Yakuza 3 started!",
             "subtitle": "I love dad simulators",
             "collabed_with": [],
@@ -3767,6 +4032,7 @@
             "date": "19/10/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Went to Gigi's Birthday Dinner in 2024!",
             "subtitle": "She won a house fr fr",
             "collabed_with": [
@@ -3797,6 +4063,7 @@
             "date": "22/10/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "NieR:Automata started!",
             "subtitle": "She can fix Eve",
             "collabed_with": [],
@@ -3813,6 +4080,7 @@
             "date": "25/10/2024",
             "type": "Original",
             "highlight": true,
+            "hosted_by": false,
             "title": "Dropped the PSYCHO Eurobeat Remix!",
             "subtitle": "",
             "collabed_with": [],
@@ -3829,6 +4097,7 @@
             "date": "27/10/2024",
             "type": "Live",
             "highlight": true,
+            "hosted_by": false,
             "title": "The #CHU2BAE Performance Live!",
             "subtitle": "",
             "collabed_with": [
@@ -3850,6 +4119,7 @@
             "date": "31/10/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in Calli's J-RAP in JIGOKU",
             "subtitle": "",
             "collabed_with": [
@@ -3877,6 +4147,7 @@
             "date": "09/11/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Soar at Indonesia Comic Con 2024 in Jakarta!",
             "subtitle": "",
             "collabed_with": [
@@ -3900,6 +4171,7 @@
             "date": "17/11/2024",
             "type": "Live",
             "highlight": false,
+            "hosted_by": false,
             "title": "Guest in IRyS's THE DEVIL WEARS HOPE",
             "subtitle": "",
             "collabed_with": [
@@ -3927,6 +4199,7 @@
             "date": "22/11/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Went to Nerissa's 2024 Birthday Slumber Party!",
             "subtitle": "Eat the spiciest condiment you can find in your fridge",
             "collabed_with": [
@@ -3958,6 +4231,7 @@
             "date": "23/11/2024",
             "type": "Special",
             "highlight": true,
+            "hosted_by": false,
             "title": "First ever 24 hour stream! #BAETV24",
             "subtitle": "",
             "collabed_with": [
@@ -3999,6 +4273,7 @@
             "date": "24/11/2024",
             "type": "Cover",
             "highlight": false,
+            "hosted_by": false,
             "title": "Released a cover of Kokoronashi - majiko ver. ",
             "subtitle": "",
             "collabed_with": [],
@@ -4015,6 +4290,7 @@
             "date": "30/11/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Soar at AFA Singapore 2024!",
             "subtitle": "",
             "collabed_with": [
@@ -4038,6 +4314,7 @@
             "date": "03/12/2024",
             "type": "Series",
             "highlight": false,
+            "hosted_by": false,
             "title": "Started playing Yakuza 4!",
             "subtitle": "Hell yeah more morally grey men in suits",
             "collabed_with": [],
@@ -4054,6 +4331,7 @@
             "date": "12/12/2024",
             "type": "Milestone",
             "highlight": true,
+            "hosted_by": false,
             "title": "One Million Subscribers Achieved! #BaeMillion",
             "subtitle": "AND ITS ARCHIVED THIS TIME!",
             "collabed_with": [],
@@ -4071,6 +4349,7 @@
             "date": "14/12/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Soar at AWA in Atlanta!",
             "subtitle": "",
             "collabed_with": [
@@ -4094,6 +4373,7 @@
             "date": "15/12/2024",
             "type": "Live",
             "highlight": true,
+            "hosted_by": false,
             "title": "The Broken Promise 3D Musical Released!",
             "subtitle": "",
             "collabed_with": [
@@ -4112,6 +4392,7 @@
             "date": "21/12/2024",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Soar at Comic Fiesta 2024 in Kuala Lumpur!",
             "subtitle": "",
             "collabed_with": [
@@ -4135,6 +4416,7 @@
             "date": "23/12/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Christmas 2024 Off Collab!",
             "subtitle": "",
             "collabed_with": [
@@ -4155,6 +4437,7 @@
             "date": "26/12/2024",
             "type": "Group Original",
             "highlight": false,
+            "hosted_by": false,
             "title": "Sang in Odyssey!",
             "subtitle": "",
             "collabed_with": [
@@ -4173,9 +4456,32 @@
             "date": "28/12/2024",
             "type": "Special",
             "highlight": false,
+            "hosted_by": false,
             "title": "Third Day at Oozora Police!",
             "subtitle": "Only the third day and you got arrested alongside the chief. Sasuga",
-            "collabed_with": [],
+            "collabed_with": [
+                "Subaru",
+                "Ollie",
+                "Luna",
+                "Fuwawa",
+                "Mococo",
+                "Fubuki",
+                "Koseki Bijou",
+                "Cecilia",
+                "Kaela",
+                "Pekora",
+                "Flare",
+                "Chloe",
+                "Botan",
+                "Kanata",
+                "Ririka",
+                "Gigi",
+                "Polka",
+                "Chihaya",
+                "Kanade",
+                "Okayu",
+                "Vivi"
+            ],
             "media": {
                 "is_youtube": true,
                 "video_id": "F1uSNR8-oTo",
@@ -4189,24 +4495,75 @@
             "date": "31/12/2024",
             "type": "Special",
             "highlight": false,
-            "title": "Did a watchalong of hololive production COUNTDOWN LIVE 2024▷2025 #holocountdown2024",
+            "hosted_by": false,
+            "title": "Performed in the Hololive production COUNTDOWN LIVE 2024▷2025",
             "subtitle": "",
+            "collabed_with": [
+                "Sora",
+                "Roboco",
+                "AZKi",
+                "Miko",
+                "Hololive JP Gen 1-6",
+                "Hololive ID",
+                "Myth",
+                "Promise",
+                "Advent",
+                "ReGLOSS"
+            ],
+            "media": {
+                "is_youtube": true,
+                "video_id": "k8Jjwu3YwPo",
+                "path": "public/images/timeline/ec8f415265ede1e9cc55fa0ef0bd007f.png",
+                "placeholder": "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",
+                "width": 1280,
+                "height": 720,
+                "video_start": "1389"
+            }
+        },
+        {
+            "date": "31/12/2024",
+            "type": "Meme",
+            "highlight": false,
+            "hosted_by": false,
+            "title": "First ever New Year's Kiss!",
+            "subtitle": "\"Did we kiss? Yeah... On the mouth.\"",
+            "collabed_with": [
+                "IRyS"
+            ],
+            "media": {
+                "is_youtube": true,
+                "video_id": "DjDrjnyibcY",
+                "path": "https://i.ytimg.com/vi/DjDrjnyibcY/maxresdefault.jpg",
+                "placeholder": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAARCAIAAABFBIsgAAAFR0lEQVR4nAXB2W9cVx0A4LPOXWbxeBaPt/GM7XFjZ3Gz0BhU2rSq1IgqeeClqtQ+9Q+oEDzzxB+AeEE8gIBHoAJhQR/aBoGVWnWIGsc4tSeOPemM7bFnPOudu517zvnxfTgCHUQgI0QRuujj7zowEsiOobksLqSRxCABOBCEQCKEETCEKcERIEKxVHrrF7/KH9bIYtEWNBr4/95/ar+79uHPf2aAZlQoFRGl8P8a8LgZhURrDVijb5r0xiRdnEGUguYaYcQQZghjhLRUoRMMW0M+bvaOT3AqMXvzcnNzhzdPV+1MZulardadGOMMR4opeHHOHh5HEUQtwJ4PSEAhIR+3Yn5ALs3AWI5SDgyBQRhCyHdCThBNJaJOezo1Xrr3ZlSeau83xvwjzYmRSEC1PrlWYYgRqeizlg6QqvYBiHYNypNIAQGhq6e63YfXV+lSOvI88E2KMAZsgIVMm3R2d61aO1PIpEqTbspqmwYTMjxtz926YSUspmP8tKWPOvICgWWCC6Q4RcHG5ZeR5+PxOIQC9X2CJy0htRdKMrjgyTFkWO6Fc/bgIRsMm5u7Z/3e8+pzkrGskcaHdfHmbUIJe3Ys17f8wUASAopQYuIpV+/7JGAkH9MnDptJ6na7142piMd49yzHVOAGHi961T3bJCJlDS325MsHGaDOR/eh65lffytHI04xiRtYa+1FOIhIkmkLy3OBCyNVF+rAkdQ2Xi0p++mDo1/+7vTPf02GQxy3B/svlQQeI8bcNM6kIhC337lT+eDexmd/Wymn0peLVsKSCLFMghRzLJvAdUc7SiCi+lGUJDAhtdR8ubc3vr7JD481Z3bS9uvdwXatqzhdGOST1J3PHx+kZ394e0WS7vrW9+dmyosLrQAjy/zPH7/CANAdgYzQo0O99Z1vmEDilGGkBPFf1i+1qshKnOl43jupvNgoZacgDHpMnV+/evPOq7VPv3h0dLJztfjhG29cLxZJjHAEvWrtxaO9EMYIQihuIEJUpSCvFwiTSPWimCOzkYPDVqNy63DuZpjKDEncjnTgdiVSF/MTWDj1z7+WLD5ZWqj94fdfrv+93uqZcbvbHcSmJ7jnLrw2i5/Vg71G4AsdSQgE5BKk54FSCBNkgXvmcIn5eBK5/91e3v1nej63fP+dbb/n/+Or8so1oqFz1unu7X16vGtfWfzkJz+VHspwnM8me4FiYahrTYEJWZ5locJuqAjRocRpE1tGatYGRmTKwAKe87WKvnaFz06JjcOHGw8vv/9+rFT2/7IeCP2j7FJ7atE5G6xerZicBkJks+NsZpyOxSmhKBSaUmpyVszxnZrsjUiosOur0EcJHi5dWbp+aTL/yuJprdHfeLqSKEB6bLSzF/UHgrFE3CgvlG9cKsVSttQaKA6GDjNM9t7tRKOtvvgmAoUuXF2epEKifBwWC7ycRbYRA2CnBymBmdMbnO0fRJ43e/9u0O3D1uP0268fn59s697MeX0lFKHjaqUSmbRinGGtZ9LUoLQ2rZZyeCRQbsx/ZS6NheA2F55yfc+w7dn58mmjCYPR0trNyVs3SCLb2tyOOE8tTj+xgsEo+vju3fRswRORyShhlBsxoqUe9UXcID/+gb1QNldL2mu87HT63LYDT3hh9KfPN1zP1wChO0zlM5oyMzthxAxjvjgKRTgKS5dX43fu7WRzR37QbPZAASMEA7B4ioPmCKNAQugPs3FeKU0c7jcOqtXf/ubXwchfXrnC3ns3COVSpWJR5mMaY8QgKCrm6o7T+exfa7b11mvf6wDdbFwIg1wLg3kMTwaj/wNEufWSNOsmhwAAAABJRU5ErkJggg==",
+                "width": 1280,
+                "height": 720,
+                "video_start": "5550"
+            }
+        },
+        {
+            "date": "01/01/2025",
+            "type": "Special",
+            "highlight": false,
+            "hosted_by": false,
+            "title": "THE BAERYS OFF COLLAB KARAOKE IS REAL",
+            "subtitle": "AFTER TWO YEARS!",
             "collabed_with": [
                 "IRyS"
             ],
             "media": {
                 "is_youtube": false,
-                "link": "https://youtube.com/watch?v=DjDrjnyibcY"
+                "link": ""
             }
         },
         {
             "date": "13/01/2025",
             "type": "Special",
             "highlight": false,
-            "title": "Competed in the Hololive New Year Games Competition 2025!",
+            "hosted_by": true,
+            "title": "Competed in the 2025 Hololive New Year Games!",
             "subtitle": "",
             "collabed_with": [
-                "Many"
+                "Towa"
             ],
             "media": {
                 "is_youtube": false,
@@ -4217,6 +4574,7 @@
             "date": "18/01/2025",
             "type": "Event",
             "highlight": true,
+            "hosted_by": false,
             "title": "Soar at the Taipei Music Center!",
             "subtitle": "SOAR SOAR SOAR",
             "collabed_with": [

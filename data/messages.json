@@ -897,10 +897,30 @@
             }
         },
         {
+            "id": "9fb55966fedee9b561e5fd548b77903a",
+            "sender_name": "SpaceMuffins",
+            "sender_title": "The Bringer of Nights and Feasts",
+            "message": "Congrats on 1 Million Subs!\nThank you for all the fun streams and bringing the light and joy into every single one of your Brats life's! I have been watching since Debut and I have enjoyed your journey to 1 million. Thank you for everything and here's to a million more!!",
+            "media": {
+                "is_youtube": false,
+                "path": null
+            }
+        },
+        {
             "id": "a0c9d54720c981915230325cc35f168d",
             "sender_name": "One in Silence",
             "sender_title": "The martyr for Mars",
             "message": "Hi Bae, congratulations on making it to a million! So many great songs and such masterful dancing have marked the long path here. I'm not sure how much longer that cage of ice can contain you with all this fire content, but I look forward to the day that steel rose stands unbound! Here's to another year with our rat!",
+            "media": {
+                "is_youtube": false,
+                "path": null
+            }
+        },
+        {
+            "id": "a77168875dde4d53fc0171eb49ea23e2",
+            "sender_name": "Squishieo",
+            "sender_title": "Squishiest of the brats",
+            "message": "Congratulations on hitting one million Bae! You have worked so hard this year and i couldnt be more proud of you. I'm so glad to call you my kami oshi! Thank you for everything you've done for us brats!",
             "media": {
                 "is_youtube": false,
                 "path": null
@@ -935,8 +955,8 @@
             "message": "Congrats on 1 million subscribers, Bae!\n\nWatching you grow as an idol and streamer—from your 3D debut to Soar and BD—has been awe-inspiring. Seeing you perform live and hanging out with the brats are memories I’ll never forget. I can't put into words how proud I am to have you as my kami oshi. I'll support you for as long as I can!\n\nYour dancing even got me into dance games—I recently FC’d RxRxR! Thanks for inspiring new hobbies and helping me meet awesome people beyond hololive and vtubers!",
             "media": {
                 "is_youtube": true,
-                "path": "https://i.ytimg.com/vi/pcEeAoatv9g/maxresdefault.jpg",
-                "video_id": "pcEeAoatv9g",
+                "path": "https://i.ytimg.com/vi/CieV7Y3Yras/maxresdefault.jpg",
+                "video_id": "CieV7Y3Yras",
                 "width": 1280,
                 "height": 720
             }
@@ -999,6 +1019,16 @@
             "sender_name": "Moomshine74",
             "sender_title": "The... what is it? I forgor",
             "message": "Hello and WAZZUP!!\n\nFirst off, I wanna say... Congrats for one... MILLION... BRATS!!! You truly deserve to reach it from all the hard work you did, and for being the best and the most chuuni idol rat in the town!\n\nSecondly, it's unbelievable that somehow, it's been 3 years since you and the rest of Council debuted. It only feels like a year had passed. The last 3 years together with us brats has been an amazing ride and I hope it'll get even better for years to come :DD",
+            "media": {
+                "is_youtube": false,
+                "path": null
+            }
+        },
+        {
+            "id": "b4e31928e6561fe1b92e0f8667d4d2be",
+            "sender_name": "Azxiana",
+            "sender_title": "Angel of Nature, Protector of all that is Natural!",
+            "message": "Congratulations to my second favorite Aussie for hitting 100万円人!~  Seriously though, this is a huge milestone and you should be PROUD!",
             "media": {
                 "is_youtube": false,
                 "path": null
@@ -1080,18 +1110,6 @@
             "media": {
                 "is_youtube": false,
                 "path": null
-            }
-        },
-        {
-            "id": "c270d7e84a583471fd90621d113caadd",
-            "sender_name": "江夜kiri",
-            "sender_title": "Chaos follower",
-            "message": "Congratulations on one million subscriptions! It wasn't easy, you worked so hard, and you deserve it! Live broadcast brings me vitality, singing brings me shock and moved, you are my oshi, I am really honored. Forgive me if I'm not a good talker",
-            "media": {
-                "is_youtube": false,
-                "path": "public/images/messages/c270d7e84a583471fd90621d113caadd.jpg",
-                "width": 2480,
-                "height": 3508
             }
         },
         {
@@ -1345,6 +1363,16 @@
                 "video_id": "SaBUMuxjP5g",
                 "width": 1280,
                 "height": 720
+            }
+        },
+        {
+            "id": "f22ca8e39112380dd8c3b7c6ce551055",
+            "sender_name": "Boeing",
+            "sender_title": "",
+            "message": "Congrats on 1M Hakos! It's been quite a journey watching you grow\nThank you for all the entertainment and effort you've put in these 3.5 years\nHere's to 2025! 兄弟！！",
+            "media": {
+                "is_youtube": false,
+                "path": null
             }
         },
         {
