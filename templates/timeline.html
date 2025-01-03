@@ -48,7 +48,7 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
   <section id="timeline">
     {% for event in events %}
     {% set event_type = event.type | lower | split | join('_') %}
-    <div class="timeline__event" id="{{ loop.index }}" event-type="{{ event_type }}">
+    <div class="timeline__event" id="{{ loop.index }}" data-event-type="{{ event_type }}">
       <div class="timeline__marker">
         <a href="#{{ loop.index }}">
           <event-marker>
