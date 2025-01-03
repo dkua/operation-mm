@@ -34,7 +34,7 @@
     }
   }, 500);
 </script>
-<template id="messages-template">
+<template id="messages-template" data-charset-sans-jp="{{charset_sans_jp}}" data-charset-sans-kr="{{charset_sans_kr}}">
   {% for msg in messages -%}
   <div class="msg" id="{{ msg.id }}">
     <msg-content-bg></msg-content-bg>
