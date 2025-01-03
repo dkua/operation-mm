@@ -12,9 +12,7 @@ use axum::Router;
 use itertools::Itertools;
 use minijinja::{context, Value};
 use minijinja_autoreload::AutoReloader;
-use rand::{Rng, SeedableRng};
 use serde::{Deserialize, Serialize};
-use time::OffsetDateTime;
 use tower_http::services::ServeDir;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::SubscriberInitExt;
@@ -74,60 +72,14 @@ struct Thumbnail {
     height: u32,
 }
 
-#[derive(Serialize)]
-struct TimelineVideo<'a> {
-    title: &'a str,
-    video_id: &'a str,
-    timestamp_display: String,
-    timestamp_rfc3339: String,
-    blurb: String,
-}
-
-#[derive(Serialize)]
-struct TimelineGroup<'a> {
-    group_id: String,
-    group_name: String,
-    videos: Vec<TimelineVideo<'a>>,
-}
-
-#[derive(Serialize)]
-struct TimelineLink {
-    display_string: String,
-    link_id: String,
-}
-
-#[derive(Serialize)]
-struct TimelineLinksGroup {
-    year: i32,
-    links: Vec<TimelineLink>,
-}
-
-#[derive(Deserialize)]
-struct VideoInfo {
-    id: String,
-    title: String,
-    #[serde(with = "time::serde::timestamp")]
-    release_timestamp: OffsetDateTime,
-    was_live: bool,
-    playable_in_embed: bool,
-    availability: String,
-}
-
 #[derive(Clone)]
 struct AppState {
     template_engine: Arc<AutoReloader>,
-    videos_data: &'static [VideoInfo],
 }
 
 impl FromRef<AppState> for Arc<AutoReloader> {
     fn from_ref(input: &AppState) -> Self {
         input.template_engine.clone()
-    }
-}
-
-impl FromRef<AppState> for &'static [VideoInfo] {
-    fn from_ref(input: &AppState) -> Self {
-        input.videos_data
     }
 }
 
@@ -183,12 +135,6 @@ async fn main() -> Result<(), anyhow::Error> {
             .acquire_env()
             .context("Could not preload templates")?;
     }
-    let mut videos_data = {
-        let videos_json_file = std::fs::File::open("bae-videos.json")?;
-        serde_json::from_reader::<_, Vec<VideoInfo>>(std::io::BufReader::new(videos_json_file))?
-    };
-    videos_data.sort_by_key(|v| v.release_timestamp);
-    let videos_data: &'static [VideoInfo] = videos_data.leak();
     let file_service = ServeDir::new("public").precompressed_br();
     let mut app = Router::new()
         .route("/", get(home))
@@ -203,7 +149,6 @@ async fn main() -> Result<(), anyhow::Error> {
         .fallback(not_found)
         .with_state(AppState {
             template_engine: Arc::new(template_engine),
-            videos_data,
         });
 
     match args.get(1) {
