@@ -1,11 +1,12 @@
 {% extends "shared/base.html" %}
+{% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
+{{ nav_head }}
 <link href="public/styles/404.css" rel="stylesheet">
-<link href="public/styles/header-nav.css" rel="stylesheet">
 {%- endblock head %}}
 
 {% block content -%}
-{% include "shared/header-nav.html" %}
+{{ nav_content }}
 <main>
   <h1>404 File Not Found</h1>
   <div class="img-container">
