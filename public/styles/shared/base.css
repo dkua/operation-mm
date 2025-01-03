@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../../fonts/NotoSans-Regular.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Edo SZ";
+  src: url("../../fonts/edosz.ttf");
+  font-display: block;
+}
+
+body {
+  background-color: #f02017;
+}
