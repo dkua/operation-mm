@@ -173,7 +173,7 @@ main {
   }
 }
 
-@media (orientation: portrait) {
+@media (max-width: 1000px) and (orientation: portrait) {
   .initial-content {
     .congratulations {
       top: 8vh;
@@ -198,7 +198,7 @@ main {
   }
 }
 
-@media (max-width: 1300px) or (orientation: portrait) {
+@media (max-width: 1300px) {
   main {
     flex-direction: column;
 
