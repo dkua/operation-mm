@@ -496,6 +496,12 @@ only screen and (-webkit-min-device-pixel-ratio: 2.5) {
     border-style: solid;
     border-color: #000ebf #fa144b #fa144b #000ebf;
   }
+
+  /* Making the children position: relative; ensures that they go on top of the ::before pseudo-element
+   * and don't get interactions blocked */
+  >* {
+    position: relative;
+  }
 }
 
 .chaos_angle {
