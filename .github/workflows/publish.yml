@@ -14,13 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build Rust code
-        run: cargo build --verbose
+      - name: Install minijinja-cli
+        run: |
+          curl -sSfL https://github.com/mitsuhiko/minijinja/releases/latest/download/minijinja-cli-installer.sh -o install.sh
+          sh install.sh
+          echo "Hello {{ name }}" | minijinja-cli - -Dname=World
 
       - name: Generate static site
         id: generation
         run: |
-          cargo run  -- --build
+          ./render.sh
           # Print the contents of the newly generated dist/ directory
           echo "The following files have been generated:"
           tree ./dist

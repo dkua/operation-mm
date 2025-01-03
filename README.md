@@ -17,10 +17,26 @@ If you add or change any page routes, you have to also change the `page_paths` a
 
 # Static Site Generation and Deployment
 
+## Using the Rust setup
+
 Running the Rust code with a `--build` argument will render the entire static site to the `dist/` directory.
 
 ```
 cargo run -- --build
+```
+
+## Alternate method with only `minijinja-cli`
+
+The `render.sh` script will copy all the files and render all the templates using `minijinja-cli` required into the `dist/` directory. The script assumes the required JSON data, `messages.json` & `timeline.json`, exist under `data/`.
+
+```
+./render.sh
+```
+
+The site can be served locally for development using the following Python command.
+
+```
+python -m http.server 3000 -d dist
 ```
 
 The static site can then be browsed locally starting from `dist/index.html`.
@@ -34,3 +50,30 @@ The GitHub Actions workflow found at `.github/workflows/publish.yml` will automa
 
 The repo needs to have GitHub Pages enabled with GitHub Actions workflow as the page source. See the instructions here: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
 
+# Processing data for the site
+
+There are two scripts used for processing CSVs containing Message submissions and Timeline events to be used for the website. The scripts live under `scripts/` and require Python along with two dependencies, `requests` and `pillow`.
+
+## Installing the Python dependencies
+
+Preferably inside a virtualenv run the following.
+
+```
+pip install -r scripts/requirements.txt
+```
+
+## Running the scripts
+
+Both the scripts take three arguments.
+
+```
+python scripts/<script>.py <path to CSV> <path to save images> <path to save JSON data>
+```
+
+So the full commands would look like the following.
+
+```
+python scripts/process_messages.py raw/messages.csv public/images/messages data/messages.json
+
+python scripts/process_timeline.py raw/timeline.csv public/images/timeline data/timeline.json
+```

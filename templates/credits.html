@@ -1,13 +1,13 @@
+{% set page_current = "/credits" -%}
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
-{{nav_head}}
+{{ nav_head }}
 <link href="public/styles/credits.css" rel="stylesheet">
-{%- endblock head %}}
+{%- endblock head %}
 
 {% block content -%}
-{% set page_current = "/credits" -%}
-{{nav_content}}
+{{ nav_content }}
 <main>
   <div class="credits">
     <ul>
@@ -22,6 +22,11 @@
       <li>Messages design - <a href="https://x.com/Mikururun">@Mikururun</a></li>
       <li>Website implementation - Trildar</li>
     </ul>
+
+    <div class="bratboard">
+      <img src="public/images/ratcollab.jpg">
+    </div>
+
     <details class="egg">
         <summary>Oh hi</summary>
         <div class="baescii">

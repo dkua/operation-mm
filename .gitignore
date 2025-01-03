@@ -2,3 +2,4 @@
 /dist
 .lazy.lua
 .DS_Store
+/raw

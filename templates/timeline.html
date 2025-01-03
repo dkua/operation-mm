@@ -1,42 +1,139 @@
-{% extends "shared/base.html" %}
-{% from "shared/header-nav.html" import nav_head, nav_content %}
-{% block head -%}
-{{nav_head}}
+{%- macro placeholder_img(placeholder) -%}
+style="background-size: cover; background-repeat: no-repeat; background-image: url(data:image/png;base64,{{ placeholder }});"
+{%- endmacro -%}
+{%- set page_current = "/timeline" -%}
+{%- extends "shared/base.html" -%}
+{%- from "shared/header-nav.html" import nav_head, nav_content -%}
+{%- from "shared/dialog.html" import dialog_head, dialog_content -%}
+{%- block head -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+{{ nav_head }}
 <link href="public/styles/timeline.css" rel="stylesheet">
-<script src="public/scripts/timeline_highlighting.js" defer></script>
-{%- endblock head %}
+{{ dialog_head }}
+{%- endblock head -%}
 
-{% block content -%}
-{% set page_current = "/timeline" -%}
-{{nav_content}}
-<main id="timeline">
-  {% for group in grouped_videos %}
-  <div class="timeline-group" id="{{group.group_id}}">
-    <h2 class="date-landmark">{{group.group_name}}</h2>
-    {% for video in group.videos %}
-    <div class="timeline-entry">
-      <a href="https://www.youtube.com/watch?v={{video.video_id}}" target="_blank"><img class="video-thumbnail"
-          src="https://i3.ytimg.com/vi/{{video.video_id}}/maxresdefault.jpg" loading="lazy"></a>
-      <div class="entry-description">
-        <h2>{{video.title}}</h2>
-        <h3><time datetime="{{video.timestamp_rfc3339}}">{{video.timestamp_display}}</time></h3>
-        <p>{{video.blurb}}</p>
+{%- block content -%}
+{%- set event_types = events | map(attribute="type") | unique | sort | list -%}
+{{ nav_content }}
+<div class="bg"></div>
+
+<main>
+  <section class="timeline__header">
+    <details id="timeline__filters" name="timeline_filters">
+      <summary>Filter the Timeline</summary>
+      <fieldset id="timeline__typefilter">
+        <legend>
+          Timeline Event Types (<span id="num_visible">{{ events | length }}</span> of {{ events | length }} events visible)
+        </legend>
+        <div id="choices">
+          {%- for type in event_types %}
+          {%- set type_value = type | lower | split | join('_') %}
+          {%- set type_name = type_value ~ "-type" %}
+          <label class="event_type_pill" for="{{ type_name }}">
+            <input type="checkbox" name="type_filter" id="{{ type_name }}" value="{{ type_value }}" checked>
+            <span>{{ type }}</span>
+          </label>
+          {%- endfor %}
+        </div>
+      </fieldset>
+    </details>
+
+    <div class="baetag">
+      <img src="public/images/baetag.png" width="900" height="618">
+    </div>
+  </section>
+
+  <section id="timeline">
+    {% for event in events %}
+    {% set event_type = event.type | lower | split | join('_') %}
+    <div class="timeline__event" id="{{ loop.index }}" event-type="{{ event_type }}">
+      <div class="timeline__marker">
+        <a href="#{{ loop.index }}">
+          <event-marker>
+          {%- if not event.highlight -%}
+            <dice></dice>
+          {%- else -%}
+            <star></star>
+          {%- endif -%}
+          </event-marker>
+        </a>
+      </div>
+
+      {%- if loop.first %}
+      <div class="timeline__info aussie">
+      {%- else %}
+      <div class="timeline__info">
+      {%- endif %}
+        <div class="timeline__dateline chaos_border">
+          {{ event.date }}
+        </div>
+        <article class="chaos_border">
+          <div class="timeline__title">{{ event.title | safe }}</div>
+
+          {%- if event.subtitle %}
+          <p class="timeline__subtitle">{{ event.subtitle | safe }}</p>
+          {%- endif %}
+
+          {%- if event.collabed_with -%}
+          {% set collab_num = event.collabed_with | length %}
+          <ul class="timeline__collablist">
+          {%- if event.hosted_by %}
+            Hosted by
+          {%- else %}
+            Featuring
+          {%- endif %}
+          {%- for name in event.collabed_with %}
+            {%- if loop.last and collab_num > 1 %}
+            <li>and {{ name }}</li>
+            {%- elif collab_num > 2 %}
+            <li>{{ name }},</li>
+            {%- else %}
+            <li>{{ name }}</li>
+            {%- endif %}
+          {%- endfor -%}
+            .
+          </ul>
+          {%- endif %}
+        </article>
+        <div class="timeline__event_type chaos_border">{{ event.type }}</div>
+      </div>
+
+      {%- if loop.first %}
+      <div class="timeline__media aussie">
+      {%- else %}
+      <div class="timeline__media">
+      {%- endif %}
+      {%- if event.media.path and event.media.width and event.media.height %}
+        {%- if event.media.is_youtube and event.media.video_id %}
+        <div class="video placeholder" data-video_id="{{event.media.video_id}}" {%- if event.media.video_start -%}data-video_start="{{event.media.video_start}}"{%- endif -%}>
+          <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}" {{ placeholder_img(event.media.placeholder) }}>
+          <play-icon>
+            <circle></circle>
+            <triangle></triangle>
+          </play-icon>
+        </div>
+        {%- else %}
+        <a href="{{ event.media.link }}" target="_blank">
+          <img src="{{ event.media.path }}" loading="lazy" width="{{ event.media.width }}" height="{{ event.media.height }}" {{ placeholder_img(event.media.placeholder) }}>
+        </a>
+        {%- endif %}
+      {%- endif %}
       </div>
     </div>
-    {% endfor %}
+    {%- endfor %}
+  </section>
+  <div class="squeaks">
+    <a href="#top">
+      <label>Up?</label>
+      <img src="public/images/squeaks.png">
+    </a>
   </div>
-  {% endfor %}
 </main>
-<nav class="timeline-nav" aria-label="Timeline navigation">
-  {% for group in group_links %}
-  <div class="timeline-year">
-    <span id="timeline-nav-label-{{group.year}}">{{group.year}}</span>
-    <menu aria-labelledby="timeline-nav-label-{{group.year}}">
-      {% for link in group.links %}
-      <li id="timeline-link-{{link.link_id}}"><a href="#{{link.link_id}}">{{link.display_string}}</a></li>
-      {% endfor %}
-    </menu>
-  </div>
-  {% endfor %}
-</nav>
+{{ dialog_content }}
 {%- endblock content %}
+
+{%- block body_end %}
+<script src="public/scripts/timeline.js" defer></script>
+{%- endblock body_end %}
