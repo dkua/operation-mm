@@ -49,6 +49,7 @@ enum MessageMedia {
         path: String,
         width: u32,
         height: u32,
+        thumbnail: Option<Thumbnail>,
     },
     YouTube {
         path: String,
@@ -64,6 +65,13 @@ enum MessageMedia {
         clip_id: String,
         clipt: String,
     },
+}
+
+#[derive(Clone, Serialize, Deserialize)]
+struct Thumbnail {
+    path: String,
+    width: u32,
+    height: u32,
 }
 
 #[derive(Serialize)]

@@ -65,16 +65,24 @@ def process_media(ctx, link):
         media["height"] = 720
 
     if link and media["type"] == "Image":
-        path, width, height = download_image(ctx, link)
+        path, width, height, thumb_path, thumb_width, thumb_height = download_image(ctx, link)
         media["path"] = path
         media["width"] = width
         media["height"] = height
+        media["thumbnail"] = None
+        if thumb_path:
+            media["thumbnail"] = {
+                "path": thumb_path,
+                "width": thumb_width,
+                "height": thumb_height
+            }
+        ctx.image_count += 1
     
     return media
 
 def download_image(ctx, image_url):
     resp = requests.get(image_url, stream=True)
-    filepath, w, h = None, None, None
+    filepath, w, h, thumb_filepath, thumb_w, thumb_h = None, None, None, None, None, None
     if resp.status_code == 200 and resp.headers['content-type'].startswith("image/"):
         ext = guess_extension(resp.headers['Content-Type'].partition(';')[0].strip())
         filepath = f"{ctx.image_path}/{ctx.hash_id}{ext}"
@@ -88,9 +96,15 @@ def download_image(ctx, image_url):
 
         with Image.open(filepath) as img:
             w, h = img.size
+
+        thumb = f"{ctx.image_path}/{ctx.hash_id}_thumb.png"
+        if Path(thumb).exists():
+            thumb_filepath = thumb
+            with Image.open(thumb) as img:
+                thumb_w, thumb_h = img.size
     else:
         print("Error getting image from ", image_url)
-    return filepath, w, h
+    return filepath, w, h, thumb_filepath, thumb_w, thumb_h
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -98,6 +112,7 @@ if __name__ == "__main__":
     parser.add_argument("image_path")
     parser.add_argument("json_path")
     args = parser.parse_args()
+    args.image_count = 0
 
     messages = []
     with open(args.spreadsheet_path, "r", encoding="utf-8") as csvfile:
@@ -110,6 +125,7 @@ if __name__ == "__main__":
             msg = process(args, line)
             messages.append(msg)
     
+    print("Total number of images: ", args.image_count)
     output = Path(args.json_path)
     output.parent.mkdir(exist_ok=True, parents=True)
     with output.open("w", encoding="utf-8") as f:
