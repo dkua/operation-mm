@@ -36,14 +36,12 @@
 </script>
 <template id="messages-template" data-charset-sans-jp="{{charset_sans_jp}}" data-charset-sans-kr="{{charset_sans_kr}}">
   {% for msg in messages -%}
-  <div class="msg" id="{{ msg.id }}">
+  <div class="msg" id="msg-{{ msg.id }}">
     <msg-content-bg></msg-content-bg>
     <msg-decals class="decal-{{msg.decal_variant}}"></msg-decals>
     <div class="sender-name">
       <div>
-        <span>
-          <a href="#{{ msg.id }}">#</a> {{ msg.sender_name }}
-        </span>
+        <a href="#msg-{{ msg.id }}">{{ msg.sender_name }}</a>
       </div>
     </div>
     {% if msg.sender_title %}
