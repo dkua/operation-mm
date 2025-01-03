@@ -2,27 +2,74 @@
 {% extends "shared/base.html" %}
 {% from "shared/header-nav.html" import nav_head, nav_content %}
 {% block head -%}
-{{ nav_head }}
+{{nav_head}}
 <link href="public/styles/home.css" rel="stylesheet">
+
+<script type="text/javascript">
+  let site_opened = false;
+
+  document.addEventListener('click', () => {
+    openSite();
+  }, true);
+
+  function openSite() {
+    if (site_opened) {
+      return;
+    }
+
+    site_opened = true;
+
+    const elements = document.getElementsByClassName('react-after-click');
+    for (let element of elements) {
+      element.classList.add('after-click');
+    }
+
+    document.body.classList.add('after-click');
+  }
+</script>
 {%- endblock head %}
 
 {% block content -%}
 <div class="above-fold">
-  {{ nav_content }}
-  <main>
-    <div class="landing-contents">
-      <div class="scroll-down">Scroll down for more</div>
+  {% set page_current = "/home" -%}
+  <div class="navbar react-after-click">
+    {{nav_content}}
+  </div>
+  <div class="content react-after-click">
+    <div class="initial-content react-after-click">
+      <div class="congratulations">
+        CONGRATULATIONS ON 1 MILLION SUBSCRIBERS BAE!
+      </div>
+      <div class="prompt">
+        Click anywhere to continue
+      </div>
     </div>
-  </main>
-</div>
-<div class="site-description">
-  <p>Prototyping grounds for a fan site for Chaos, the End of ends, steel rose trapped in a cage of ice, vtuber <a
-      href="https://www.youtube.com/@hakosbaelz">Hakos Baelz</a>. If that's you, you should not be looking at this
-    now.
-  </p>
-  <h2>Disclaimers</h2>
-  <ul>
-    <li>You can probably tell, but design is not my strong suit <span style="font-size: 8px;">send help</span></li>
-  </ul>
+    <main class="react-after-click">
+      <div class="block welcome">
+        <h1>WAZZUP!</h1>
+        <h2>Welcome to the BaeMillion website!</h3>
+        <br/>
+        <p>And congratulations to you, Bae, for achieving one million subscribers!</p>
+        <br/>
+        <p>A bunch of talented, passionate and determined Brats came together to make this site to celebrate because we all love and respect our adorkable oshi so much.</p>
+        <br/<>
+        <p>You'll find messages from fellow Brats who want to congratulate you for this huge milestone, and a special timeline to look back on your journey so far. From your debut in 2021 to your stream right now with FriendTaro, it has all of your biggest moments. We worked very hard to make this a reality so we hope you like it! </p>
+        <br/>
+        <p>So sit back, relax, get your sandwiches, soups and coffee, and have fun browsing our special website dedicated to the best Rat Idol. She’s chaos, the end of ends, the Steel Rose trapped in a cage of ice, our best friend Baelz Hakos from Hololive English Promise! WITNESS HER!</p>
+        <br/>
+        <p>But before you do, allow us to introduce ourselves!</p>
+      </div>
+      <div class="block introduction">
+        <h1>Allow us to introduce ourselves!</h1>
+        <h2>(SOUND ON)</h2>
+        <br/>
+        <div class="introduction-video">
+          <div class="video-container react-after-click">
+            <iframe class="video" src="https://www.youtube.com/embed/nq-i5uZPD1w?rel=0"  frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 </div>
 {%- endblock content %}

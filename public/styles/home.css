@@ -3,44 +3,239 @@
   src: url("../fonts/Baefont_normal-Regular_V1.ttf");
 }
 
-body {
-  display: grid;
-  grid-template-rows: 100vh auto;
+@font-face {
+  font-family: "Edo SZ";
+  src: url("../fonts/edosz.ttf");
+  font-display: block;
 }
 
-.above-fold {
-  display: grid;
-  grid-template-rows: min-content 1fr;
-  height: 100%;
+body:not(.after-click) {
+  overflow-y: hidden;
 }
 
-.landing-contents {
-  display: grid;
-  grid-template-rows: 1fr 2rem;
-  gap: 1rem;
-  height: 100%;
-  padding: 1rem 4rem 2rem;
-  background: center / cover url("../images/BAE1M.jpg");
+.navbar {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  margin-top: calc(var(--header-height) * -1);
+  width: 100%;
 
-  .scroll-down {
-    grid-area: 2 / 1;
-    position: sticky;
-    bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 1px black;
+  &.after-click {
+    margin-top: 0;
+    transition: margin .4s linear;
   }
 }
 
-.site-description {
-  padding: 4rem;
+.content {
+  &::before {
+    z-index: -1;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: center / cover url("../images/BAE1M.jpg");
+  }
 
-  a {
-    font-family: "Haros Baelz";
-    font-size: 1.5em;
+  &.after-click {
+    margin-top: var(--header-height);
+    transition: margin .4s linear;
+
+    &::before {
+      margin-top: calc(var(--header-height) / 2);
+      transition: margin .4s linear;
+    }
+  }
+}
+
+.initial-content {
+  .congratulations {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: 'Edo SZ';
+    font-size: 3.5vw;
+    color: white;
+    text-shadow: 3px 3px 2px black;
+    cursor: default;
+  }
+
+  .prompt {
+    position: fixed;
+    top: 6vw;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Edo SZ';
+    font-size: max(1.25vw, 1.5em);
+    text-shadow: 3px 3px 2px black;
+    cursor: default;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: .25rem .5rem .25rem .25rem;
+    border: 3px solid rgba(255, 190, 0, 1);
+    box-shadow: 1px 1px black;
+  }
+
+  &.after-click {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .5s, opacity .5s linear;
+  }
+}
+
+main {
+  visibility: hidden;
+  opacity: 0;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+
+  &::before {
+    z-index: -1;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: linear-gradient(rgb(255 255 255 / 0.5), rgb(255 255 255 / 0.5));
+  }
+
+  &.after-click {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .5s linear;
+
+    &::before {
+      margin-top: var(--header-height);
+      transition: margin .4s linear;
+    }
+  }
+
+  .block {
+    flex: 1;
+    margin: 0 .5rem;
+    padding: 1rem;
+    border: 5px solid #00144b;
+    box-shadow: 2px 1px black;
+    font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
+  
+    h1, h2 {
+      font-family: 'Edo SZ';
+    }
+  
+    h2 {
+      font-size: 1.75em;
+    }
+  
+    &.welcome {
+      background-color: rgba(17, 219, 238, 0.75);
+  
+      h1 {
+        font-size: clamp(3.5em, 2.5vw, 4.5em);
+      }
+      
+      p {
+        font-size: clamp(1em, 1vw, 1.75em);
+      }
+    }
+    
+    &.introduction {
+      background-color: rgba(255, 190, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+  
+      h1 {
+        font-size: clamp(2.2em, 2.5vw, 4.5em);
+      }
+  
+      .introduction-video {
+        margin: auto 0;
+  
+        .video-container {
+          display: none;
+          visibility: hidden;
+          position: relative;
+          width: 85%;
+          height: 0;
+          padding-top: 47.8125%; /* 16:9 aspect ratio */
+          margin: 0 auto;
+          overflow: hidden;
+    
+          .video {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+          }
+    
+          &.after-click {
+            display: block;
+            visibility: visible;
+            transition: visibility 0s .5s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .initial-content {
+    .congratulations {
+      top: 8vh;
+      font-size: 4vw;
+    }
+
+    .prompt {
+      top: 12vh;
+      font-size: 3vw;
+      border: none;
+      box-shadow: none;
+      background-color: initial;
+    }
+  }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+  .initial-content {
+    .prompt {
+      top: 4rem;
+    }
+  }
+}
+
+@media (max-width: 1300px) or (orientation: portrait) {
+  main {
+    flex-direction: column;
+
+    .block {
+      margin: 0;
+  
+      &:not(:last-child) {
+        margin-bottom: .5rem;
+      }
+      
+      &.welcome p {
+        font-size: 1.35em;
+      }
+  
+      &.introduction {
+        h1 {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1800px) {
+  main .block.introduction .introduction-video .video-container {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    margin: 0;
   }
 }
