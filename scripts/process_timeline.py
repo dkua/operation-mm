@@ -111,7 +111,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     events = []
-    with open(args.spreadsheet_path, "r") as csvfile:
+    with open(args.spreadsheet_path, "r", encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
         for i, line in enumerate(reader, start=1):
             if line["EventType"]:

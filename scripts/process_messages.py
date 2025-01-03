@@ -93,7 +93,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     messages = []
-    with open(args.spreadsheet_path, "r") as csvfile:
+    with open(args.spreadsheet_path, "r", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None) # Skip header row
         for i, line in enumerate(reader, start=1):
