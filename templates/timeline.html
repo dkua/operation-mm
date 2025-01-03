@@ -69,7 +69,7 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
       <div class="timeline__info">
       {%- endif %}
         <div class="timeline__dateline chaos_border chaos_angle">
-          {{ event.date }}
+          <span>{{ event.date }}</span>
         </div>
         <div class="timeline__text chaos_border chaos_angle">
           <div class="timeline__title">{{ event.title | safe }}</div>
@@ -99,7 +99,7 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
           </ul>
           {%- endif %}
         </div>
-        <div class="timeline__event_type chaos_border chaos_angle">{{ event.type }}</div>
+      <div class="timeline__event_type chaos_border chaos_angle"><span>{{ event.type }}</span></div>
       </div>
 
       {%- if loop.first %}
