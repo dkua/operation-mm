@@ -22,21 +22,17 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
 <main>
   <section class="timeline__header">
     <details id="timeline__filters" name="timeline_filters">
-      <summary>
-        Filter the Timeline
-      </summary>
+      <summary>Filter the Timeline</summary>
       <fieldset id="timeline__typefilter">
         <legend>
-          <label>
-            Timeline Event Types (<span id="num_visible">{{ events | length }}</span> of {{ events | length }} events visible)
-          </label>
+          Timeline Event Types (<span id="num_visible">{{ events | length }}</span> of {{ events | length }} events visible)
         </legend>
         <div id="choices">
           {%- for type in event_types %}
           {%- set type_value = type | lower | split | join('_') %}
           {%- set type_name = type_value ~ "-type" %}
           <label class="event_type_pill" for="{{ type_name }}">
-            <input type="checkbox" name="type_filter" id="{{ type_name }}" value="{{ type_value }}" checked></input>
+            <input type="checkbox" name="type_filter" id="{{ type_name }}" value="{{ type_value }}" checked>
             <span>{{ type }}</span>
           </label>
           {%- endfor %}
@@ -54,17 +50,15 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
     {% set event_type = event.type | lower | split | join('_') %}
     <div class="timeline__event" id="{{ loop.index }}" event-type="{{ event_type }}">
       <div class="timeline__marker">
-        <div>
-          <a href="#{{ loop.index }}">
-            <event-marker>
-            {%- if not event.highlight -%}
-              <dice></dice>
-            {%- else -%}
-              <star></star>
-            {%- endif -%}
-            </event-marker>
-          </a>
-        </div>
+        <a href="#{{ loop.index }}">
+          <event-marker>
+          {%- if not event.highlight -%}
+            <dice></dice>
+          {%- else -%}
+            <star></star>
+          {%- endif -%}
+          </event-marker>
+        </a>
       </div>
 
       {%- if loop.first %}
