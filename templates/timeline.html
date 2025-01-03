@@ -52,11 +52,11 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
       <div class="timeline__marker">
         <a href="#{{ loop.index }}">
           <event-marker>
-          {%- if not event.highlight -%}
-            <dice></dice>
-          {%- else -%}
-            <star></star>
-          {%- endif -%}
+            {%- if event.highlight %}
+            <img class="highlight" src="public/images/icon-glowing-star.svg">
+            {%- else %}
+            <img class="dice" src="public/images/icon-dice.svg">
+            {%- endif %}
           </event-marker>
         </a>
       </div>
@@ -66,10 +66,10 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
       {%- else %}
       <div class="timeline__info">
       {%- endif %}
-        <div class="timeline__dateline chaos_border">
+        <div class="timeline__dateline chaos_border chaos_angle">
           {{ event.date }}
         </div>
-        <article class="chaos_border">
+        <div class="timeline__text chaos_border chaos_angle">
           <div class="timeline__title">{{ event.title | safe }}</div>
 
           {%- if event.subtitle %}
@@ -96,8 +96,8 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
             .
           </ul>
           {%- endif %}
-        </article>
-        <div class="timeline__event_type chaos_border">{{ event.type }}</div>
+        </div>
+        <div class="timeline__event_type chaos_border chaos_angle">{{ event.type }}</div>
       </div>
 
       {%- if loop.first %}

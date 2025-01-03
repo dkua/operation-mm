@@ -195,7 +195,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   grid-template-areas: "... baetag_img ...";
-  align-content: center;
+  align-items: center;
   justify-content: center;
   position: relative;
   margin-top: 1rem;
@@ -234,8 +234,12 @@ main {
 .timeline__event {
   display: grid;
   grid-auto-flow: dense;
-  grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 3fr) 0.5rem minmax(20rem, 3fr) minmax(1rem, 1fr);
-  grid-template-areas: "... left line right ...";
+  grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 3fr) 4rem minmax(20rem, 3fr) minmax(1rem, 1fr);
+  grid-template-rows: 2rem auto 2rem;
+  grid-template-areas:
+    "... ... marker ... ..."
+    "... left marker right ..."
+    "... ... marker ... ...";
   column-gap: 2rem;
 
   .aussie {
@@ -245,14 +249,12 @@ main {
 
   .timeline__info {
     grid-area: left;
-    justify-self: end;
-    text-align: right;
     display: grid;
-
+    justify-self: end;
     align-content: center;
-    margin: 2rem 1rem 2rem 1rem;
+    text-align: right;
 
-    >article {
+    .timeline__text {
       background-color: white;
       padding: 2rem;
     }
@@ -261,10 +263,8 @@ main {
   .timeline__media {
     grid-area: right;
     justify-self: start;
-    text-align: left;
-
     align-content: center;
-    margin: 2rem 1rem 2rem 1rem;
+    text-align: left;
 
     img {
       width: 100%;
@@ -287,33 +287,37 @@ main {
   }
 
   .timeline__marker {
-    background: white;
-    position: relative;
-    grid-area: line;
-    display: flex;
+    grid-area: marker;
+    grid-template-rows: auto 4rem auto;
+    grid-template-areas: "... icon ...";
     justify-content: center;
     align-items: center;
+    display: flex;
+    position: relative;
 
     event-marker {
-      display: grid;
+      grid-area: icon;
+      display: block;
       width: 4rem;
       height: 4rem;
       background-color: white;
       border: 0.5rem solid white;
       border-radius: 100%;
 
-      cheese {
-        transform: translateY(-0.2rem);
-        background: no-repeat url("../images/icon-cheese.svg");
-      }
-      dice {
-        background: no-repeat url("../images/icon-dice.svg");
-      }
-      star {
+      .highlight {
         transform: translateY(0.1rem);
-        background: no-repeat url("../images/icon-glowing-star.svg");
       }
     }
+  }
+  .timeline__marker::before {
+    content: "";
+    height: 100%;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width: 0.5rem;
+    background: white;
+    z-index: -1;
   }
   @media (hover: hover) {
     .timeline__marker:hover {
@@ -353,12 +357,13 @@ main {
     list-style: none;
     padding-inline-start: 0px;
     font-size: clamp(0.8rem, 1.5vmin, 1rem);
-  }
-  .timeline__collablist li {
-    display: inline;
-  }
-  .timeline__collablist li + li:before {
-    content: " ";
+
+    li {
+      display: inline;
+    }
+    li:before {
+      content: " ";
+    }
   }
 
   .timeline__event_type {
@@ -397,11 +402,17 @@ main {
     column-gap: 1rem;
   }
 
+  #timeline__filters fieldset {
+    margin-bottom: 2rem;
+  }
+
   .timeline__event {
-    grid-template-columns: 3rem 0.5rem 1fr auto;
+    grid-template-columns: auto 4rem 1fr auto;
+    grid-template-rows: auto auto 4rem;
     grid-template-areas:
       "... line info ..."
-      "... line media ...";
+      "... line media ..."
+      "... line ... ...";
     column-gap: 1rem;
 
     .aussie {
@@ -412,33 +423,33 @@ main {
       width: 100%;
       word-break: break-word;
       grid-area: info;
+      align-items: start;
       justify-self: start;
       text-align: left;
-      margin: 2rem 0rem 1rem 0rem;
     }
 
     .timeline__dateline {
-      min-width: 30vw !important;
+      min-width: 30vw;
       height: auto;
     }
 
     .timeline__event_type {
-      min-width: 30vw !important;
+      min-width: 30vw;
       height: auto;
     }
 
     .timeline__media {
       grid-area: media;
+      align-items: start;
       justify-self: start;
       text-align: left;
-      margin: 1rem 0rem 1rem 0rem;
     }
 
     .timeline__marker {
       grid-area: line;
       display: grid;
-      align-content: start;
-      transform: translateX(-1.8rem) translateY(2.4rem);
+      align-items: start;
+      justify-self: center;
     }
   }
   .timeline__event:nth-child(2n) {
@@ -473,7 +484,6 @@ main {
 .chaos_border {
   border: 5px solid #00144b;
   box-shadow: 2px 1px black;
-  transform: rotate(358.2deg);
 
   &::before {
     content: "";
@@ -487,21 +497,25 @@ main {
     border-color: #000ebf #fa144b #fa144b #000ebf;
   }
 }
-.timeline__event:nth-child(6n+2) .chaos_border {
+
+.chaos_angle {
+  transform: rotate(358.2deg);
+}
+.timeline__event:nth-child(6n+2) .chaos_angle {
   transform: rotate(356.9deg);
 }
-.timeline__event:nth-child(6n+3) .chaos_border {
+.timeline__event:nth-child(6n+3) .chaos_angle {
   transform: rotate(-359.9deg);
 }
-.timeline__event:nth-child(6n+4) .chaos_border {
+.timeline__event:nth-child(6n+4) .chaos_angle {
   transform: rotate(-358.9deg);
 }
-.timeline__event:nth-child(5n+2) .chaos_border {
+.timeline__event:nth-child(5n+2) .chaos_angle {
   transform: rotate(-357.9deg);
 }
-.timeline__event:nth-child(5n+3) .chaos_border {
+.timeline__event:nth-child(5n+3) .chaos_angle {
   transform: rotate(359.9deg);
 }
-.timeline__event:nth-child(5n+4) .chaos_border {
+.timeline__event:nth-child(5n+4) .chaos_angle {
   transform: rotate(357.9deg);
 }
