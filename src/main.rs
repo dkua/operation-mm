@@ -1,7 +1,6 @@
-use std::hash::{DefaultHasher, Hash, Hasher};
+use std::fs;
 use std::net::SocketAddr;
 use std::sync::Arc;
-use std::{fs, iter};
 
 use anyhow::{anyhow, Context};
 use axum::extract::{FromRef, State};
@@ -23,13 +22,47 @@ mod app_error;
 
 use app_error::AppError;
 
-#[derive(Clone, Serialize)]
-struct Message {
+#[derive(Deserialize)]
+struct MessageInput {
+    id: String,
     sender_name: String,
     sender_title: Option<String>,
-    video_id: Option<String>,
+    media: Option<MessageMedia>,
+    message: String,
+}
+
+#[derive(Clone, Serialize)]
+struct Message {
+    id: String,
+    sender_name: String,
+    sender_title: Option<String>,
+    media: Option<MessageMedia>,
     message: String,
     decal_variant: u64,
+}
+
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(tag = "type")]
+enum MessageMedia {
+    Image {
+        path: String,
+        width: u32,
+        height: u32,
+    },
+    YouTube {
+        path: String,
+        width: u32,
+        height: u32,
+        video_id: String,
+    },
+    YouTubeClip {
+        path: String,
+        width: u32,
+        height: u32,
+        video_id: String,
+        clip_id: String,
+        clipt: String,
+    },
 }
 
 #[derive(Serialize)]
@@ -90,52 +123,6 @@ impl FromRef<AppState> for &'static [VideoInfo] {
 }
 
 const TEMPLATE_PATH: &str = "templates";
-const NAME_LIST: [&str; 23] = [
-    "AshScar",
-    "saltedbread",
-    "reki",
-    "MurphLAZ3R",
-    "Zyrob",
-    "Alphaetus",
-    "xing255",
-    "TheRocki",
-    "やよい軒",
-    "TensuTensu",
-    "Avros",
-    "Vayne Darkness",
-    "taco tom",
-    "Kagecherou",
-    "alkusanagi",
-    "WallyWW",
-    "WolkenKatz",
-    "Avros",
-    "PuffyOwlGod",
-    "DiaGuy",
-    "buffybear",
-    "mikururun",
-    "Trildar",
-];
-const TITLE_LIST: [&str; 19] = [
-    "堂島の龍",
-    "嶋野の狂犬",
-    "The Lone Wanderer",
-    "The Courier",
-    "Tarnished",
-    "The First Elden Lord",
-    "Motivated",
-    "Hope",
-    "Chaos, the End of Ends",
-    "Warden of Time",
-    "Speaker of Space",
-    "Keeper of Nature",
-    "Guardian of Civilization",
-    "Duke of the Sewers, GWS Pill Supplier, He Whose Username Appears to Rats to Contain an S in the Middle but Does Not",
-    "The Lord of Beaches, upon which the crumbled mountains of Order meet the fathomless seas of Chaos, he who watches at the border of the finite and infinite",
-    "The Everlasting Flame and the Eater of Worlds",
-    "The Alpha and Omega, the Beginning and the End",
-    "The Remnant of Embers",
-    "Rogue Rat Hoshiyomi, Member of the Sewer Rats Family, a Rat Pack Subsidiary",
-];
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
@@ -244,50 +231,39 @@ async fn credits(
 
 async fn messages(
     State(template_engine): State<Arc<AutoReloader>>,
-    State(videos_data): State<&[VideoInfo]>,
 ) -> Result<Html<String>, AppError> {
-    let mut rng = rand_pcg::Pcg64Mcg::seed_from_u64(80085);
-    let lorem_sentences = "Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis"
-        .split('.')
-        .collect::<Vec<_>>();
-    let mut video_ids_iter = videos_data
-        .iter()
-        .filter_map(|video| {
-            if video.playable_in_embed && video.availability == "public" {
-                Some(&video.id)
+    let messages_input_file = fs::File::open("data/messages.json")?;
+    let mut messages_input = serde_json::from_reader::<_, serde_json::Value>(
+        std::io::BufReader::new(messages_input_file),
+    )?;
+    let messages = messages_input["messages"]
+        .as_array_mut()
+        .ok_or(anyhow!(
+            "Could not read messages field in messages.json as array"
+        ))?
+        .iter_mut()
+        .map(|v| {
+            let message_input = serde_json::from_value::<MessageInput>(v.take())?;
+            let sender_name = message_input.sender_name;
+            let decal_variant = if sender_name == "Mikururun" {
+                10
             } else {
-                None
-            }
-        })
-        .peekable();
-    let messages = iter::from_fn(|| {
-        video_ids_iter.peek()?;
+                let mut bytes = [0u8; 16];
+                hex::decode_to_slice(&message_input.id, &mut bytes)?;
 
-        let mut message = lorem_sentences[0..rng.gen_range(1..=5)].join(".");
-        message.push('.');
-        let video_id = if rng.gen_bool(0.2) {
-            Some(video_ids_iter.next().unwrap().to_owned())
-        } else {
-            None
-        };
-        let sender_title = if rng.gen_bool(0.5) {
-            Some(TITLE_LIST[rng.gen_range(0..TITLE_LIST.len())].to_owned())
-        } else {
-            None
-        };
-        let sender_name = NAME_LIST[rng.gen_range(0..NAME_LIST.len())].to_owned();
-        let mut hasher = DefaultHasher::new();
-        sender_name.hash(&mut hasher);
-        return Some(Value::from_serialize(Message {
-            sender_name,
-            sender_title,
-            video_id,
-            message,
-            decal_variant: hasher.finish() % 5,
-        }));
-    })
-    .take(2000)
-    .collect::<Value>();
+                (u128::from_be_bytes(bytes) % 5) as u64
+            };
+
+            Ok(Value::from_serialize(Message {
+                id: message_input.id,
+                sender_name,
+                sender_title: message_input.sender_title,
+                media: message_input.media,
+                message: message_input.message,
+                decal_variant,
+            }))
+        })
+        .try_collect::<_, Value, AppError>()?;
     let env = template_engine.acquire_env()?;
     let ctx = context! {messages};
     return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
