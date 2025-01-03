@@ -103,9 +103,9 @@ style="background-size: cover; background-repeat: no-repeat; background-image: u
       </div>
 
       {%- if loop.first %}
-      <div class="timeline__media aussie">
+      <div class="timeline__media aussie" style="max-width: {{ event.media.width }}px;">
       {%- else %}
-      <div class="timeline__media">
+      <div class="timeline__media" style="max-width: {{ event.media.width }}px;">
       {%- endif %}
       {%- if event.media.path and event.media.width and event.media.height %}
         {%- if event.media.is_youtube and event.media.video_id %}

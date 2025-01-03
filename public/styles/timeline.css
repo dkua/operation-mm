@@ -59,6 +59,7 @@ body {
     font-weight: 500;
   }
 }
+
 @media (hover: hover) {
   .squeaks:hover {
     transform: scale(1.2);
@@ -103,6 +104,7 @@ main {
     width: fit-content;
     float: right;
   }
+
   @media (hover: hover) {
     summary:hover {
       background-color: lightgrey;
@@ -160,6 +162,7 @@ main {
     display: grid;
     place-content: center;
   }
+
   input[type="checkbox"]::before {
     content: "";
     width: 0.65rem;
@@ -168,6 +171,7 @@ main {
     transition: 120ms transform ease-in-out;
     background-color: black;
   }
+
   input[type="checkbox"]:checked::before {
     transform: scale(1);
   }
@@ -179,6 +183,7 @@ main {
     margin-inline: 0.5rem;
   }
 }
+
 @media (hover: hover) {
   .event_type_pill:hover {
     background-color: lightgrey;
@@ -255,6 +260,7 @@ main {
     justify-self: start;
     align-content: center;
     text-align: left;
+    width: 100%;
 
     img {
       width: 100%;
@@ -299,6 +305,7 @@ main {
       }
     }
   }
+
   .timeline__marker::before {
     content: "";
     height: 100%;
@@ -309,6 +316,7 @@ main {
     background: white;
     z-index: -1;
   }
+
   @media (hover: hover) {
     .timeline__marker:hover {
       event-marker {
@@ -351,6 +359,7 @@ main {
     li {
       display: inline;
     }
+
     li:before {
       content: " ";
     }
@@ -369,6 +378,7 @@ main {
     z-index: 1;
   }
 }
+
 .timeline__event:nth-child(2n) {
   .timeline__info {
     grid-area: right;
@@ -441,6 +451,7 @@ only screen and (-webkit-min-device-pixel-ratio: 2.5) {
       justify-self: center;
     }
   }
+
   .timeline__event:nth-child(2n) {
     .timeline__info {
       grid-area: info;
@@ -490,21 +501,27 @@ only screen and (-webkit-min-device-pixel-ratio: 2.5) {
 .chaos_angle {
   transform: rotate(358.2deg);
 }
+
 .timeline__event:nth-child(6n+2) .chaos_angle {
   transform: rotate(356.9deg);
 }
+
 .timeline__event:nth-child(6n+3) .chaos_angle {
   transform: rotate(-359.9deg);
 }
+
 .timeline__event:nth-child(6n+4) .chaos_angle {
   transform: rotate(-358.9deg);
 }
+
 .timeline__event:nth-child(5n+2) .chaos_angle {
   transform: rotate(-357.9deg);
 }
+
 .timeline__event:nth-child(5n+3) .chaos_angle {
   transform: rotate(359.9deg);
 }
+
 .timeline__event:nth-child(5n+4) .chaos_angle {
   transform: rotate(357.9deg);
 }
