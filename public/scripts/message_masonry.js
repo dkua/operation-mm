@@ -23,5 +23,8 @@
             fitWidth: true,
             layoutInstant: true,
         });
+        if (location.hash) {
+            document.querySelector(location.hash).scrollIntoView();
+        }
     });
 }
