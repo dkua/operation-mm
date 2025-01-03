@@ -199,5 +199,9 @@ img.emoji {
       background: no-repeat top 15px right 20px / 50px url("../images/message-decal-cross.png"), no-repeat bottom left / 100px url("../images/message-decal-circle.png");
       margin: 0 0 -20px -25px;
     }
+
+    &.decal-10 {
+      background: no-repeat bottom 5px right 5px / 100px url("../images/headpat.png");
+    }
   }
 }
