@@ -64,12 +64,9 @@ body {
     font-weight: 500;
   }
 }
-.squeaks:hover {
-  transform: scale(1.2);
-}
-@media (hover: none) {
+@media (hover: hover) {
   .squeaks:hover {
-    transform: rotate(45deg);
+    transform: scale(1.2);
   }
 }
 
@@ -111,12 +108,9 @@ main {
     width: fit-content;
     float: right;
   }
-  summary:hover {
-    background-color: lightgrey;
-  }
-  @media (hover: none) {
+  @media (hover: hover) {
     summary:hover {
-      background-color: rgb(255 190 0);
+      background-color: lightgrey;
     }
   }
 
@@ -132,13 +126,9 @@ main {
       box-shadow: 2px 1px black;
       padding-inline: 1rem;
 
-      label {
-        width: 100%;
-        display: inline-block;
-        font-size: 1.5rem;
-        font-weight: 700;
-        line-height: 2;
-      }
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 2;
     }
   }
 }
@@ -167,10 +157,9 @@ main {
     background-color: inherit;
     margin: 0;
     font: inherit;
-    color: currentColor;
     width: var(--pill-font-size);
     height: var(--pill-font-size);
-    border: 0.15em solid currentColor;
+    border: 0.15em solid black;
     border-radius: 0.15em;
     margin-top: 0.3rem;
     display: grid;
@@ -182,7 +171,7 @@ main {
     height: 0.65rem;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1rem 1rem black;
+    background-color: black;
   }
   input[type="checkbox"]:checked::before {
     transform: scale(1);
@@ -195,12 +184,9 @@ main {
     margin-inline: 0.5rem;
   }
 }
-.event_type_pill:hover {
-  background-color: lightgrey;
-}
-@media (hover: none) {
+@media (hover: hover) {
   .event_type_pill:hover {
-    background-color: #fb46ce;
+    background-color: lightgrey;
   }
 }
 
@@ -218,7 +204,6 @@ main {
     grid-area: baetag_img;
     width: 100%;
     height: auto;
-    aspect-ratio: attr(width) / attr(height);
     justify-self: center;
     position: relative;
 
@@ -284,7 +269,6 @@ main {
     img {
       width: 100%;
       height: auto;
-      aspect-ratio: attr(width) / attr(height);
       border: 5px solid #00144b;
       box-shadow: 2px 1px black;
 
@@ -306,20 +290,17 @@ main {
     background: white;
     position: relative;
     grid-area: line;
-    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     event-marker {
       display: grid;
       width: 4rem;
       height: 4rem;
-      transform: translateX(-1.8rem);
       background-color: white;
       border: 0.5rem solid white;
       border-radius: 100%;
-
-      &>* {
-        grid-area: 1/1;
-      }
 
       cheese {
         transform: translateY(-0.2rem);
@@ -334,21 +315,11 @@ main {
       }
     }
   }
-  .timeline__marker:hover {
-    > div {
-      transform: scale(1.2);
-    }
-    event-marker {
-      box-shadow: 2px 1px black;
-    }
-  }
-  @media (hover: none) {
+  @media (hover: hover) {
     .timeline__marker:hover {
-      > div {
-        transform: scale(1);
-      }
       event-marker {
-        box-shadow: inherit;
+        transform: scale(1.2);
+        box-shadow: 2px 1px black;
       }
     }
   }
@@ -465,6 +436,7 @@ main {
 
     .timeline__marker {
       grid-area: line;
+      display: grid;
       align-content: start;
       transform: translateX(-1.8rem) translateY(2.4rem);
     }
