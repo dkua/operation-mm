@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::fs;
 use std::net::SocketAddr;
 use std::sync::Arc;
@@ -236,6 +237,7 @@ async fn messages(
     let mut messages_input = serde_json::from_reader::<_, serde_json::Value>(
         std::io::BufReader::new(messages_input_file),
     )?;
+    let mut charset_sans = HashSet::new();
     let messages = messages_input["messages"]
         .as_array_mut()
         .ok_or(anyhow!(
@@ -253,6 +255,8 @@ async fn messages(
 
                 (u128::from_be_bytes(bytes) % 5) as u64
             };
+            charset_sans.extend(sender_name.chars());
+            charset_sans.extend(message_input.message.chars());
 
             Ok(Value::from_serialize(Message {
                 id: message_input.id,
@@ -264,8 +268,21 @@ async fn messages(
             }))
         })
         .try_collect::<_, Value, AppError>()?;
+    let mut charset_sans_jp = String::new();
+    let mut charset_sans_kr = String::new();
+    for c in charset_sans {
+        match c {
+            // Hangul syllables block
+            '\u{ac00}'..='\u{d7af}' => charset_sans_kr.push(c),
+            // Hiragana, Katakana, CJK ideographs, halfwidth & fullwidth
+            '\u{3000}'..='\u{9fff}' | '\u{ff00}'..='\u{ffef}' => charset_sans_jp.push(c),
+            // Mathematical operators (for kaomoji)
+            '\u{2200}'..='\u{22ff}' => charset_sans_jp.push(c),
+            _ => {}
+        }
+    }
     let env = template_engine.acquire_env()?;
-    let ctx = context! {messages};
+    let ctx = context! {messages, charset_sans_jp, charset_sans_kr};
     return Ok(Html(env.get_template("messages.html")?.render(ctx)?));
 }
 
