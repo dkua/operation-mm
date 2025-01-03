@@ -23,13 +23,17 @@ def process(ctx, line):
     msg["sender_name"] = name
     msg["sender_title"] = title
     msg["message"] = message
-    msg["media"] = process_media(ctx, link)
+    media = process_media(ctx, link)
+    if media["path"]:
+        msg["media"] = media
+    else:
+        msg["media"] = None
 
     return msg
 
 def process_media(ctx, link):
     media = dict()
-    media["is_youtube"] = True
+    media["type"] = "YouTube"
     media["path"] = None
     url = urlparse(link)
     params = dict(p.split('=') for p in html.unescape(url.query).split('&') if url.query)
@@ -41,25 +45,26 @@ def process_media(ctx, link):
     elif url.netloc == "www.youtube.com" and url.path.startswith("/live/"):
         media["video_id"] = url.path.replace("/live/", "")
     elif url.netloc == "www.youtube.com" and url.path.startswith("/embed"):
+        media["type"] = "YouTubeClip"
         media["video_id"] = url.path.replace("/embed/", "")
         media["clip_id"] = params["clip"]
         media["clipt"] = params["clipt"]
     elif url.netloc == "www.youtube.com" and url.path.startswith("/watch"):
         media["video_id"] = params["v"]
     elif url.netloc == "drive.google.com" and url.path.startswith("/file/d/"):
-        media["is_youtube"] = False
+        media["type"] = "Image"
         drive_id = url.path.replace("/file/d/", "").split("/")[0]
         link = f"https://drive.google.com/uc?export=download&id={drive_id}"
     else:
-        media["is_youtube"] = False
+        media["type"] = "Image"
 
-    if media["is_youtube"] and media["video_id"]:
+    if media["type"].startswith("YouTube") and media["video_id"]:
         media["path"] = f"https://i.ytimg.com/vi/{media['video_id']}/maxresdefault.jpg"
         # YouTube's default max resolution for thumbnails is 1280x720
         media["width"] = 1280
         media["height"] = 720
 
-    if link and not media["is_youtube"]:
+    if link and media["type"] == "Image":
         path, width, height = download_image(ctx, link)
         media["path"] = path
         media["width"] = width
@@ -83,6 +88,8 @@ def download_image(ctx, image_url):
 
         with Image.open(filepath) as img:
             w, h = img.size
+    else:
+        print("Error getting image from ", image_url)
     return filepath, w, h
 
 if __name__ == "__main__":

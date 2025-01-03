@@ -54,10 +54,13 @@
     </div>
     {% endif %}
     <div class="msg-content">
-    {% if msg.media.is_youtube and msg.media.video_id -%}
-      {%- if msg.media.clip_id and msg.media.clipt -%}
+    {% if msg.media.type is startingwith "YouTube" -%}
       <div class="msg-media">
-        <div class="video placeholder" data-video_id="{{ msg.media.video_id }}" data-clip_id="{{ msg.media.clip_id }}" data-clipt="{{ msg.media.clipt }}">
+        <div class="video placeholder" data-video_id="{{ msg.media.video_id }}"
+          {% if msg.media.type == "YouTubeClip" -%}
+          data-clip_id="{{ msg.media.clip_id }}" data-clipt="{{ msg.media.clipt }}"
+          {% endif -%}
+        >
           <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
           <play-icon>
             <circle></circle>
@@ -65,17 +68,6 @@
           </play-icon>
         </div>
       </div>
-      {%- else -%}
-      <div class="msg-media">
-        <div class="video placeholder" data-video_id="{{msg.media.video_id}}">
-          <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
-          <play-icon>
-            <circle></circle>
-            <triangle></triangle>
-          </play-icon>
-        </div>
-      </div>
-      {%- endif -%}
     {% elif msg.media.path -%}
       <div class="msg-media">
         <a href="{{ msg.media.path }}" target="_blank">
