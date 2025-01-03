@@ -20,6 +20,11 @@ jobs:
           sh install.sh
           echo "Hello {{ name }}" | minijinja-cli - -Dname=World
 
+      - name: Get latest data
+        run: |
+          wget https://data.baemillion.com/latest.tar.gz
+          tar -xvzf latest.tar.gz
+
       - name: Generate static site
         id: generation
         run: |
