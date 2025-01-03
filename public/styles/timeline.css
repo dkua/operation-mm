@@ -260,6 +260,7 @@ main {
     justify-self: start;
     align-content: center;
     text-align: left;
+    width: 100%;
 
     img {
       width: 100%;
@@ -304,6 +305,7 @@ main {
       }
     }
   }
+
   .timeline__marker::before {
     content: "";
     height: 100%;
@@ -314,6 +316,7 @@ main {
     background: white;
     z-index: -1;
   }
+
   @media (hover: hover) {
     .timeline__marker:hover {
       event-marker {
@@ -356,6 +359,7 @@ main {
     li {
       display: inline;
     }
+
     li:before {
       content: " ";
     }
@@ -497,21 +501,27 @@ only screen and (-webkit-min-device-pixel-ratio: 2.5) {
 .chaos_angle {
   transform: rotate(358.2deg);
 }
+
 .timeline__event:nth-child(6n+2) .chaos_angle {
   transform: rotate(356.9deg);
 }
+
 .timeline__event:nth-child(6n+3) .chaos_angle {
   transform: rotate(-359.9deg);
 }
+
 .timeline__event:nth-child(6n+4) .chaos_angle {
   transform: rotate(-358.9deg);
 }
+
 .timeline__event:nth-child(5n+2) .chaos_angle {
   transform: rotate(-357.9deg);
 }
+
 .timeline__event:nth-child(5n+3) .chaos_angle {
   transform: rotate(359.9deg);
 }
+
 .timeline__event:nth-child(5n+4) .chaos_angle {
   transform: rotate(357.9deg);
 }
