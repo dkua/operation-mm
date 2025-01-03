@@ -53,25 +53,26 @@
     {% endif %}
     <div class="msg-content">
     {% if msg.media.type is startingwith "YouTube" -%}
-      <div class="msg-media">
-        <div class="video placeholder" data-video_id="{{ msg.media.video_id }}"
-          {% if msg.media.type == "YouTubeClip" -%}
-          data-clip_id="{{ msg.media.clip_id }}" data-clipt="{{ msg.media.clipt }}"
-          {% endif -%}
-        >
-          <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
-          <play-icon>
-            <circle></circle>
-            <triangle></triangle>
-          </play-icon>
-        </div>
+      <div class="video placeholder" data-video_id="{{ msg.media.video_id }}"
+        {% if msg.media.type == "YouTubeClip" -%}
+        data-clip_id="{{ msg.media.clip_id }}" data-clipt="{{ msg.media.clipt }}"
+        {% endif -%}
+      >
+        <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
+        <play-icon>
+          <circle></circle>
+          <triangle></triangle>
+        </play-icon>
       </div>
     {% elif msg.media.path -%}
-      <div class="msg-media">
-        <a href="{{ msg.media.path }}" target="_blank">
-          <img src="{{ msg.media.path }}" loading="lazy" width="{{ msg.media.width }}" height="{{ msg.media.height }}">
-        </a>
-      </div>
+      <img class="msg-img" loading="lazy"
+        {% if msg.media.thumbnail -%}
+        src="{{ msg.media.thumbnail.path }}" width="{{ msg.media.thumbnail.width }}" height="{{ msg.media.thumbnail.height }}"
+        {% else -%}
+        src="{{ msg.media.path }}" width="{{ msg.media.width }}" height="{{ msg.media.height }}"
+        {% endif -%}
+        data-full-img="{{msg.media.path}}" data-full-width="{{ msg.media.width }}" data-full-height="{{ msg.media.height }}"
+      >
     {% endif -%}
       <p>{{ msg.message }}</p>
     </div>

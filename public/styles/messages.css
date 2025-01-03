@@ -169,12 +169,18 @@ img.emoji {
     z-index: 0;
   }
 
-  .msg-media {
-    img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: attr(width) / attr(height);
-    }
+  .msg-img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    object-position: center;
+    cursor: pointer;
+  }
+
+  .video.placeholder>img {
+    width: 100%;
+    height: auto;
   }
 
   msg-content-bg {
