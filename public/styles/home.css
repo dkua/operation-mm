@@ -124,29 +124,32 @@ main {
   box-shadow: 2px 1px black;
   font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
 
-  h1 {
+  h1, h2 {
     font-family: 'Edo SZ';
-    margin-bottom: 1rem;
   }
 
-  h2 {
-    font-family: 'Edo SZ';
+  h1 {
+    font-size: 3em;
   }
 
   &.welcome {
-    background-color: rgba(255, 190, 0, 0.75);
+    background-color: rgba(17, 219, 238, 0.75);
+    
+    p {
+      font-size: clamp(1em, 1vw, 2em);
+    }
   }
   
   &.introduction {
-    background-color: rgba(17, 219, 238, 0.75);
+    background-color: rgba(255, 190, 0, 0.75);
 
     .video-container {
       display: none;
       visibility: hidden;
       position: relative;
-      width: 100%;
+      width: 85%;
       height: 0;
-      padding-top: 56.25%; /* 16:9 aspect ratio */
+      padding-top: 47.8125%; /* 16:9 aspect ratio */
       overflow: hidden;
 
       .video {
@@ -194,7 +197,7 @@ main {
   }
 }
 
-@media (max-width: 1000px) or (orientation: portrait) {
+@media (max-width: 1200px) or (orientation: portrait) {
   main {
     flex-direction: column;
   }
@@ -205,5 +208,12 @@ main {
     &:not(:last-child) {
       margin-bottom: .5rem;
     }
+  }
+}
+
+@media (max-width: 1300px) {
+  .block.introduction .video-container {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
   }
 }
