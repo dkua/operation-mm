@@ -39,31 +39,30 @@ body:not(.after-click) {
 }
 
 .initial-content {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: default;
+
   .congratulations {
-    position: fixed;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
     white-space: nowrap;
     font-family: 'Edo SZ';
     font-size: 3.5vw;
     color: white;
     text-shadow: 3px 3px 2px black;
-    cursor: default;
   }
 
   .prompt {
-    position: fixed;
-    top: 6vw;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     color: white;
     font-family: 'Edo SZ';
-    font-size: max(1.25vw, 1.5em);
+    font-size: max(1.5vw, 1em);
     text-shadow: 3px 3px 2px black;
-    cursor: default;
     background-color: rgb(0, 0, 0, 0.5);
-    padding: .25rem .5rem .25rem .25rem;
+    padding: .25rem .5rem;
     border: 3px solid rgba(255, 190, 0, 1);
     box-shadow: 1px 1px black;
   }
@@ -110,7 +109,7 @@ main {
     padding: 1rem;
     border: 5px solid #00144b;
     box-shadow: 2px 1px black;
-    font-family: "Noto Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
+    font-family: "Noto Sans", sans-serif;
   
     h1, h2 {
       font-family: 'Edo SZ';
@@ -173,27 +172,18 @@ main {
   }
 }
 
-@media (max-width: 1000px) and (orientation: portrait) {
+@media (max-width: 1200px) and (orientation: portrait) {
   .initial-content {
+    top: 8vh;
+
     .congratulations {
-      top: 8vh;
       font-size: 4vw;
     }
 
     .prompt {
-      top: 12vh;
-      font-size: 3vw;
-      border: none;
-      box-shadow: none;
-      background-color: initial;
-    }
-  }
-}
-
-@media (max-width: 1000px) and (orientation: landscape) {
-  .initial-content {
-    .prompt {
-      top: 4rem;
+      font-size: max(3vw, .8em);
+      padding: .15rem .3rem;
+      border: 2px solid rgba(255, 190, 0, 1);
     }
   }
 }
